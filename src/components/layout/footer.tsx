@@ -78,7 +78,7 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-semibold">Ready to get started?</h4>
             <p className="text-sm text-gray-600">
-              Let's discuss your project and create something amazing together.
+              We&apos;re here to help bring your vision to life.
             </p>
             <Button asChild>
               <Link href="/contact">Schedule Consultation</Link>
@@ -89,7 +89,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t text-center">
           <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} Crest Code Creative. All rights reserved.
+            &copy; {new Date().getFullYear()} Crest Code Creative. All rights reserved.
           </p>
         </div>
       </div>

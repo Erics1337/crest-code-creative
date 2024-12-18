@@ -8,7 +8,7 @@ export default function PortfolioPage() {
       <FadeIn>
         <h1 className="text-4xl font-bold mb-4">Our Portfolio</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Explore our latest projects and see how we've helped businesses succeed in the digital world.
+          We&apos;re proud to showcase our diverse portfolio of successful projects. Explore our latest projects and see how we&apos;ve helped businesses succeed in the digital world.
         </p>
       </FadeIn>
 
@@ -63,7 +63,7 @@ export default function PortfolioPage() {
         <div className="bg-white rounded-2xl p-12 text-center shadow-sm">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's create something amazing together. Our team is ready to bring your vision to life.
+            We&apos;ve had the privilege of working with amazing clients. Let&apos;s create something amazing together. Our team is ready to bring your vision to life.
           </p>
           <Button asChild size="lg">
             <a href="/contact">Get Started Today</a>

@@ -98,7 +98,7 @@ export default function ServicesPage() {
         <div className="bg-primary/5 rounded-2xl p-12 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help bring your vision to life with our comprehensive web solutions.
+            Let&apos;s discuss your project and create something amazing together.
           </p>
           <Button asChild size="lg">
             <Link href="/contact">Get Started Today</Link>

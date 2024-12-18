@@ -278,7 +278,7 @@ export default function PackagesPage() {
                 {selectedPackage ? `Get Started with ${selectedPackage}` : 'Contact Us'}
               </h2>
               <p className="text-gray-600">
-                Fill out the form below and we'll get back to you within 24 hours to discuss your project.
+                Fill out the form below and we&apos;ll get back to you within 24 hours to discuss your project.
               </p>
             </div>
             <ContactForm selectedPackage={selectedPackage || undefined} />
@@ -308,7 +308,7 @@ export default function PackagesPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Ongoing Support</h3>
                   <p className="text-gray-600">
-                    We're here for the long haul with maintenance and support packages available.
+                    We&apos;re here for the long haul with maintenance and support packages available.
                   </p>
                 </div>
               </div>

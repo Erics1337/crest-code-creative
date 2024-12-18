@@ -18,7 +18,7 @@ export function ImageWithSkeleton({
   width?: number;
   height?: number;
   className?: string;
-  [key: string]: any;
+  [key: string]: string | number | undefined;
 }) {
   const [isLoading, setIsLoading] = useState(true);
 
