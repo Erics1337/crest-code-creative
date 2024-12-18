@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { NextResponse } from 'next/server';
 
@@ -20,7 +22,7 @@ export async function POST(request: Request) {
     const emailParams = {
       Source: process.env.SES_FROM_EMAIL,
       Destination: {
-        ToAddresses: [process.env.SES_TO_EMAIL] as string[],
+        ToAddresses: [process.env.SES_TO_EMAIL],
       },
       Message: {
         Subject: {
