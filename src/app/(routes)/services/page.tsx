@@ -16,8 +16,8 @@ export default function ServicesPage() {
       <FadeInStagger className="mb-20">
         <div className="grid md:grid-cols-2 gap-8">
           {services.map((service) => (
-            <FadeInStaggerItem key={service.title} id={service.href.split('#')[1]}>
-              <div className="bg-white rounded-2xl shadow-sm p-8">
+            <FadeInStaggerItem key={service.title}>
+              <div className="bg-white rounded-2xl shadow-sm p-8" id={service.href.split('#')[1]}>
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-primary/10 rounded-xl">
                     {service.icon}
@@ -26,7 +26,7 @@ export default function ServicesPage() {
                 </div>
                 <p className="text-gray-600 mb-6">{service.description}</p>
                 <div className="space-y-4">
-                  {serviceDetails[service.href.split('#')[1]].features.map((feature, index) => (
+                  {serviceDetails[service.href.split('#')[1] as ServiceType].features.map((feature: string, index: number) => (
                     <div key={index} className="flex items-start gap-3">
                       <div className="mt-1">
                         <svg
@@ -196,7 +196,10 @@ const services = [
   },
 ];
 
-const serviceDetails = {
+// Define the valid service types
+type ServiceType = 'web-design' | 'software' | 'mobile' | 'custom';
+
+const serviceDetails: Record<ServiceType, { features: string[] }> = {
   'web-design': {
     features: [
       'Custom website design and development',

@@ -57,9 +57,11 @@ export const FadeInStagger = ({
 export const FadeInStaggerItem = ({
   children,
   className = '',
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }) => {
   return (
     <motion.div
@@ -68,6 +70,7 @@ export const FadeInStaggerItem = ({
         visible: { opacity: 1, y: 0 },
       }}
       className={className}
+      id={id}
     >
       {children}
     </motion.div>

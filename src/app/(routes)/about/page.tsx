@@ -93,7 +93,7 @@ export default function AboutPage() {
                   <ImageWithSkeleton
                     src={member.image}
                     alt={member.name}
-                    fill
+                    fill={true}
                     className="rounded-full object-cover"
                   />
                 </div>

@@ -3,12 +3,6 @@ import { getPostBySlug, getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
-interface BlogPostPageProps {
-  params: {
-    slug: string
-  }
-}
-
 export async function generateStaticParams() {
   const posts = await getPosts()
   return posts.map((post) => ({
@@ -16,8 +10,13 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getPostBySlug(params.slug)
+type PageProps = {
+  params: Promise<{ slug: string }>
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
+  const resolvedParams = await params
+  const post = await getPostBySlug(resolvedParams.slug)
 
   if (!post) {
     notFound()
@@ -35,20 +34,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.frontmatter.description}
           </p>
         )}
-        {post.frontmatter.tags && (
-          <div className="flex gap-2">
-            {post.frontmatter.tags.map((tag: string) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-800 px-2 py-1 text-sm"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
-      <div className="prose prose-lg dark:prose-invert max-w-none">
+      <div className="prose dark:prose-invert max-w-none">
         <MDXRemote source={post.content} />
       </div>
     </article>

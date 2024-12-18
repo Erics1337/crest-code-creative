@@ -13,10 +13,14 @@ export async function POST(request: Request) {
   try {
     const { name, email, phone, message, package: selectedPackage } = await request.json();
 
+    if (!process.env.SES_FROM_EMAIL || !process.env.SES_TO_EMAIL) {
+      throw new Error('Missing required environment variables');
+    }
+
     const emailParams = {
       Source: process.env.SES_FROM_EMAIL,
       Destination: {
-        ToAddresses: [process.env.SES_TO_EMAIL],
+        ToAddresses: [process.env.SES_TO_EMAIL] as string[],
       },
       Message: {
         Subject: {
