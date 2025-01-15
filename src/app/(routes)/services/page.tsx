@@ -111,195 +111,122 @@ export default function ServicesPage() {
 
 const services = [
   {
-    title: 'Web Design & Development',
-    description: 'Custom websites built to reflect your brand and drive results.',
-    href: '/services#web-design',
+    title: 'Web Design',
+    description: 'Custom, responsive websites that capture the unique character of your Crested Butte business.',
     icon: (
-      <svg
-        className="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-        />
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
+    href: '#web-design'
   },
   {
-    title: 'Full-Stack Software',
-    description: 'Scalable solutions for web and business automation.',
-    href: '/services#software',
+    title: 'Software Development',
+    description: 'Advanced technical solutions that give your business a competitive edge in the digital landscape.',
     icon: (
-      <svg
-        className="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-        />
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
       </svg>
     ),
+    href: '#software-development'
   },
   {
-    title: 'Mobile App Development',
-    description: 'User-friendly mobile apps that bring your ideas to life.',
-    href: '/services#mobile',
+    title: 'Business Consulting',
+    description: 'Strategic guidance to help your Crested Butte business thrive in the digital age.',
     icon: (
-      <svg
-        className="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-        />
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
-  },
-  {
-    title: 'Custom Web Design',
-    description: 'Bespoke web designs crafted to meet your vision.',
-    href: '/services#custom',
-    icon: (
-      <svg
-        className="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-        />
-      </svg>
-    ),
-  },
+    href: '#consulting'
+  }
 ];
 
-// Define the valid service types
-type ServiceType = 'web-design' | 'software' | 'mobile' | 'custom';
+type ServiceType = 'web-design' | 'software-development' | 'consulting';
 
 const serviceDetails: Record<ServiceType, { features: string[] }> = {
   'web-design': {
     features: [
-      'Custom website design and development',
-      'Responsive layouts for all devices',
-      'SEO optimization and best practices',
-      'Performance optimization',
-      'Content management systems',
-      'E-commerce solutions',
-    ],
+      'Custom website design tailored to Crested Butte\'s unique mountain town aesthetic',
+      'Responsive design optimized for all devices - mobile, tablet, and desktop',
+      'SEO optimization to help local customers find your business',
+      'Content management systems (WordPress, Shopify) for easy updates',
+      'High-performance websites that load quickly even with slower mountain internet',
+      'Integration with booking systems and payment processors',
+      'Local business listing optimization (Google My Business, Yelp)',
+      'Social media integration and sharing capabilities',
+      'Photo galleries and virtual tours for hospitality businesses',
+      'Seasonal content management for ski season/summer season transitions'
+    ]
   },
-  'software': {
+  'software-development': {
     features: [
-      'Custom web applications',
-      'API development and integration',
-      'Database design and optimization',
-      'Cloud infrastructure setup',
-      'Business process automation',
-      'Third-party integrations',
-    ],
+      'Custom booking and reservation systems for tourism businesses',
+      'Point of sale (POS) system integration for retail and restaurants',
+      'Inventory management systems for equipment rental shops',
+      'Custom API development for third-party integrations',
+      'E-commerce solutions for local artisans and retailers',
+      'Mobile app development for business management',
+      'Real-time availability and scheduling systems',
+      'Customer relationship management (CRM) system integration',
+      'Automated email marketing and notification systems',
+      'Data analytics and reporting dashboards'
+    ]
   },
-  'mobile': {
+  'consulting': {
     features: [
-      'Native iOS and Android apps',
-      'Cross-platform development',
-      'Progressive Web Apps (PWA)',
-      'App Store optimization',
-      'Push notifications',
-      'Offline functionality',
-    ],
-  },
-  'custom': {
-    features: [
-      'Brand-aligned design systems',
-      'UI/UX design',
-      'Interactive prototypes',
-      'Accessibility compliance',
-      'Design system documentation',
-      'Brand identity integration',
-    ],
-  },
+      'Digital strategy planning for seasonal business cycles',
+      'User experience optimization for tourist-focused websites',
+      'Market research and competitive analysis in the mountain town context',
+      'Technical audit of existing systems and websites',
+      'Digital marketing strategy for reaching tourists and locals',
+      'Performance optimization for existing websites',
+      'Security assessment and implementation',
+      'Training and support for staff on new systems',
+      'Growth strategy consulting for expanding businesses',
+      'Data-driven business insights and recommendations'
+    ]
+  }
 };
 
 const process = [
   {
     title: 'Discovery',
-    description: 'Understanding your goals and requirements through detailed consultation.',
+    description: 'Understanding your business goals, target audience, and unique challenges in the Crested Butte market'
   },
   {
     title: 'Planning',
-    description: 'Creating a comprehensive roadmap for your project success.',
+    description: 'Creating a detailed roadmap tailored to your business needs and seasonal considerations'
   },
   {
     title: 'Development',
-    description: 'Building your solution with the latest technologies and best practices.',
+    description: 'Building your solution with regular check-ins and feedback integration'
   },
   {
-    title: 'Launch',
-    description: 'Thorough testing and deployment to ensure a smooth release.',
-  },
+    title: 'Launch & Support',
+    description: 'Seamless deployment and ongoing support to ensure your success'
+  }
 ];
 
 const technologies = [
   {
-    name: 'React',
-    icon: '⚛️',
-    description: 'Modern UI development',
+    name: 'Modern Web',
+    description: 'React, Next.js, TypeScript for fast, reliable websites',
+    icon: '⚡'
   },
   {
-    name: 'Node.js',
-    icon: '🟢',
-    description: 'Server-side solutions',
+    name: 'E-commerce',
+    description: 'Shopify, WooCommerce for online sales',
+    icon: '🛍️'
   },
   {
-    name: 'TypeScript',
-    icon: '📘',
-    description: 'Type-safe development',
+    name: 'Cloud Services',
+    description: 'AWS, Google Cloud for scalable solutions',
+    icon: '☁️'
   },
   {
-    name: 'Next.js',
-    icon: '▲',
-    description: 'Full-stack framework',
-  },
-  {
-    name: 'Tailwind',
-    icon: '🎨',
-    description: 'Utility-first CSS',
-  },
-  {
-    name: 'PostgreSQL',
-    icon: '🐘',
-    description: 'Reliable database',
-  },
-  {
-    name: 'AWS',
-    icon: '☁️',
-    description: 'Cloud infrastructure',
-  },
-  {
-    name: 'Docker',
-    icon: '🐳',
-    description: 'Container platform',
-  },
+    name: 'Analytics',
+    description: 'Data-driven insights for your business',
+    icon: '📊'
+  }
 ];

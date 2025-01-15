@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -21,8 +22,16 @@ export function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold text-primary">
-              Crest Code Creative
+            <Link href="/" className="flex items-center mt-3">
+              <Image
+                src="/crest-code-creative.svg"
+                alt="Crest Code Creative Logo"
+                width={40}
+                height={40}
+                className="h-8 w-auto mb-3"
+                priority
+              />
+              <span className="ml-2 text-xl font-bold text-primary font-display">Crest Code Creative</span>
             </Link>
           </div>
 

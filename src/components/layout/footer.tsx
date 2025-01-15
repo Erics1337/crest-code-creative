@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export function Footer() {
@@ -10,7 +11,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-primary">Crest Code Creative</h3>
+            <div className="flex items-center">
+              <Image
+                src="/crest-code-creative.svg"
+                alt="Crest Code Creative Logo"
+                width={32}
+                height={32}
+                className="h-8 w-auto mb-3"
+              />
+              <h3 className="ml-2 text-lg font-bold text-primary font-display">Crest Code Creative</h3>
+            </div>
             <p className="text-sm text-gray-600">
               Crafting websites that inspire and perform in Crested Butte, Colorado.
             </p>
