@@ -22,7 +22,7 @@ export function Footer() {
               <h3 className="ml-2 text-lg font-bold text-primary font-display">Crest Code Creative</h3>
             </div>
             <p className="text-sm text-gray-600">
-              Crafting websites that inspire and perform in Crested Butte, Colorado.
+              Crafting websites that inspire and perform in The Gunnison Valley, Colorado.
             </p>
             <div className="space-y-2">
               <p className="text-sm text-gray-600">info@crestcodecreative.com</p>

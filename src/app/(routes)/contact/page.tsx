@@ -296,7 +296,7 @@ export default function PackagesPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Local Support</h3>
                   <p className="text-gray-600">
-                    Based in Crested Butte, we provide personalized, face-to-face support when you need it.
+                    Based in the Gunnison Valley, we provide personalized, face-to-face support when you need it.
                   </p>
                 </div>
                 <div>

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+import { Dropdown, DropdownItem } from '@/components/ui/dropdown';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +13,15 @@ export function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
+    { 
+      name: 'Services',
+      href: '/services',
+      items: [
+        { name: 'Web Design', href: '/services/web-design' },
+        { name: 'Software Development', href: '/services/software-development' },
+        { name: 'Mobile Apps', href: '/services/mobile-apps' },
+      ]
+    },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
@@ -31,20 +41,39 @@ export function Header() {
                 className="h-8 w-auto mb-3"
                 priority
               />
-              <span className="ml-2 text-xl font-bold text-primary font-display">Crest Code Creative</span>
+              <span className="ml-2 text-xl font-bold text-primary font-display">
+                Crest Code Creative
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                {item.name}
-              </Link>
+              item.items ? (
+                <Dropdown
+                  key={item.name}
+                  trigger={item.name}
+                  href={item.href}
+                >
+                  {item.items.map((subItem) => (
+                    <DropdownItem
+                      key={subItem.name}
+                      href={subItem.href}
+                    >
+                      {subItem.name}
+                    </DropdownItem>
+                  ))}
+                </Dropdown>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
             <Button asChild>
               <Link href="/contact">Schedule Consultation</Link>
@@ -62,35 +91,62 @@ export function Header() {
               <svg
                 className="h-6 w-6"
                 fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 {isMenuOpen ? (
-                  <path d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 )}
               </svg>
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-600 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+                item.items ? (
+                  <div key={item.name} className="space-y-2">
+                    <div className="text-gray-600 px-3 py-2 text-base font-medium">
+                      {item.name}
+                    </div>
+                    <div className="ml-4 space-y-1">
+                      {item.items.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="text-gray-600 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-gray-600 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
               <Button className="w-full mt-4" asChild>
                 <Link href="/contact">Schedule Consultation</Link>

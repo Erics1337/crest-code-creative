@@ -16,9 +16,9 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: 'Crest Code Creative | Web Design & Development in Crested Butte',
-  description: 'Custom web design and development services in Crested Butte, Colorado. We create beautiful, functional websites and applications tailored to your needs.',
-  keywords: 'web design, web development, Crested Butte, Colorado, software development, mobile apps',
+  title: 'Crest Code Creative | Web Design & Development in Crested Butte & Gunnison Valley Colorado',
+  description: 'Custom web design and development services in Crested Butte & Gunnison Valley, Colorado. We create beautiful, functional websites and applications tailored to your needs.',
+  keywords: 'web design, web development, Crested Butte, Gunnison Valley, Colorado, software development, mobile apps',
 };
 
 export default function RootLayout({

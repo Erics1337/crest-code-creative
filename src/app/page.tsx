@@ -1,16 +1,23 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { TestimonialCard } from '@/components/testimonials/testimonial-card';
-import { PortfolioCard } from '@/components/portfolio/portfolio-card';
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
+import { AnimatedProjectBox } from '@/components/AnimatedProjectBox';
+import { ServicesSection } from '@/components/sections/ServicesSection';
+import { TestimonialCard } from '@/components/testimonials/testimonial-card';
+import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
+import { TechnologySection } from '@/components/sections/TechnologySection';
+import { LocalFocusSection } from '@/components/sections/LocalFocusSection';
+import { getFeaturedProjects } from '@/lib/mdx';
 
 export default function Home() {
+  const featuredProjects = getFeaturedProjects();
+
   return (
     <div className="flex flex-col gap-20">
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
             src="/images/crested-butte-landscape.webp"
             alt="Crested Butte Landscape"
@@ -18,37 +25,62 @@ export default function Home() {
             sizes="100vw"
             quality={75}
             placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQrJyEwPNRCQDzUQkY+Sjp6VUtXWlZ2eot8f42IjY6RkqGys7W+wMHQ2f/2wBDARUXFyMFIxUZGVdENHw3h4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4f/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVigAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQrJyEwPNRCQDzUQkY+Sjp6VUtXWlZ2eot8f42IjY6RkqGys7W+wMHQ2f/2wBDARUXFyMFIxUZGVdENHw3h4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4f/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             className="object-cover"
-            priority
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
-        
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <FadeIn delay={0.2}>
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Crafting Websites that Inspire and Perform
-              </h1>
-              <p className="text-xl text-white/90 mb-8">
-                Crest Code Creative helps businesses thrive online with beautiful, functional websites 
-                and applications tailored to your needs.
-              </p>
-              <Button size="lg" asChild>
-                <Link href="/contact">
-                  Schedule a Free Consultation
-                </Link>
-              </Button>
+          <div className="grid lg:grid-cols-[1fr,auto] gap-4 items-center min-h-[60vh]">
+            <FadeIn delay={0.2}>
+              <div className="max-w-2xl">
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                  Crafting Websites that Inspire and Perform
+                </h1>
+                <p className="text-xl text-white/90 mb-8">
+                  Crest Code Creative helps businesses thrive online with beautiful, functional websites 
+                  and applications tailored to your needs.
+                </p>
+                <Button size="lg" asChild>
+                  <Link href="/contact">
+                    Schedule a Free Consultation
+                  </Link>
+                </Button>
+              </div>
+            </FadeIn>
+            
+            {/* Featured Project Image */}
+            <div className="relative" style={{ marginBottom: '-120px' }}>
+              <AnimatedProjectBox 
+                variant="website"
+                imageSrc="/clients/earthy-soul-living.webp"
+                imageAlt="Earthy Soul Living Website"
+                urlText="earthysoulliving.com"
+              />
             </div>
-          </FadeIn>
+          </div>
+        </div>
+
+        {/* Curved bottom SVG */}
+        <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden">
+          <svg
+            viewBox="0 0 1200 120"
+            className="relative w-full h-[120px]"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="white"
+              d="M600,112C400,112,200,88,0,64V120H1200V64C1000,88,800,112,600,112Z"
+            />
+          </svg>
         </div>
       </section>
 
       {/* Introduction Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <FadeIn>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center relative">
             <div className="relative aspect-square">
               <Image
                 src="/images/eric-headshot.jpg"
@@ -72,60 +104,9 @@ export default function Home() {
         </FadeIn>
       </section>
 
-      {/* Services Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-          </FadeIn>
-          <FadeInStagger>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {services.map((service) => (
-                <FadeInStaggerItem key={service.title}>
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                    <p className="text-gray-600 mb-4">{service.description}</p>
-                    <Link href={service.href} className="text-primary hover:underline">
-                      Learn more →
-                    </Link>
-                  </div>
-                </FadeInStaggerItem>
-              ))}
-            </div>
-          </FadeInStagger>
-        </div>
-      </section>
+      <ServicesSection />
 
-      {/* Portfolio Preview Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <FadeIn>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-lg text-gray-600">
-              Take a look at some of our recent work
-            </p>
-          </div>
-        </FadeIn>
-        <FadeInStagger>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project) => (
-              <FadeInStaggerItem key={project.title}>
-                <PortfolioCard {...project} />
-              </FadeInStaggerItem>
-            ))}
-          </div>
-        </FadeInStagger>
-        <FadeIn delay={0.4}>
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/portfolio">View All Projects</Link>
-            </Button>
-          </div>
-        </FadeIn>
-      </section>
+      <FeaturedProjects projects={featuredProjects} />
 
       {/* Testimonials Section */}
       <section className="bg-gray-50 py-20">
@@ -150,32 +131,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Technology Section */}
+      <TechnologySection />
+
       {/* Local Focus Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <FadeIn>
-          <div className="relative rounded-2xl overflow-hidden">
-            <div className="absolute inset-0">
-              <Image
-                src="/images/crested-butte-town.jpg"
-                alt="Crested Butte Town"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-black/60" />
-            </div>
-            <div className="relative z-10 px-8 py-16 text-center text-white">
-              <h2 className="text-3xl font-bold mb-4">Proudly Serving Crested Butte</h2>
-              <p className="text-lg mb-8 max-w-2xl mx-auto">
-                As a local business, we understand the unique challenges and opportunities of our 
-                mountain community. Let&apos;s work together to bring your digital vision to life.
-              </p>
-              <Button variant="secondary" size="lg" asChild>
-                <Link href="/contact">Get in Touch</Link>
-              </Button>
-            </div>
-          </div>
-        </FadeIn>
-      </section>
+      <LocalFocusSection />
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -194,117 +154,6 @@ export default function Home() {
     </div>
   );
 }
-
-const services = [
-  {
-    title: 'Web Design & Development',
-    description: 'Custom websites built to reflect your brand and drive results.',
-    href: '/services#web-design',
-    icon: (
-      <svg
-        className="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: 'Full-Stack Software',
-    description: 'Scalable solutions for web and business automation.',
-    href: '/services#software',
-    icon: (
-      <svg
-        className="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: 'Mobile App Development',
-    description: 'User-friendly mobile apps that bring your ideas to life.',
-    href: '/services#mobile',
-    icon: (
-      <svg
-        className="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: 'Custom Web Design',
-    description: 'Bespoke web designs crafted to meet your vision.',
-    href: '/services#custom',
-    icon: (
-      <svg
-        className="w-6 h-6 text-primary"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-        />
-      </svg>
-    ),
-  },
-];
-
-const featuredProjects = [
-  {
-    title: 'Earthy Soul Wellness',
-    description: 'A modern video streaming platform for yoga and wellness content.',
-    imageUrl: '/images/portfolio/earthy-soul.jpg',
-    tags: ['Next.js', 'Stripe', 'Video Streaming'],
-    href: '/portfolio/earthy-soul',
-  },
-  {
-    title: 'Mountain Bike Adventures',
-    description: 'Custom booking system for guided mountain bike tours.',
-    imageUrl: '/images/portfolio/mountain-bike.jpg',
-    tags: ['React', 'Node.js', 'Booking System'],
-    href: '/portfolio/mountain-bike',
-  },
-  {
-    title: 'Local Food Market',
-    description: 'E-commerce platform connecting local farmers with customers.',
-    imageUrl: '/images/portfolio/food-market.jpg',
-    tags: ['E-commerce', 'WordPress', 'WooCommerce'],
-    href: '/portfolio/food-market',
-  },
-];
 
 const testimonials = [
   {

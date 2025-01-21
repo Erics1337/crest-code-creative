@@ -14,9 +14,11 @@
   "dependencies": {
     "@aws-sdk/client-ses": "^3.713.0",
     "@cloudflare/next-on-pages": "^1.13.7",
+    "@heroicons/react": "^2.2.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.0",
+    "@radix-ui/react-dropdown-menu": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.4",
     "class-variance-authority": "^0.7.1",

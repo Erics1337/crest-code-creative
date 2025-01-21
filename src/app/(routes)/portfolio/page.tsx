@@ -12,7 +12,7 @@ export default async function PortfolioPage() {
       <FadeIn>
         <h1 className="text-4xl font-bold mb-4">Featured Work</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Discover how we&apos;ve helped Crested Butte businesses thrive in the digital landscape through custom solutions and local expertise.
+          Discover how we&apos;ve helped Gunnison Valley businesses thrive in the digital landscape through custom solutions and local expertise.
         </p>
       </FadeIn>
 
