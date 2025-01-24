@@ -27,8 +27,29 @@ export type ProjectMetadata = {
 export async function getProjectBySlug(slug: string) {
   // Remove any image extensions and .mdx extension from the slug
   const realSlug = slug.replace(/\.(jpg|jpeg|png|gif|webp|mdx)$/, '')
-  const fullPath = path.join(projectsDirectory, `${realSlug}.mdx`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  
+  // Handle the case where the slug might be from an image URL
+  const possibleSlugs = [
+    realSlug,
+    realSlug.replace('alpine-vista', 'alpine-vista-lodge')
+  ]
+  
+  let fileContents
+  
+  for (const trySlug of possibleSlugs) {
+    const tryPath = path.join(projectsDirectory, `${trySlug}.mdx`)
+    try {
+      fileContents = fs.readFileSync(tryPath, 'utf8')
+      break
+    } catch {
+      continue
+    }
+  }
+  
+  if (!fileContents) {
+    throw new Error(`No project found for slug: ${slug}`)
+  }
+  
   const { data, content } = matter(fileContents)
 
   return {
