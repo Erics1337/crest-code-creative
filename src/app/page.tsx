@@ -9,6 +9,8 @@ import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
 import { TechnologySection } from '@/components/sections/TechnologySection';
 import { LocalFocusSection } from '@/components/sections/LocalFocusSection';
 import { getFeaturedProjects } from '@/lib/mdx';
+import { CTASection } from '@/components/sections/CTASection';
+import { BusinessIntroSection } from '@/components/sections/BusinessIntroSection';
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
@@ -77,36 +79,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Introduction Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <FadeIn>
-          <div className="grid md:grid-cols-2 gap-12 items-center relative">
-            <div className="relative aspect-square">
-              <Image
-                src="/images/eric-headshot.jpg"
-                alt="Eric Swanson - Founder of Crest Code Creative"
-                fill
-                className="object-cover rounded-lg"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Hi, I&apos;m Eric Swanson</h2>
-              <p className="text-lg text-gray-600 mb-6">
-                With over 5 years of experience in web development and design, I&apos;ve helped businesses 
-                of all sizes establish their digital presence. Based in beautiful Crested Butte, 
-                I combine technical expertise with a deep understanding of our local community&apos;s needs.
-              </p>
-              <Button variant="outline" asChild>
-                <Link href="/about">Learn More About Me</Link>
-              </Button>
-            </div>
-          </div>
-        </FadeIn>
-      </section>
+      {/* Business Intro Section */}
+      <BusinessIntroSection />
 
+      {/* Local Focus Section */}
+      <LocalFocusSection />
+
+      {/* Services Section */}
       <ServicesSection />
 
+      {/* Featured Projects Section */}
       <FeaturedProjects projects={featuredProjects} />
+
+      {/* Technology Section */}
+      <TechnologySection />
 
       {/* Testimonials Section */}
       <section className="bg-gray-50 py-20">
@@ -131,26 +117,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Technology Section */}
-      <TechnologySection />
-
-      {/* Local Focus Section */}
-      <LocalFocusSection />
-
       {/* CTA Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <FadeIn>
-          <div className="bg-primary text-white rounded-2xl p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Let&apos;s Create Something Amazing Together</h2>
-            <p className="text-lg mb-8">
-              Ready to take your digital presence to the next level? Let&apos;s discuss your project.
-            </p>
-            <Button variant="secondary" size="lg" asChild>
-              <Link href="/contact">Get Started Today</Link>
-            </Button>
-          </div>
-        </FadeIn>
-      </section>
+      <CTASection />
+
+
     </div>
   );
 }

@@ -36,19 +36,26 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error('Failed to send message');
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.details || 'Failed to send message');
+      }
 
       toast({
         title: 'Message sent!',
         description: 'We\'ll get back to you as soon as possible.',
       });
 
-      // Reset form
-      e.currentTarget.reset();
-    } catch {
+      // Reset form using the form element reference
+      const form = e.target as HTMLFormElement;
+      if (form) {
+        form.reset();
+      }
+    } catch (error: unknown) {
       toast({
         title: 'Error',
-        description: 'Failed to send message. Please try again.',
+        description: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
         variant: 'destructive',
       });
     } finally {

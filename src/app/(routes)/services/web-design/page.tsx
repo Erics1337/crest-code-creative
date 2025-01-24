@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export default function WebDesignPage() {
@@ -52,7 +53,14 @@ export default function WebDesignPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white overflow-hidden">
+        <Image
+          src="/images/gunnison-web-design.jpg"
+          alt="Web Design in Gunnison Valley"
+          fill
+          priority
+          className="object-cover object-center"
+        />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">

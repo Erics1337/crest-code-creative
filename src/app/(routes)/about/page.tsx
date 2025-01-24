@@ -1,7 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
-import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 
 export default function AboutPage() {
   return (
@@ -18,7 +18,7 @@ export default function AboutPage() {
       <FadeIn className="mb-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-[500px] rounded-2xl overflow-hidden">
-            <ImageWithSkeleton
+            <Image
               src="/images/about/eric-profile.jpg"
               alt="Eric Swanson"
               fill={true}
@@ -28,15 +28,15 @@ export default function AboutPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-semibold mb-4">My Story</h2>
-              <p className="text-gray-600 mb-4">
-                As a proud graduate of Western Colorado University&apos;s Computer Science program, I&apos;ve combined my technical expertise with a deep understanding of our unique mountain community. My journey in software development began right here in Gunnison Valley, where I discovered the power of technology to transform local businesses.
-              </p>
-              <p className="text-gray-600 mb-4">
-                With 5 years of experience in software development and UI/UX design, I&apos;ve worked on projects ranging from simple websites to complex enterprise applications. My local education at Western has given me both the technical foundation and the community connection to understand the unique challenges faced by businesses in our mountain town.
-              </p>
-              <p className="text-gray-600">
-                Today, I&apos;m dedicated to helping Gunnison Valley businesses thrive in the digital age by providing sophisticated technical solutions that maintain the authentic character of our community.
-              </p>
+              My connection to the Gunnison Valley began in 2015.  Like many, I was drawn to the stunning beauty and vibrant community. I immersed myself in local life, working at Crested Butte Mountain Resort, Gunnison Valley Health, and several of our cherished restaurants and small businesses. These experiences weren&apos;t just jobs; they were an education in the unique spirit and challenges of our valley.
+<br /><br />
+Inspired by the potential of technology to empower local businesses, I pursued a Computer Science degree at Western Colorado University. My time at Western provided me with a strong technical foundation, while also deepening my understanding of the specific needs of our mountain community.
+<br /><br />
+After graduating, I gained valuable professional experience, first as a web developer for a financial planning company in Denver, and then transitioning to remote roles with big tech companies. This allowed me to achieve a long-held dream: building a successful career in technology while remaining rooted in the Gunnison Valley.
+<br /><br />
+With five years of experience in software development and UI/UX design, I&apos;ve honed my skills on a diverse range of projects, from crafting elegant, user-friendly websites to developing complex, enterprise-level applications. Now, I&apos;m bringing that expertise back home.
+<br /><br />
+I&apos;m passionate about helping Gunnison Valley businesses thrive in the digital age. My goal is to provide sophisticated technical solutions that are tailored to your specific needs, helping you connect with customers, streamline operations, and grow your business – all while preserving the authentic character of the community that has shaped me, and that we both love.
             </div>
           </div>
         </div>
@@ -68,15 +68,15 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-2xl font-semibold mb-4">Community Commitment</h2>
-            <p className="text-gray-600 mb-6">
-              As a local business owner and Western graduate, I&apos;m deeply committed to the success of our community. I understand the unique challenges and opportunities that come with operating in a seasonal, tourism-driven economy.
+            <p className="text-gray-600 mb-8">
+              Having worked in various local businesses before my tech career, I intimately understand the unique rhythm of our valley&apos;s economy. My commitment goes beyond just providing services - it&apos;s about being a true partner in our community&apos;s growth and success.
             </p>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {commitments.map((commitment, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <div className="mt-1">
+                <div key={index} className="flex items-start gap-4 group">
+                  <div className="mt-1 transition-colors duration-200">
                     <svg
-                      className="w-5 h-5 text-primary"
+                      className="w-5 h-5 text-primary group-hover:text-primary/80"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -89,17 +89,19 @@ export default function AboutPage() {
                       />
                     </svg>
                   </div>
-                  <p className="text-gray-600">{commitment}</p>
+                  <p className="text-gray-600 group-hover:text-gray-900 transition-colors duration-200">{commitment}</p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="relative h-[400px] rounded-2xl overflow-hidden">
-            <ImageWithSkeleton
-              src="/images/about/crested-butte.jpg"
-              alt="Crested Butte"
+          <div className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/coffee-shop.jpg"
+              alt="Client Meeting"
               fill={true}
-              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={true}
+              className="object-cover object-center w-full h-full hover:scale-105 transition-transform duration-700"
             />
           </div>
         </div>
@@ -155,11 +157,11 @@ const values = [
 ];
 
 const commitments = [
-  "Supporting local businesses with technology solutions that respect our town's character",
-  "Active participation in community events and business organizations",
-  "Mentoring aspiring developers at Western Colorado University",
-  "Providing special rates for local non-profit organizations",
-  "Contributing to sustainable tourism through smart digital solutions"
+  "Deep understanding of local business needs through years of hands-on experience in the valley",
+  "Commitment to providing affordable, high-quality tech solutions tailored to our community",
+  "Active participation in local business networks and community events",
+  "Flexible support and maintenance schedules that adapt to seasonal business patterns",
+  "Dedication to preserving our valley's unique character while embracing digital innovation"
 ];
 
 const impact = [

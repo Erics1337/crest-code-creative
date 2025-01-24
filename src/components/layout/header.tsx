@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+// import { ChevronDown } from 'lucide-react';
 import { Dropdown, DropdownItem } from '@/components/ui/dropdown';
 
 export function Header() {

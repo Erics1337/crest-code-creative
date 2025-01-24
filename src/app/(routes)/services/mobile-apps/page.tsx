@@ -1,4 +1,4 @@
-// import Image from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -93,7 +93,14 @@ export default function MobileAppsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+      <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-600 text-white overflow-hidden">
+        <Image
+          src="/images/mobile-outside.jpg"
+          alt="Mobile Development Background"
+          fill
+          className="object-cover"
+          priority
+        />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
@@ -105,6 +112,19 @@ export default function MobileAppsPage() {
           <Button size="lg" asChild className="bg-white text-primary hover:bg-gray-100">
             <Link href="/contact">Start Your Mobile Journey</Link>
           </Button>
+        </div>
+                {/* Curved bottom SVG */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden z-10">
+          <svg
+            viewBox="0 0 1200 120"
+            className="relative w-full h-[120px]"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="rgb(249 250 251)"
+              d="M600,112C400,112,200,88,0,64V120H1200V64C1000,88,800,112,600,112Z"
+            />
+          </svg>
         </div>
       </section>
 

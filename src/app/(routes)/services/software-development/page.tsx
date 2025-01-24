@@ -69,7 +69,14 @@ export default function SoftwareDevelopmentPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-gray-900 to-blue-900 text-white">
+      <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-gray-900 to-blue-900 text-white overflow-hidden">
+        <Image
+          src="/images/polygon-mountain.jpg"
+          alt="Polygon Mountain Background"
+          fill
+          className="object-cover"
+          priority
+        />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
@@ -81,6 +88,19 @@ export default function SoftwareDevelopmentPage() {
           <Button size="lg" asChild className="bg-white text-primary hover:bg-gray-100">
             <Link href="/contact">Start Your Project</Link>
           </Button>
+        </div>
+                {/* Curved bottom SVG */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden z-10">
+          <svg
+            viewBox="0 0 1200 120"
+            className="relative w-full h-[120px]"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="rgb(249 250 251)"
+              d="M600,112C400,112,200,88,0,64V120H1200V64C1000,88,800,112,600,112Z"
+            />
+          </svg>
         </div>
       </section>
 
@@ -180,7 +200,7 @@ export default function SoftwareDevelopmentPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-display font-bold mb-8">Ready to Build Something Amazing?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let's discuss your project and create a custom solution that meets your needs.
+            Let&apos;s discuss your project and create a custom solution that meets your needs.
           </p>
           <Button size="lg" variant="secondary" asChild>
             <Link href="/contact">Schedule a Consultation</Link>

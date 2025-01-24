@@ -25,7 +25,8 @@ export type ProjectMetadata = {
 }
 
 export async function getProjectBySlug(slug: string) {
-  const realSlug = slug.replace(/\.mdx$/, '')
+  // Remove any image extensions and .mdx extension from the slug
+  const realSlug = slug.replace(/\.(jpg|jpeg|png|gif|webp|mdx)$/, '')
   const fullPath = path.join(projectsDirectory, `${realSlug}.mdx`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)

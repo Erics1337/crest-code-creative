@@ -21,7 +21,7 @@ export function ServiceCard({
   features,
   fullDescription,
 }: ServiceCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <motion.div
