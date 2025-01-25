@@ -1,4 +1,11 @@
 export const runtime = 'edge';
+export const config = {
+  runtime: 'edge',
+  unstable_allowDynamic: [
+    // Allow @aws-sdk/client-ses to be dynamically imported
+    '**/node_modules/@aws-sdk/client-ses/**',
+  ],
+};
 
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { NextResponse } from 'next/server';
