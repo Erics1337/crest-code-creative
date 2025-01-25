@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { MDXContent } from '@/components/mdx-content'
 
 export async function generateStaticParams() {
   const posts = await getPosts()
@@ -35,9 +35,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </p>
         )}
       </div>
-      <div className="prose dark:prose-invert max-w-none">
-        <MDXRemote source={post.content} />
-      </div>
+      <MDXContent source={post.content} />
     </article>
   )
 }

@@ -4,10 +4,12 @@ import Link from 'next/link'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Override the default components with our own
     h1: ({ children }) => <h1 className="text-4xl font-bold mt-8 mb-4">{children}</h1>,
     h2: ({ children }) => <h2 className="text-3xl font-bold mt-8 mb-4">{children}</h2>,
     h3: ({ children }) => <h3 className="text-2xl font-bold mt-6 mb-3">{children}</h3>,
+    h4: ({ children }) => <h4 className="text-xl font-bold mt-6 mb-3">{children}</h4>,
+    h5: ({ children }) => <h5 className="text-lg font-bold mt-4 mb-2">{children}</h5>,
+    h6: ({ children }) => <h6 className="text-base font-bold mt-4 mb-2">{children}</h6>,
     p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
     a: ({ href, children }) => {
       const isExternal = href?.startsWith('http')

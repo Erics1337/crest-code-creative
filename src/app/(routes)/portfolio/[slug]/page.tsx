@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { getProjectBySlug, getProjects } from '@/lib/projects'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 import { Button } from '@/components/ui/button'
+import { MDXContent } from '@/components/mdx-content'
 
 export async function generateStaticParams() {
   const projects = await getProjects()
@@ -77,8 +77,8 @@ export default async function ProjectPage({ params }: PageProps) {
       </div>
 
       {/* Project Content */}
-      <div className="prose dark:prose-invert max-w-none mb-12">
-        <MDXRemote source={project.content} />
+      <div className="mb-12">
+        <MDXContent source={project.content} />
       </div>
 
       {/* Testimonial */}
