@@ -101,27 +101,6 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
           placeholder="(970) 555-0123"
         />
       </div>
-      {!selectedPackage && (
-        <div>
-          <label htmlFor="package" className="block text-sm font-medium text-gray-700 mb-1">
-            Interested in
-          </label>
-          <select
-            id="package"
-            name="package"
-            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            required
-          >
-            <option value="">Select a package</option>
-            <option value="starter">Local Business Starter</option>
-            <option value="professional">Professional Multi-Page</option>
-            <option value="ecommerce">E-commerce Suite</option>
-            <option value="booking">Booking System</option>
-            <option value="custom">Custom Development</option>
-            <option value="mobile">Mobile App Development</option>
-          </select>
-        </div>
-      )}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
           Message

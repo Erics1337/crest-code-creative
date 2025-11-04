@@ -131,6 +131,26 @@ const services = [
     href: '#software-development'
   },
   {
+    title: 'AI Solutions',
+    description: 'Agentic chatbots and automations that boost sales, support customers, and streamline operations.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v4a6 6 0 006 6h4a6 6 0 006-6V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4zm-3 9h6m-6 3h4" />
+      </svg>
+    ),
+    href: '#ai-solutions'
+  },
+  {
+    title: 'Mobile Apps',
+    description: 'Cross-platform React Native apps for iOS and Android to reach customers on the go.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2zm5 14h.01" />
+      </svg>
+    ),
+    href: '#mobile-apps'
+  },
+  {
     title: 'Business Consulting',
     description: 'Strategic guidance to help your Crested Butte business thrive in the digital age.',
     icon: (
@@ -142,7 +162,7 @@ const services = [
   }
 ];
 
-type ServiceType = 'web-design' | 'software-development' | 'consulting';
+type ServiceType = 'web-design' | 'software-development' | 'ai-solutions' | 'mobile-apps' | 'consulting';
 
 const serviceDetails: Record<ServiceType, { features: string[] }> = {
   'web-design': {
@@ -171,6 +191,31 @@ const serviceDetails: Record<ServiceType, { features: string[] }> = {
       'Customer relationship management (CRM) system integration',
       'Automated email marketing and notification systems',
       'Data analytics and reporting dashboards'
+    ]
+  },
+  'mobile-apps': {
+    features: [
+      'React Native cross-platform apps for iOS and Android',
+      'Push notifications and real-time updates',
+      'Offline support optimized for mountain connectivity',
+      'App Store and Google Play submission support',
+      'Booking, loyalty, and payments integrations',
+      'Secure auth and role-based access',
+      'Cloud backend integration and analytics',
+      'Automated testing and QA'
+    ]
+  },
+  'ai-solutions': {
+    features: [
+      'Custom AI chatbots with agentic workflows to take actions on behalf of users',
+      'E-commerce assistants for product discovery, cart building, checkout guidance, and order status',
+      'Business automations across CRM, inventory, scheduling, and support systems',
+      'RAG assistants that answer questions using your documents, website, and knowledge base',
+      'Multi-channel experiences: website widgets, SMS, WhatsApp, and social DMs',
+      'Human handoff, transcripts, and analytics dashboards to monitor performance',
+      'Secure auth, roles, and audit logs with privacy-first data handling',
+      'Integrations with Shopify, Stripe, Slack, Google Workspace, and Zapier',
+      'On-premise or cloud deployment options to fit your compliance needs'
     ]
   },
   'consulting': {

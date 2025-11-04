@@ -19,7 +19,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-[500px] rounded-2xl overflow-hidden">
             <Image
-              src="/images/about/eric-profile.jpg"
+              src="/linkedin-profile.jpeg"
               alt="Eric Swanson"
               fill={true}
               className="object-cover"
