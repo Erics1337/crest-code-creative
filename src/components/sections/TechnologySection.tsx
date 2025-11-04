@@ -28,7 +28,7 @@ export function TechnologySection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <FadeIn>
+        {/* <FadeIn>
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl font-bold mb-6">Modern Technology, Maximum Value</h2>
             <p className="text-lg mb-8">
@@ -36,7 +36,7 @@ export function TechnologySection() {
               high-quality solutions faster and more cost-effectively than traditional approaches.
             </p>
           </div>
-        </FadeIn>
+        </FadeIn> */}
         <FadeInStagger>
           <div className="grid md:grid-cols-3 gap-8">
             <FadeInStaggerItem>
