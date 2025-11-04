@@ -13,13 +13,13 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <Image
-                src="/crest-code-creative.svg"
-                alt="Crest Code Creative Logo"
+                src="/crest-logo-2.png"
+                alt="Crest Code Logo"
                 width={32}
                 height={32}
                 className="h-8 w-auto mb-3"
               />
-              <h3 className="ml-2 text-lg font-bold text-primary font-display">Crest Code Creative</h3>
+              <h3 className="ml-2 text-lg font-bold text-primary font-display">Crest Code</h3>
             </div>
             <p className="text-sm text-gray-600">
               Crafting websites that inspire and perform in The Gunnison Valley, Colorado.
@@ -99,7 +99,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t text-center">
           <p className="text-sm text-gray-600">
-            &copy; {new Date().getFullYear()} Crest Code Creative. All rights reserved.
+            &copy; {new Date().getFullYear()} Crest Code. All rights reserved.
           </p>
         </div>
       </div>

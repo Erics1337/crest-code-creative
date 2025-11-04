@@ -41,7 +41,7 @@ export default function Home() {
                   Crafting Websites that Inspire and Perform
                 </h1>
                 <p className="text-xl text-white/90 mb-8">
-                  Crest Code Creative helps businesses thrive online with beautiful, functional websites 
+                  Crest Code helps businesses thrive online with beautiful, functional websites 
                   and applications tailored to your needs.
                 </p>
                 <Button size="lg" asChild>
@@ -128,12 +128,12 @@ export default function Home() {
 const testimonials = [
   {
     quote: "Eric's attention to detail and understanding of our needs resulted in a website that perfectly represents our brand.",
-    author: 'Sarah Johnson',
+    author: 'Chelsey Wilson',
     role: 'Owner',
     company: 'Earthy Soul Wellness',
   },
   {
-    quote: 'Working with Crest Code Creative was a game-changer for our business. Our online bookings have increased significantly.',
+    quote: 'Working with Crest Code was a game-changer for our business. Our online bookings have increased significantly.',
     author: 'Mike Thompson',
     role: 'Founder',
     company: 'Mountain Bike Adventures',

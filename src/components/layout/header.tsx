@@ -34,15 +34,15 @@ export function Header() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center mt-3">
               <Image
-                src="/crest-code-creative.svg"
-                alt="Crest Code Creative Logo"
+                src="/crest-logo-2.png"
+                alt="Crest Code Logo"
                 width={40}
                 height={40}
                 className="h-8 w-auto mb-3"
                 priority
               />
               <span className="ml-2 text-xl font-bold text-primary font-display">
-                Crest Code Creative
+                Crest Code
               </span>
             </Link>
           </div>

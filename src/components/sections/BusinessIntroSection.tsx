@@ -13,7 +13,7 @@ export function BusinessIntroSection() {
           <div className="relative aspect-square">
             <Image
               src="/images/client-meeting.jpg"
-              alt="Eric Swanson - Founder of Crest Code Creative"
+              alt="Eric Swanson - Founder of Crest Code"
               fill
               className="object-cover rounded-2xl shadow-xl"
             />
@@ -21,7 +21,7 @@ export function BusinessIntroSection() {
           <div>
             <h2 className="text-3xl font-bold mb-6">Big Tech Experience, Local Focus</h2>
             <p className="text-lg text-gray-600 mb-4">
-              At Crest Code Creative, we bring Silicon Valley quality web development to the Gunnison Valley. 
+              At Crest Code, we bring Silicon Valley quality web development to the Gunnison Valley. 
               Having worked with tech companies from Denver to New York, we understand what makes digital products successful at scale.
             </p>
             <p className="text-lg text-gray-600 mb-6">
