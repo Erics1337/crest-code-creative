@@ -153,6 +153,19 @@ export default async function ProjectPage({ params }: PageProps) {
                   </dd>
                 </div>
               </dl>
+              {project.frontmatter.externalUrl && (
+                <div className="mt-6">
+                  <Button asChild variant="outline" className="w-full">
+                    <a
+                      href={project.frontmatter.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visit Website
+                    </a>
+                  </Button>
+                </div>
+              )}
             </div>
           </aside>
         </div>

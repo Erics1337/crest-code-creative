@@ -10,6 +10,7 @@ export interface Project {
   challenge: string;
   solution: string;
   impact: string;
+  externalUrl?: string;
   testimonial?: {
     name: string;
     role: string;

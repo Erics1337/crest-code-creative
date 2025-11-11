@@ -15,6 +15,7 @@ export type ProjectMetadata = {
   solution: string
   impact: string
   imageUrl: string
+  externalUrl?: string
   technologies: string[]
   testimonial?: {
     name: string
