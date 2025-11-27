@@ -10,6 +10,7 @@ export type PostMetadata = {
   description: string
   slug: string
   tags?: string[]
+  coverImage?: string
 }
 
 export async function getPostBySlug(slug: string) {
@@ -39,6 +40,7 @@ export async function getPosts(): Promise<PostMetadata[]> {
         ...data,
         slug,
         date: new Date(data.date).toISOString(),
+        coverImage: data.coverImage,
       } as PostMetadata
     })
     .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()))

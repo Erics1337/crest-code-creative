@@ -13,13 +13,14 @@ export function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { 
+    {
       name: 'Services',
       href: '/services',
       items: [
         { name: 'Web Design', href: '/services/web-design' },
         { name: 'Software Development', href: '/services/software-development' },
         { name: 'Mobile Apps', href: '/services/mobile-apps' },
+        { name: 'n8n Business Automations', href: '/services/n8n-automations' },
       ]
     },
     { name: 'Portfolio', href: '/portfolio' },

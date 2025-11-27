@@ -5,7 +5,7 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
 import { ServiceCard } from '@/components/ui/service-card';
-import { ComputerDesktopIcon, CodeBracketIcon, DevicePhoneMobileIcon } from '@heroicons/react/24/solid';
+import { ComputerDesktopIcon, CodeBracketIcon, DevicePhoneMobileIcon, ArrowPathIcon } from '@heroicons/react/24/solid';
 
 export function ServicesSection() {
   const controls = useAnimation();
@@ -20,7 +20,7 @@ export function ServicesSection() {
       const element = ref.current as HTMLElement;
       const rect = element.getBoundingClientRect();
       const scrollProgress = 1 - (rect.top + rect.height) / (window.innerHeight + rect.height);
-      
+
       if (scrollProgress >= 0 && scrollProgress <= 1) {
         controls.set({
           y: scrollProgress * 100
@@ -42,11 +42,11 @@ export function ServicesSection() {
   }, [controls]);
 
   return (
-    <section 
+    <section
       ref={ref}
       className="bg-gray-50 py-20 relative overflow-hidden"
     >
-      <motion.div 
+      <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={controls}
         initial={{ y: 0 }}
@@ -60,7 +60,7 @@ export function ServicesSection() {
           priority
         />
       </motion.div>
-      <motion.div 
+      <motion.div
         className="container mx-auto px-4 sm:px-6 lg:px-8 relative"
         animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
         initial={{ y: 50, opacity: 0 }}
@@ -116,6 +116,22 @@ export function ServicesSection() {
                   "App Store optimization"
                 ]}
                 fullDescription="Extend your reach with custom mobile applications that engage users on their preferred devices. We specialize in both native and cross-platform development, ensuring your app delivers a seamless experience while maintaining performance and functionality across all platforms."
+              />
+            </FadeInStaggerItem>
+
+            <FadeInStaggerItem>
+              <ServiceCard
+                title="n8n Business Automations"
+                icon={<ArrowPathIcon className="w-6 h-6 text-primary" />}
+                href="/services/n8n-automations"
+                shortDescription="Streamline operations with custom automated workflows"
+                features={[
+                  "Lead management automation",
+                  "Social media scheduling",
+                  "Invoicing & payments",
+                  "Customer support ticketing"
+                ]}
+                fullDescription="Save time and reduce errors by automating your repetitive business processes. We build custom workflows using n8n to connect your favorite apps and services, allowing data to flow seamlessly between them so you can focus on growing your business."
               />
             </FadeInStaggerItem>
           </div>

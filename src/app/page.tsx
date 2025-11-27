@@ -11,6 +11,7 @@ import { LocalFocusSection } from '@/components/sections/LocalFocusSection';
 import { getFeaturedProjects } from '@/lib/mdx';
 import { CTASection } from '@/components/sections/CTASection';
 import { BusinessIntroSection } from '@/components/sections/BusinessIntroSection';
+import { N8nAutomationSection } from '@/components/sections/N8nAutomationSection';
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
@@ -41,7 +42,7 @@ export default function Home() {
                   Crafting Websites that Inspire and Perform
                 </h1>
                 <p className="text-xl text-white/90 mb-8">
-                  Crest Code helps businesses thrive online with beautiful, functional websites 
+                  Crest Code helps businesses thrive online with beautiful, functional websites
                   and applications tailored to your needs.
                 </p>
                 <Button size="lg" asChild>
@@ -51,10 +52,10 @@ export default function Home() {
                 </Button>
               </div>
             </FadeIn>
-            
+
             {/* Featured Project Image */}
             <div className="relative" style={{ marginBottom: '-120px' }}>
-              <AnimatedProjectBox 
+              <AnimatedProjectBox
                 variant="website"
                 imageSrc="/clients/earthy-soul-living.webp"
                 imageAlt="Earthy Soul Living Website"
@@ -87,6 +88,9 @@ export default function Home() {
 
       {/* Services Section */}
       <ServicesSection />
+
+      {/* n8n Automation Section */}
+      <N8nAutomationSection />
 
       {/* Featured Projects Section */}
       <FeaturedProjects projects={featuredProjects} />

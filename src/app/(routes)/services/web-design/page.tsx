@@ -1,13 +1,26 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import {
+  MagnifyingGlassIcon,
+  UserGroupIcon,
+  MegaphoneIcon,
+  ChatBubbleLeftRightIcon,
+  ShoppingBagIcon,
+  PaintBrushIcon,
+  BoltIcon,
+  RocketLaunchIcon,
+  DevicePhoneMobileIcon,
+  LockClosedIcon,
+  SparklesIcon
+} from '@heroicons/react/24/solid';
 
 export default function WebDesignPage() {
   const marketingServices = [
     {
       title: 'Search Engine Optimization (SEO)',
       description: 'In-depth and nuanced strategies to improve your Google rankings and drive organic traffic to generate new customer leads.',
-      icon: '🔍',
+      icon: <MagnifyingGlassIcon className="w-12 h-12 text-primary mb-4" />,
       features: [
         'Local SEO optimization for Gunnison Valley businesses',
         'Keyword research and content strategy',
@@ -18,7 +31,7 @@ export default function WebDesignPage() {
     {
       title: 'Customer Relationship Management (CRM)',
       description: 'Keep track of your customers using industry-leading pre-built software solutions.',
-      icon: '👥',
+      icon: <UserGroupIcon className="w-12 h-12 text-primary mb-4" />,
       features: [
         'Customer database management',
         'Lead tracking and nurturing',
@@ -29,7 +42,7 @@ export default function WebDesignPage() {
     {
       title: 'Digital Marketing Suite',
       description: 'Comprehensive digital marketing tools to grow your business.',
-      icon: '📱',
+      icon: <MegaphoneIcon className="w-12 h-12 text-primary mb-4" />,
       features: [
         'Email campaign management',
         'Google Business Profile optimization',
@@ -40,7 +53,7 @@ export default function WebDesignPage() {
     {
       title: 'Social Media Marketing',
       description: 'Targeted advertising on platforms where your customers spend their time.',
-      icon: '🎯',
+      icon: <ChatBubbleLeftRightIcon className="w-12 h-12 text-primary mb-4" />,
       features: [
         'Facebook & Instagram ad campaigns',
         'Content creation and scheduling',
@@ -145,7 +158,7 @@ export default function WebDesignPage() {
           <div className="grid md:grid-cols-2 gap-8">
             {marketingServices.map((service, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-lg border border-gray-100">
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <div className="flex justify-center md:justify-start">{service.icon}</div>
                 <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
                 <ul className="space-y-3">
@@ -171,10 +184,10 @@ export default function WebDesignPage() {
               Launch your online store with a platform that&apos;s perfect for your business. From boutique shops to large inventories, we&apos;ll help you sell online effectively.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-100">
-              <div className="text-4xl mb-4">🛍️</div>
+              <ShoppingBagIcon className="w-12 h-12 text-primary mb-4" />
               <h3 className="text-2xl font-bold mb-4">Shopify</h3>
               <p className="text-gray-600 mb-6">Perfect for businesses ready to scale their online presence with a robust, feature-rich platform.</p>
               <ul className="space-y-3">
@@ -198,7 +211,7 @@ export default function WebDesignPage() {
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-100">
-              <div className="text-4xl mb-4">🎨</div>
+              <PaintBrushIcon className="w-12 h-12 text-primary mb-4" />
               <h3 className="text-2xl font-bold mb-4">Squarespace</h3>
               <p className="text-gray-600 mb-6">Ideal for creative businesses looking for beautiful designs with integrated e-commerce capabilities.</p>
               <ul className="space-y-3">
@@ -222,7 +235,7 @@ export default function WebDesignPage() {
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-100">
-              <div className="text-4xl mb-4">⚡️</div>
+              <BoltIcon className="w-12 h-12 text-primary mb-4" />
               <h3 className="text-2xl font-bold mb-4">WooCommerce</h3>
               <p className="text-gray-600 mb-6">Open-source flexibility for WordPress users who want complete control over their online store.</p>
               <ul className="space-y-3">
@@ -297,23 +310,23 @@ export default function WebDesignPage() {
               We combine modern design principles with cutting-edge technology to create websites that stand out.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-4xl mb-2">⚡️</div>
+              <div className="text-center flex flex-col items-center">
+                <RocketLaunchIcon className="w-12 h-12 text-blue-400 mb-4" />
                 <h3 className="font-bold mb-2">Fast Loading</h3>
                 <p className="text-sm text-gray-300">Optimized for speed</p>
               </div>
-              <div className="text-center">
-                <div className="text-4xl mb-2">📱</div>
+              <div className="text-center flex flex-col items-center">
+                <DevicePhoneMobileIcon className="w-12 h-12 text-blue-400 mb-4" />
                 <h3 className="font-bold mb-2">Responsive</h3>
                 <p className="text-sm text-gray-300">Works on all devices</p>
               </div>
-              <div className="text-center">
-                <div className="text-4xl mb-2">🔒</div>
+              <div className="text-center flex flex-col items-center">
+                <LockClosedIcon className="w-12 h-12 text-blue-400 mb-4" />
                 <h3 className="font-bold mb-2">Secure</h3>
                 <p className="text-sm text-gray-300">SSL encryption</p>
               </div>
-              <div className="text-center">
-                <div className="text-4xl mb-2">🎨</div>
+              <div className="text-center flex flex-col items-center">
+                <SparklesIcon className="w-12 h-12 text-blue-400 mb-4" />
                 <h3 className="font-bold mb-2">Modern Design</h3>
                 <p className="text-sm text-gray-300">Beautiful aesthetics</p>
               </div>

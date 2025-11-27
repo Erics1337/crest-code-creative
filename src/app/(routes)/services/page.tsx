@@ -83,8 +83,8 @@ export default function ServicesPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {technologies.map((tech) => (
             <FadeInStaggerItem key={tech.name}>
-              <div className="bg-white rounded-xl p-6 shadow-sm text-center">
-                <div className="text-4xl mb-3">{tech.icon}</div>
+              <div className="bg-white rounded-xl p-6 shadow-sm text-center hover:shadow-md transition-shadow duration-300">
+                <div className="mb-4 flex justify-center">{tech.icon}</div>
                 <h3 className="font-semibold mb-1">{tech.name}</h3>
                 <p className="text-sm text-gray-600">{tech.description}</p>
               </div>
@@ -159,10 +159,20 @@ const services = [
       </svg>
     ),
     href: '#consulting'
+  },
+  {
+    title: 'n8n Business Automations',
+    description: 'Streamline your operations with custom automated workflows that save time and reduce errors.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    ),
+    href: '#n8n-automations'
   }
 ];
 
-type ServiceType = 'web-design' | 'software-development' | 'ai-solutions' | 'mobile-apps' | 'consulting';
+type ServiceType = 'web-design' | 'software-development' | 'ai-solutions' | 'mobile-apps' | 'consulting' | 'n8n-automations';
 
 const serviceDetails: Record<ServiceType, { features: string[] }> = {
   'web-design': {
@@ -231,6 +241,20 @@ const serviceDetails: Record<ServiceType, { features: string[] }> = {
       'Growth strategy consulting for expanding businesses',
       'Data-driven business insights and recommendations'
     ]
+  },
+  'n8n-automations': {
+    features: [
+      'Lead management automation to capture and qualify leads instantly',
+      'Social media scheduling and cross-posting automation',
+      'Automated invoicing and payment reconciliation',
+      'Customer support ticketing and response automation',
+      'CRM synchronization (HubSpot, Salesforce, Pipedrive)',
+      'Custom workflow design tailored to your specific business processes',
+      'Integration with over 200+ apps and services',
+      'Error handling and monitoring for reliable operations',
+      'Data transformation and migration between systems',
+      'Scheduled tasks and cron job replacements'
+    ]
   }
 };
 
@@ -257,21 +281,37 @@ const technologies = [
   {
     name: 'Modern Web',
     description: 'React, Next.js, TypeScript for fast, reliable websites',
-    icon: '⚡'
+    icon: (
+      <svg className="w-8 h-8 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    )
   },
   {
     name: 'E-commerce',
     description: 'Shopify, WooCommerce for online sales',
-    icon: '🛍️'
+    icon: (
+      <svg className="w-8 h-8 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+      </svg>
+    )
   },
   {
     name: 'Cloud Services',
     description: 'AWS, Google Cloud for scalable solutions',
-    icon: '☁️'
+    icon: (
+      <svg className="w-8 h-8 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      </svg>
+    )
   },
   {
     name: 'Analytics',
     description: 'Data-driven insights for your business',
-    icon: '📊'
+    icon: (
+      <svg className="w-8 h-8 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    )
   }
 ];

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
+import { MapIcon, ComputerDesktopIcon, UserGroupIcon } from '@heroicons/react/24/solid';
 
 export default function AboutPage() {
   return (
@@ -29,14 +30,14 @@ export default function AboutPage() {
             <div>
               <h2 className="text-2xl font-semibold mb-4">My Story</h2>
               My connection to the Gunnison Valley began in 2015.  Like many, I was drawn to the stunning beauty and vibrant community. I immersed myself in local life, working at Crested Butte Mountain Resort, Gunnison Valley Health, and several of our cherished restaurants and small businesses. These experiences weren&apos;t just jobs; they were an education in the unique spirit and challenges of our valley.
-<br /><br />
-Inspired by the potential of technology to empower local businesses, I pursued a Computer Science degree at Western Colorado University. My time at Western provided me with a strong technical foundation, while also deepening my understanding of the specific needs of our mountain community.
-<br /><br />
-After graduating, I gained valuable professional experience, first as a web developer for a financial planning company in Denver, and then transitioning to remote roles with big tech companies. This allowed me to achieve a long-held dream: building a successful career in technology while remaining rooted in the Gunnison Valley.
-<br /><br />
-With five years of experience in software development and UI/UX design, I&apos;ve honed my skills on a diverse range of projects, from crafting elegant, user-friendly websites to developing complex, enterprise-level applications. Now, I&apos;m bringing that expertise back home.
-<br /><br />
-I&apos;m passionate about helping Gunnison Valley businesses thrive in the digital age. My goal is to provide sophisticated technical solutions that are tailored to your specific needs, helping you connect with customers, streamline operations, and grow your business – all while preserving the authentic character of the community that has shaped me, and that we both love.
+              <br /><br />
+              Inspired by the potential of technology to empower local businesses, I pursued a Computer Science degree at Western Colorado University. My time at Western provided me with a strong technical foundation, while also deepening my understanding of the specific needs of our mountain community.
+              <br /><br />
+              After graduating, I gained valuable professional experience, first as a web developer for a financial planning company in Denver, and then transitioning to remote roles with big tech companies. This allowed me to achieve a long-held dream: building a successful career in technology while remaining rooted in the Gunnison Valley.
+              <br /><br />
+              With five years of experience in software development and UI/UX design, I&apos;ve honed my skills on a diverse range of projects, from crafting elegant, user-friendly websites to developing complex, enterprise-level applications. Now, I&apos;m bringing that expertise back home.
+              <br /><br />
+              I&apos;m passionate about helping Gunnison Valley businesses thrive in the digital age. My goal is to provide sophisticated technical solutions that are tailored to your specific needs, helping you connect with customers, streamline operations, and grow your business – all while preserving the authentic character of the community that has shaped me, and that we both love.
             </div>
           </div>
         </div>
@@ -142,17 +143,17 @@ const values = [
   {
     title: 'Local Expertise',
     description: "Deep understanding of Gunnison Valley's business environment and community needs.",
-    icon: '🏔️'
+    icon: <MapIcon className="w-12 h-12 text-primary mx-auto" />
   },
   {
     title: 'Technical Excellence',
     description: 'Cutting-edge solutions built on a strong computer science foundation from Western.',
-    icon: '💻'
+    icon: <ComputerDesktopIcon className="w-12 h-12 text-primary mx-auto" />
   },
   {
     title: 'Community Focus',
     description: "Committed to preserving and enhancing our mountain town's unique character.",
-    icon: '🤝'
+    icon: <UserGroupIcon className="w-12 h-12 text-primary mx-auto" />
   }
 ];
 

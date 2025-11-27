@@ -36,7 +36,6 @@ export default async function BlogPage() {
               {...post}
               author="Team"
               readingTime="5 min read"
-              coverImage="/images/blog/default-cover.jpg"
             />
           </FadeInStaggerItem>
         ))}
