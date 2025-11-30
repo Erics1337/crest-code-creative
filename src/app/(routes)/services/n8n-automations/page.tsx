@@ -150,7 +150,7 @@ export default function N8nAutomationsPage() {
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-4xl font-display font-bold mb-6">Why Automate with n8n?</h2>
             <p className="text-xl text-gray-600">
-              n8n is a fair-code workflow automation tool that allows you to connect your apps and automate your workflows. It's powerful, flexible, and cost-effective.
+              n8n is a fair-code workflow automation tool that allows you to connect your apps and automate your workflows. It&apos;s powerful, flexible, and cost-effective.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -230,7 +230,7 @@ export default function N8nAutomationsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-display font-bold mb-8">Ready to Save Time & Money?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let's build custom automated workflows that work for your unique business needs.
+            Let&apos;s build custom automated workflows that work for your unique business needs.
           </p>
           <Button size="lg" variant="secondary" asChild>
             <Link href="/contact">Start Automating Today</Link>

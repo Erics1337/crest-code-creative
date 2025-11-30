@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 import { formatDate } from '@/lib/utils';
 
 interface BlogCardProps {
