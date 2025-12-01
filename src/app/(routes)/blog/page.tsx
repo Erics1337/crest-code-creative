@@ -18,7 +18,7 @@ const blogCategories = [
 export default async function BlogPage() {
   const posts = await getPosts();
   const featuredPost = posts[0];
-  const remainingPosts = posts.slice(1);
+
 
   return (
     <div className="min-h-screen bg-gray-50">

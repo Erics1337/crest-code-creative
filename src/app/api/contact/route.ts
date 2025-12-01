@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 
     // Debug logging
     console.log('Contact form submission received:', { name, email, package: selectedPackage });
-    const targetEmail = process.env.CONTACT_EMAIL || 'info@crestcodecreative.com';
+    const targetEmail = process.env.CONTACT_EMAIL || 'erics1337@gmail.com';
     console.log('Sending email to:', targetEmail);
 
     try {

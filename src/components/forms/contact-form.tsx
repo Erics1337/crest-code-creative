@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { Send, Check, Clock, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Send, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ContactFormProps {
   selectedPackage?: string;
@@ -103,7 +103,7 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
         <div className="space-y-2">
           <h2 className="text-3xl font-bold text-foreground">Message Received!</h2>
           <p className="text-muted-foreground text-lg max-w-md mx-auto">
-            Thanks for reaching out. We're excited to explore how we can help you with {selectedService || 'your project'}.
+            Thanks for reaching out. We&apos;re excited to explore how we can help you with {selectedService || 'your project'}.
           </p>
         </div>
 
@@ -127,7 +127,7 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
     <form onSubmit={handleSubmit} className="space-y-8">
       <div className="space-y-4">
         <label className="text-sm font-medium text-foreground">
-          I'm interested in...
+          I&apos;m interested in...
         </label>
         <div className="flex flex-wrap gap-3">
           {services.map((service) => (

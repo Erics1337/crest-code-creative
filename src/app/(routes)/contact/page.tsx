@@ -2,7 +2,7 @@
 
 import { ContactForm } from '@/components/forms/contact-form';
 import { FadeIn } from '@/components/ui/motion';
-import { Mail, MapPin, Phone, MessageSquare, Calendar, CheckCircle2 } from 'lucide-react';
+import { Mail, MapPin, CheckCircle2 } from 'lucide-react';
 
 export default function ContactPage() {
   return (
@@ -37,7 +37,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-foreground">Email Us</h3>
                       <p className="text-muted-foreground mb-1">For general inquiries and project discussions</p>
-                      <a href="mailto:info@crestcodecreative.com" className="text-primary hover:underline font-medium">info@crestcodecreative.com</a>
+                      <a href="mailto:erics1337@gmail.com" className="text-primary hover:underline font-medium">erics1337@gmail.com</a>
                     </div>
                   </div>
 
