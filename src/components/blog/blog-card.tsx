@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
 
 interface BlogCardProps {
@@ -35,6 +36,11 @@ export function BlogCard({
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <span className="text-white font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            Read Article <ArrowUpRight className="w-4 h-4" />
+          </span>
+        </div>
       </div>
       <div className="p-6">
         <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">

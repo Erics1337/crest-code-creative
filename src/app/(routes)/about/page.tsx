@@ -6,8 +6,13 @@ import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion
 import {
   MapPin,
   Code2,
-  Heart,
-  ArrowRight
+  ArrowRight,
+  Compass,
+  Shield,
+  Brain,
+  Zap,
+  TrendingUp,
+  Users
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -27,13 +32,13 @@ export default function AboutPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
               <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">About Me</span>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-foreground">
                 World-Class Technology with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Mountain Town Soul</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                I&apos;m Eric Swanson, a developer dedicated to bringing world-class digital solutions to the Gunnison Valley community I call home.
+                I&apos;m Eric Swanson, a developer dedicated to bringing digital solutions to the Gunnison Valley community I call home.
               </p>
             </div>
           </FadeIn>
@@ -97,14 +102,27 @@ export default function AboutPage() {
       {/* Values Section */}
       <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Mission & Vision</h2>
-            <p className="text-lg text-muted-foreground">
-              To empower Gunnison Valley businesses with technology solutions that preserve our town&apos;s unique character while enabling growth and success.
-            </p>
+          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
+            <div className="grid md:grid-cols-2 gap-12 text-left">
+              <div>
+                <h2 className="text-2xl font-bold mb-4">Mission</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Crest Code Creative empowers businesses with innovative and thoughtful technology, breaking down barriers to unlock their highest potential and create a deeper impact.
+                </p>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold mb-4">Vision</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Crest Code Creative envisions a thriving community of inspired business owners, empowered by innovative technology to transform their ideas into impactful, creative solutions that elevate their goals.
+                </p>
+              </div>
+            </div>
           </FadeIn>
 
           <FadeInStagger>
+            <div className="text-center mb-12">
+              <h2 className="text-2xl font-bold">Values</h2>
+            </div>
             <div className="grid md:grid-cols-3 gap-8">
               {values.map((value, index) => (
                 <FadeInStaggerItem key={index} className="h-full">
@@ -215,19 +233,34 @@ export default function AboutPage() {
 
 const values = [
   {
-    title: 'Local Expertise',
-    description: "Deep understanding of Gunnison Valley's business environment and community needs.",
-    icon: <MapPin className="w-6 h-6" />
+    title: 'Adventure',
+    description: 'Willing to take bold risks and explore new frontiers to find the best solutions.',
+    icon: <Compass className="w-6 h-6" />
   },
   {
-    title: 'Technical Excellence',
-    description: 'Cutting-edge solutions built on a strong computer science foundation from Western.',
-    icon: <Code2 className="w-6 h-6" />
+    title: 'Community',
+    description: 'Building deep connections and supporting the ecosystem that sustains us all.',
+    icon: <Users className="w-6 h-6" />
   },
   {
-    title: 'Community Focus',
-    description: "Committed to preserving and enhancing our mountain town's unique character.",
-    icon: <Heart className="w-6 h-6" />
+    title: 'Strength',
+    description: 'Resilience and capability to endure through complex and difficult challenges.',
+    icon: <Shield className="w-6 h-6" />
+  },
+  {
+    title: 'Wisdom',
+    description: 'Blending technical knowledge with intuition for holistic decision making.',
+    icon: <Brain className="w-6 h-6" />
+  },
+  {
+    title: 'Passion',
+    description: 'Bringing energy and excitement to nurture the emotional connection with your dream.',
+    icon: <Zap className="w-6 h-6" />
+  },
+  {
+    title: 'Prosperity',
+    description: 'Creating abundance and growth that ripples out to the entire community.',
+    icon: <TrendingUp className="w-6 h-6" />
   }
 ];
 

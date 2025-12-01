@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { ArrowUpRight } from 'lucide-react';
 
 interface PortfolioCardProps {
   title: string;
@@ -18,7 +18,10 @@ export function PortfolioCard({
   href,
 }: PortfolioCardProps) {
   return (
-    <div className="group bg-white rounded-xl overflow-hidden shadow-sm">
+    <Link 
+      href={href}
+      className="group bg-white rounded-xl overflow-hidden shadow-sm block transition-shadow hover:shadow-md"
+    >
       <div className="relative h-64 w-full overflow-hidden">
         <Image
           src={imageUrl}
@@ -26,11 +29,16 @@ export function PortfolioCard({
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <span className="text-white font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            View Project <ArrowUpRight className="w-4 h-4" />
+          </span>
+        </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">{title}</h3>
         <p className="text-gray-600 mb-4">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
@@ -40,10 +48,7 @@ export function PortfolioCard({
             </span>
           ))}
         </div>
-        <Button variant="outline" asChild>
-          <Link href={href}>View Project</Link>
-        </Button>
       </div>
-    </div>
+    </Link>
   );
 }

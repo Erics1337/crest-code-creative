@@ -1,4 +1,6 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 import { getPostBySlug, getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import { MDXContent } from '@/components/mdx-content'
@@ -24,6 +26,14 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <article className="container max-w-3xl py-6 lg:py-12">
+      <Link 
+        href="/blog"
+        className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 group"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+        Back to Blogs
+      </Link>
+      
       <div className="space-y-4 mb-8">
         <h1 className="text-4xl font-bold">{post.frontmatter.title}</h1>
         <div className="text-gray-500 dark:text-gray-400">

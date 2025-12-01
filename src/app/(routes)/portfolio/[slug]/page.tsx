@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 import { getProjectBySlug, getProjects } from '@/lib/projects'
 import { Button } from '@/components/ui/button'
 import { MDXContent } from '@/components/mdx-content'
@@ -27,8 +29,6 @@ export default async function ProjectPage({ params }: PageProps) {
   return (
     <article className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      {/* Hero Section */}
-      {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
         <Image
           src={project.frontmatter.imageUrl}
@@ -38,6 +38,19 @@ export default async function ProjectPage({ params }: PageProps) {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-slate-50/90" />
+
+        {/* Back Navigation */}
+        <div className="absolute top-24 left-0 right-0 z-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <Link 
+              href="/portfolio"
+              className="inline-flex items-center text-white/80 hover:text-white transition-colors group"
+            >
+              <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+              Back to Portfolio
+            </Link>
+          </div>
+        </div>
 
         <div className="absolute inset-0 flex flex-col justify-end pb-40 items-center">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -4,7 +4,7 @@ import { getPosts } from '@/lib/posts';
 import { FadeIn } from '@/components/ui/motion';
 import { BlogList } from '@/components/blog/blog-list';
 import { formatDate } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const blogCategories = [
   'All',
@@ -54,6 +54,11 @@ export default async function BlogPage() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-white font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    Read Article <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
               </div>
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <div className="flex items-center gap-3 text-sm text-gray-500 mb-4">
@@ -64,12 +69,9 @@ export default async function BlogPage() {
                 <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors">
                   {featuredPost.title}
                 </h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed line-clamp-3">
+                <p className="text-gray-600 text-lg leading-relaxed line-clamp-3">
                   {featuredPost.description}
                 </p>
-                <div className="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
-                  Read Article <ArrowRight className="ml-2 w-5 h-5" />
-                </div>
               </div>
             </Link>
           </FadeIn>
