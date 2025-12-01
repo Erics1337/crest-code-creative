@@ -31,7 +31,7 @@ export function Dropdown({ trigger, href, children }: DropdownProps) {
         {href ? (
           <Link
             href={href}
-            className="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            className="text-gray-600 hover:text-primary hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors"
           >
             {trigger}
           </Link>

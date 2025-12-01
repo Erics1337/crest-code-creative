@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { formatDate } from '@/lib/utils';
 
 interface BlogCardProps {
@@ -28,10 +29,11 @@ export function BlogCard({
       className="group block bg-white rounded-xl overflow-hidden shadow-sm transition-all hover:shadow-md"
     >
       <div className="relative h-48 w-full overflow-hidden">
-        <img
+        <Image
           src={coverImage}
           alt={title}
-          className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
       <div className="p-6">

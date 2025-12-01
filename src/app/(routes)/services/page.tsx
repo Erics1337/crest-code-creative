@@ -17,59 +17,109 @@ export default function ServicesPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {services.map((service) => (
             <FadeInStaggerItem key={service.title}>
-              <div className="bg-white rounded-2xl shadow-sm p-8" id={service.href.split('#')[1]}>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    {service.icon}
-                  </div>
-                  <h2 className="text-2xl font-semibold">{service.title}</h2>
-                </div>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <div className="space-y-4">
-                  {serviceDetails[service.href.split('#')[1] as ServiceType].features.map((feature: string, index: number) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className="mt-1">
-                        <svg
-                          className="w-5 h-5 text-primary"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
+              {service.href.startsWith('/') ? (
+                <Link href={service.href} className="block h-full group">
+                  <div className="bg-white rounded-2xl shadow-sm p-8 h-full group-hover:shadow-md transition-all duration-300 border border-transparent group-hover:border-primary/10" id={service.id}>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                        {service.icon}
                       </div>
-                      <p className="text-gray-600">{feature}</p>
+                      <h2 className="text-2xl font-semibold group-hover:text-primary transition-colors">{service.title}</h2>
                     </div>
-                  ))}
+                    <p className="text-gray-600 mb-6">{service.description}</p>
+                    <div className="space-y-4">
+                      {serviceDetails[service.id as ServiceType].features.map((feature: string, index: number) => (
+                        <div key={index} className="flex items-start gap-3">
+                          <div className="mt-1">
+                            <svg
+                              className="w-5 h-5 text-primary"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                          </div>
+                          <p className="text-gray-600">{feature}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div className="bg-white rounded-2xl shadow-sm p-8 h-full" id={service.id}>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-primary/10 rounded-xl">
+                      {service.icon}
+                    </div>
+                    <h2 className="text-2xl font-semibold">{service.title}</h2>
+                  </div>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <div className="space-y-4">
+                    {serviceDetails[service.id as ServiceType].features.map((feature: string, index: number) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <div className="mt-1">
+                          <svg
+                            className="w-5 h-5 text-primary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                        </div>
+                        <p className="text-gray-600">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </FadeInStaggerItem>
           ))}
         </div>
       </FadeInStagger>
 
       {/* Process Overview */}
-      <FadeIn className="mb-20">
-        <div className="bg-primary/5 rounded-2xl p-8">
-          <h2 className="text-2xl font-semibold mb-8 text-center">Our Development Process</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+      {/* Process Overview */}
+      <FadeIn className="mb-32">
+        <div className="relative overflow-hidden bg-slate-50 rounded-3xl p-8 md:p-16 isolate border border-slate-100 shadow-sm">
+          {/* Background Gradients */}
+          <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl -z-10" />
+          <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -z-10" />
+
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">How We Bring Your Vision to Life</h2>
+            <p className="text-lg text-slate-600">
+              Our proven process ensures transparency, collaboration, and exceptional results at every stage of your project.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8 relative">
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-teal-500/20 via-blue-500/20 to-purple-500/20" />
+
             {process.map((step, index) => (
-              <div key={step.title} className="relative">
-                {index < process.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-primary/20" />
-                )}
-                <div className="relative">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <span className="text-2xl font-bold text-primary">{index + 1}</span>
+              <div key={step.title} className="relative group">
+                <div className="relative flex flex-col items-center text-center">
+                  <div className="w-24 h-24 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 z-10">
+                    <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-teal-500 to-blue-600">
+                      0{index + 1}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-semibold text-center mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-center text-sm">{step.description}</p>
+                  <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-teal-600 transition-colors">{step.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -78,15 +128,22 @@ export default function ServicesPage() {
       </FadeIn>
 
       {/* Technologies */}
-      <FadeInStagger className="mb-20">
-        <h2 className="text-2xl font-semibold mb-8 text-center">Technologies We Use</h2>
+      <FadeInStagger className="mb-32">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-slate-900">Powered by Modern Tech</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto">
+            We use the latest tools and frameworks to build fast, secure, and scalable solutions.
+          </p>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {technologies.map((tech) => (
             <FadeInStaggerItem key={tech.name}>
-              <div className="bg-white rounded-xl p-6 shadow-sm text-center hover:shadow-md transition-shadow duration-300">
-                <div className="mb-4 flex justify-center">{tech.icon}</div>
-                <h3 className="font-semibold mb-1">{tech.name}</h3>
-                <p className="text-sm text-gray-600">{tech.description}</p>
+              <div className="h-full bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group">
+                <div className="mb-6 flex justify-center transform group-hover:scale-110 transition-transform duration-300">
+                  {tech.icon}
+                </div>
+                <h3 className="font-bold text-lg mb-2 text-slate-900">{tech.name}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{tech.description}</p>
               </div>
             </FadeInStaggerItem>
           ))}
@@ -118,7 +175,8 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    href: '#web-design'
+    href: '/services/web-design',
+    id: 'web-design'
   },
   {
     title: 'Software Development',
@@ -128,7 +186,8 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
       </svg>
     ),
-    href: '#software-development'
+    href: '/services/software-development',
+    id: 'software-development'
   },
   {
     title: 'AI Solutions',
@@ -138,7 +197,8 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v4a6 6 0 006 6h4a6 6 0 006-6V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4zm-3 9h6m-6 3h4" />
       </svg>
     ),
-    href: '#ai-solutions'
+    href: '#',
+    id: 'ai-solutions'
   },
   {
     title: 'Mobile Apps',
@@ -148,7 +208,8 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2zm5 14h.01" />
       </svg>
     ),
-    href: '#mobile-apps'
+    href: '/services/mobile-apps',
+    id: 'mobile-apps'
   },
   {
     title: 'Business Consulting',
@@ -158,7 +219,8 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
-    href: '#consulting'
+    href: '#',
+    id: 'consulting'
   },
   {
     title: 'n8n Business Automations',
@@ -168,7 +230,8 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
       </svg>
     ),
-    href: '#n8n-automations'
+    href: '/services/n8n-automations',
+    id: 'n8n-automations'
   }
 ];
 
@@ -260,20 +323,20 @@ const serviceDetails: Record<ServiceType, { features: string[] }> = {
 
 const process = [
   {
-    title: 'Discovery',
-    description: 'Understanding your business goals, target audience, and unique challenges in the Gunnison Valley market'
+    title: 'Discovery & Strategy',
+    description: 'We start by diving deep into your business goals, target audience, and market challenges to build a solid foundation.'
   },
   {
-    title: 'Planning',
-    description: 'Creating a detailed roadmap tailored to your business needs and seasonal considerations'
+    title: 'Design & Prototyping',
+    description: 'We create interactive mockups and visual designs that align with your brand, ensuring you love the look before we build.'
   },
   {
     title: 'Development',
-    description: 'Building your solution with regular check-ins and feedback integration'
+    description: 'Our expert developers bring the designs to life using clean, modern code that ensures speed, security, and scalability.'
   },
   {
-    title: 'Launch & Support',
-    description: 'Seamless deployment and ongoing support to ensure your success'
+    title: 'Launch & Growth',
+    description: 'We handle the technical launch and provide ongoing support and analytics to help your digital presence grow.'
   }
 ];
 

@@ -1,48 +1,10 @@
-import { BlogCard } from '@/components/blog/blog-card';
+import Link from 'next/link';
+import Image from 'next/image';
 import { getPosts } from '@/lib/posts';
-import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
-
-export default async function BlogPage() {
-  const posts = await getPosts();
-
-  return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <FadeIn>
-        <h1 className="text-4xl font-bold mb-4">Blog</h1>
-        <p className="text-lg text-gray-600 mb-12">
-          Insights, tutorials, and updates from our team.
-        </p>
-      </FadeIn>
-
-      {/* Filter Tags */}
-      <FadeIn className="mb-12">
-        <div className="flex flex-wrap gap-4">
-          {blogCategories.map((category) => (
-            <button
-              key={category}
-              className="px-4 py-2 rounded-full bg-primary/5 text-primary hover:bg-primary/10 transition-colors"
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </FadeIn>
-
-      {/* Blog Grid */}
-      <FadeInStagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <FadeInStaggerItem key={post.slug}>
-            <BlogCard
-              {...post}
-              author="Team"
-              readingTime="5 min read"
-            />
-          </FadeInStaggerItem>
-        ))}
-      </FadeInStagger>
-    </div>
-  );
-}
+import { FadeIn } from '@/components/ui/motion';
+import { BlogList } from '@/components/blog/blog-list';
+import { formatDate } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
 
 const blogCategories = [
   'All',
@@ -52,3 +14,73 @@ const blogCategories = [
   'Technology',
   'Tutorial',
 ];
+
+export default async function BlogPage() {
+  const posts = await getPosts();
+  const featuredPost = posts[0];
+  const remainingPosts = posts.slice(1);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="bg-white pt-32 pb-16 border-b border-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                Insights & Updates
+              </h1>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Expert advice, technical tutorials, and industry insights to help you navigate the digital landscape.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Featured Post */}
+        {featuredPost && (
+          <FadeIn className="mb-20">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Article</h2>
+            <Link
+              href={`/blog/${featuredPost.slug}`}
+              className="group grid md:grid-cols-2 gap-8 bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+            >
+              <div className="relative h-64 md:h-auto overflow-hidden">
+                <Image
+                  src={featuredPost.coverImage || '/images/blog/default-cover.jpg'}
+                  alt={featuredPost.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <div className="flex items-center gap-3 text-sm text-gray-500 mb-4">
+                  <time dateTime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
+                  <span>•</span>
+                  <span className="text-primary font-medium">Featured</span>
+                </div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors">
+                  {featuredPost.title}
+                </h3>
+                <p className="text-gray-600 mb-8 text-lg leading-relaxed line-clamp-3">
+                  {featuredPost.description}
+                </p>
+                <div className="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
+                  Read Article <ArrowRight className="ml-2 w-5 h-5" />
+                </div>
+              </div>
+            </Link>
+          </FadeIn>
+        )}
+
+        {/* Blog List */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Latest Articles</h2>
+          <BlogList posts={posts} categories={blogCategories} />
+        </div>
+      </div>
+    </div>
+  );
+}

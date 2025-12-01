@@ -26,13 +26,13 @@ export function CaseStudyCard({
   href,
 }: CaseStudyCardProps) {
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+    <div className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100">
       <div className="relative h-80 w-full overflow-hidden">
         <Image
           src={imageUrl}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
       </div>
       <div className="p-8">
@@ -42,18 +42,18 @@ export function CaseStudyCard({
             <p className="text-gray-600">{clientName} • {industry}</p>
           </div>
         </div>
-        
+
         <div className="space-y-4 mb-6">
           <div>
             <h4 className="font-semibold text-primary mb-2">The Challenge</h4>
             <p className="text-gray-600">{challenge}</p>
           </div>
-          
+
           <div>
             <h4 className="font-semibold text-primary mb-2">Our Solution</h4>
             <p className="text-gray-600">{solution}</p>
           </div>
-          
+
           <div>
             <h4 className="font-semibold text-primary mb-2">Impact</h4>
             <p className="text-gray-600">{impact}</p>

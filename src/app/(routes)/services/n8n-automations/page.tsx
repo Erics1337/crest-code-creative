@@ -67,38 +67,38 @@ export default function N8nAutomationsPage() {
   const impactStats = [
     {
       title: 'Marketing ROI',
-      value: '22%',
-      description: 'Increase in ROI for AI-driven campaigns',
+      value: '+22%',
+      description: 'Average increase in campaign ROI using AI-driven tools',
       icon: <ArrowTrendingUpIcon className="w-8 h-8 text-white" />
     },
     {
-      title: 'Customer Service',
-      value: '60%',
-      description: 'Reduction in response time with 80% automated resolution',
+      title: 'Response Time',
+      value: '-60%',
+      description: 'Reduction in customer service response times',
       icon: <ChatBubbleLeftRightIcon className="w-8 h-8 text-white" />
     },
     {
-      title: 'Supply Chain',
-      value: '10%',
-      description: 'Reduction in transportation costs via optimized routing',
+      title: 'Operational Costs',
+      value: '-10%',
+      description: 'Decrease in daily operational and logistics costs',
       icon: <BoltIcon className="w-8 h-8 text-white" />
     },
     {
-      title: 'SEO Impact',
-      value: '200%',
-      description: 'Improvement in search rankings for small businesses',
+      title: 'Search Traffic',
+      value: '+200%',
+      description: 'Growth in organic search visibility and rankings',
       icon: <MagnifyingGlassIcon className="w-8 h-8 text-white" />
     },
     {
-      title: 'Insurance Queries',
-      value: '15m',
-      description: 'Reduced resolution time from 48 hours to just 15 minutes',
+      title: 'Process Speed',
+      value: '95%',
+      description: 'Faster resolution for complex data processing tasks',
       icon: <ClockIcon className="w-8 h-8 text-white" />
     },
     {
-      title: 'Data Entry',
-      value: '15h',
-      description: 'Weekly hours saved on routine data entry and updates',
+      title: 'Productivity',
+      value: '15h+',
+      description: 'Weekly hours saved on manual data entry per employee',
       icon: <TableCellsIcon className="w-8 h-8 text-white" />
     }
   ];

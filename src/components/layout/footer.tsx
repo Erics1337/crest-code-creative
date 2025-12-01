@@ -13,11 +13,11 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <Image
-                src="/crest-logo-2.png"
+                src="/crest-logo.png"
                 alt="Crest Code Logo"
-                width={32}
-                height={32}
-                className="h-8 w-auto mb-3"
+                width={40}
+                height={40}
+                className="h-10 w-auto"
               />
               <h3 className="ml-2 text-lg font-bold text-primary font-display">Crest Code</h3>
             </div>

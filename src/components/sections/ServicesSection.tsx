@@ -5,12 +5,12 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
 import { ServiceCard } from '@/components/ui/service-card';
-import { ComputerDesktopIcon, CodeBracketIcon, DevicePhoneMobileIcon, ArrowPathIcon } from '@heroicons/react/24/solid';
+import { ComputerDesktopIcon, DevicePhoneMobileIcon, ArrowPathIcon } from '@heroicons/react/24/solid';
 
 export function ServicesSection() {
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   useEffect(() => {
     let scrollHandler: number;
@@ -87,7 +87,7 @@ export function ServicesSection() {
               />
             </FadeInStaggerItem>
 
-            <FadeInStaggerItem>
+            {/* <FadeInStaggerItem>
               <ServiceCard
                 title="Full Stack Development"
                 icon={<CodeBracketIcon className="w-6 h-6 text-primary" />}
@@ -101,7 +101,7 @@ export function ServicesSection() {
                 ]}
                 fullDescription="From concept to deployment, we build robust full-stack solutions that power your business. Our expertise spans front-end interfaces, back-end systems, and everything in between. We use cutting-edge technologies and best practices to ensure your software is scalable, secure, and maintainable."
               />
-            </FadeInStaggerItem>
+            </FadeInStaggerItem> */}
 
             <FadeInStaggerItem>
               <ServiceCard

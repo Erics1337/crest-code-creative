@@ -8,21 +8,25 @@ import { BoltIcon, CurrencyDollarIcon, RocketLaunchIcon } from '@heroicons/react
 
 export function TechnologySection() {
   return (
-    <section className="relative py-20 bg-gradient-to-r from-gray-900 to-primary text-white overflow-hidden">
+    <section className="relative py-24 overflow-hidden bg-slate-950">
+      {/* Ambient Background Glow */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl translate-y-1/2 pointer-events-none" />
+
       {/* Background Pattern */}
-      <div className="absolute inset-y-0 right-0 w-full">
+      <div className="absolute inset-0 w-full h-full">
         <div
           className="absolute inset-0 w-full h-full"
           style={{
-            maskImage: 'linear-gradient(to right, transparent, black 50%)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 50%)',
+            maskImage: 'radial-gradient(circle at center, black, transparent 80%)',
+            WebkitMaskImage: 'radial-gradient(circle at center, black, transparent 80%)',
           }}
         >
           <Image
             src="/Geometric Stars Seamless Pattern.svg"
             alt="Background Pattern"
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-20"
             priority={false}
           />
         </div>
@@ -41,28 +45,34 @@ export function TechnologySection() {
         <FadeInStagger>
           <div className="grid md:grid-cols-3 gap-8">
             <FadeInStaggerItem>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 flex flex-col items-center text-center">
-                <BoltIcon className="w-12 h-12 text-white mb-4" />
-                <h3 className="text-xl font-bold mb-4">Rapid Development</h3>
-                <p className="text-gray-200">
+              <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                <div className="p-3 bg-teal-500/10 rounded-xl mb-6 group-hover:bg-teal-500/20 transition-colors">
+                  <BoltIcon className="w-10 h-10 text-teal-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Rapid Development</h3>
+                <p className="text-slate-300 leading-relaxed">
                   Modern frameworks and development tools allow us to build robust solutions in a fraction of the time.
                 </p>
               </div>
             </FadeInStaggerItem>
             <FadeInStaggerItem>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 flex flex-col items-center text-center">
-                <CurrencyDollarIcon className="w-12 h-12 text-white mb-4" />
-                <h3 className="text-xl font-bold mb-4">Cost Effective</h3>
-                <p className="text-gray-200">
+              <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                <div className="p-3 bg-blue-500/10 rounded-xl mb-6 group-hover:bg-blue-500/20 transition-colors">
+                  <CurrencyDollarIcon className="w-10 h-10 text-blue-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Cost Effective</h3>
+                <p className="text-slate-300 leading-relaxed">
                   Efficient processes and reusable components mean lower development costs without sacrificing quality.
                 </p>
               </div>
             </FadeInStaggerItem>
             <FadeInStaggerItem>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 flex flex-col items-center text-center">
-                <RocketLaunchIcon className="w-12 h-12 text-white mb-4" />
-                <h3 className="text-xl font-bold mb-4">Future Ready</h3>
-                <p className="text-gray-200">
+              <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                <div className="p-3 bg-purple-500/10 rounded-xl mb-6 group-hover:bg-purple-500/20 transition-colors">
+                  <RocketLaunchIcon className="w-10 h-10 text-purple-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Future Ready</h3>
+                <p className="text-slate-300 leading-relaxed">
                   Built with scalable, maintainable technologies that grow with your business needs.
                 </p>
               </div>
@@ -71,7 +81,7 @@ export function TechnologySection() {
         </FadeInStagger>
         <FadeIn delay={0.4}>
           <div className="mt-16 text-center">
-            <Button variant="secondary" size="lg" asChild>
+            <Button variant="secondary" size="lg" asChild className="rounded-full px-8">
               <Link href="/services">Explore Our Solutions</Link>
             </Button>
           </div>

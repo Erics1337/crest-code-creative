@@ -22,14 +22,19 @@ export function N8nAutomationSection() {
                             <h2 className="text-3xl md:text-4xl font-bold mb-6">
                                 Automate Your Business with n8n
                             </h2>
-                            <p className="text-lg text-gray-300 mb-8">
-                                Stop wasting time on repetitive tasks. We build custom automated workflows that connect your favorite apps—from CRM updates and social media posting to invoicing and customer support.
-                            </p>
+                            <div className="space-y-4 mb-8 text-lg text-gray-300">
+                                <p>
+                                    75% of small businesses are using AI tools in 2025. This isn&apos;t just enterprise technology anymore.
+                                </p>
+                                <p>
+                                    The median annual investment threshold for small businesses is just $1,800—that&apos;s less than $150/m for technology that was science fiction just a couple years ago.
+                                </p>
+                            </div>
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Button size="lg" variant="secondary" asChild>
+                                <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 border-none" asChild>
                                     <Link href="/services/n8n-automations">Explore Automations</Link>
                                 </Button>
-                                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10" asChild>
+                                <Button size="lg" variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10 hover:border-white" asChild>
                                     <Link href="/contact">Get a Free Audit</Link>
                                 </Button>
                             </div>
@@ -38,37 +43,41 @@ export function N8nAutomationSection() {
                         {/* Visual representation of automation */}
                         <div className="relative">
                             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                                <div className="flex items-center justify-between mb-8">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center text-white">
-                                            <EnvelopeIcon className="w-6 h-6" />
-                                        </div>
-                                        <div className="h-1 w-12 bg-gray-600 rounded-full animate-pulse" />
-                                        <div className="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center text-white">
-                                            <BoltIcon className="w-6 h-6" />
-                                        </div>
-                                        <div className="h-1 w-12 bg-gray-600 rounded-full animate-pulse" />
-                                        <div className="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center text-white">
-                                            <CurrencyDollarIcon className="w-6 h-6" />
-                                        </div>
+                                <div className="flex items-center justify-between mb-8 relative">
+                                    {/* Connecting line */}
+                                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-orange-500 to-green-500 opacity-30" />
+
+                                    <div className="relative z-10 w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/50 flex items-center justify-center text-blue-400">
+                                        <EnvelopeIcon className="w-6 h-6" />
+                                    </div>
+                                    <div className="relative z-10 w-12 h-12 rounded-xl bg-orange-500/20 border border-orange-500/50 flex items-center justify-center text-orange-400">
+                                        <BoltIcon className="w-6 h-6" />
+                                    </div>
+                                    <div className="relative z-10 w-12 h-12 rounded-xl bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400">
+                                        <CurrencyDollarIcon className="w-6 h-6" />
                                     </div>
                                 </div>
                                 <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-sm text-gray-300">
-                                        <div className="w-2 h-2 rounded-full bg-green-400" />
-                                        <span>New lead received from website</span>
+                                    <div className="bg-white/5 rounded-lg p-3 border border-white/5">
+                                        <div className="flex items-center gap-3 text-sm text-gray-200">
+                                            <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                                            <span className="font-medium">Trigger:</span>
+                                            <span className="text-gray-400">New lead form submission</span>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-3 text-sm text-gray-300">
-                                        <div className="w-2 h-2 rounded-full bg-green-400" />
-                                        <span>Added to CRM automatically</span>
+                                    <div className="bg-white/5 rounded-lg p-3 border border-white/5">
+                                        <div className="flex items-center gap-3 text-sm text-gray-200">
+                                            <div className="w-2 h-2 rounded-full bg-orange-400" />
+                                            <span className="font-medium">Process:</span>
+                                            <span className="text-gray-400">Enrich data with AI & add to CRM</span>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-3 text-sm text-gray-300">
-                                        <div className="w-2 h-2 rounded-full bg-green-400" />
-                                        <span>Welcome email sent</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-sm text-gray-300">
-                                        <div className="w-2 h-2 rounded-full bg-green-400" />
-                                        <span>Team notified on Slack</span>
+                                    <div className="bg-white/5 rounded-lg p-3 border border-white/5">
+                                        <div className="flex items-center gap-3 text-sm text-gray-200">
+                                            <div className="w-2 h-2 rounded-full bg-green-400" />
+                                            <span className="font-medium">Action:</span>
+                                            <span className="text-gray-400">Send personalized quote & notify team</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

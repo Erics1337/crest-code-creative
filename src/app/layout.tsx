@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
-import { Inter, Source_Sans_3 } from 'next/font/google';
+import { Outfit, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/client-toaster';
 
-const inter = Inter({ 
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-outfit',
 });
 
-const sourceSans = Source_Sans_3({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-source-sans',
+  variable: '--font-jakarta',
 });
 
 export const metadata: Metadata = {
@@ -31,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${sourceSans.variable} font-sans`}>
+      <body className={`${outfit.variable} ${jakarta.variable} font-sans`}>
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow pt-16">{children}</main>

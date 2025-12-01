@@ -33,16 +33,16 @@ export function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center mt-3">
+            <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/crest-logo-2.png"
+                src="/crest-logo.png"
                 alt="Crest Code Logo"
                 width={40}
                 height={40}
-                className="h-8 w-auto mb-3"
+                className="h-10 w-auto"
                 priority
               />
-              <span className="ml-2 text-xl font-bold text-primary font-display">
+              <span className="text-xl font-bold text-primary font-display">
                 Crest Code
               </span>
             </Link>
@@ -70,7 +70,7 @@ export function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-600 hover:text-primary hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.name}
                 </Link>
@@ -130,7 +130,7 @@ export function Header() {
                         <Link
                           key={subItem.name}
                           href={subItem.href}
-                          className="text-gray-600 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
+                          className="text-gray-600 hover:text-primary hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {subItem.name}
@@ -142,7 +142,7 @@ export function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-gray-600 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
+                    className="text-gray-600 hover:text-primary hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
