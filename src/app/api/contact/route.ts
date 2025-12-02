@@ -24,7 +24,7 @@ export async function POST(request: Request) {
 
     try {
       const data = await resend.emails.send({
-        from: 'Crest Code Creative <noreply@updates.teamcrestapp.com>',
+        from: 'Crest Code <noreply@updates.teamcrestapp.com>',
         to: [targetEmail],
         subject: `New Contact Form Submission - ${selectedPackage || 'General Inquiry'}`,
         replyTo: email,
@@ -41,9 +41,9 @@ export async function POST(request: Request) {
     
     <!-- Header -->
     <div style="background: linear-gradient(to right, #3b82f6, #8b5cf6); padding: 32px 24px; text-align: center;">
-      <img src="https://crestcodecreative.com/crest-logo.png" alt="Crest Code Creative Logo" style="width: 64px; height: 64px; margin-bottom: 16px; background-color: white; border-radius: 12px; padding: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      <img src="https://crestcodecreative.com/crest-logo.png" alt="Crest Code Logo" style="width: 64px; height: 64px; margin-bottom: 16px; background-color: white; border-radius: 12px; padding: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
       <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">New Inquiry Received</h1>
-      <p style="color: rgba(255, 255, 255, 0.9); margin: 8px 0 0 0; font-size: 16px;">Crest Code Creative Website</p>
+      <p style="color: rgba(255, 255, 255, 0.9); margin: 8px 0 0 0; font-size: 16px;">Crest Code Website</p>
     </div>
 
     <!-- Content -->
@@ -84,10 +84,10 @@ export async function POST(request: Request) {
     <!-- Footer -->
     <div style="background-color: #f8fafc; padding: 24px; text-align: center; border-top: 1px solid #e2e8f0;">
       <p style="margin: 0; color: #64748b; font-size: 14px;">
-        This email was sent automatically from the <strong>Crest Code Creative</strong> contact form.
+        This email was sent automatically from the <strong>Crest Code</strong> contact form.
       </p>
       <p style="margin: 8px 0 0 0; color: #94a3b8; font-size: 12px;">
-        &copy; ${new Date().getFullYear()} Crest Code Creative. All rights reserved.
+        &copy; ${new Date().getFullYear()} Crest Code. All rights reserved.
       </p>
     </div>
   </div>

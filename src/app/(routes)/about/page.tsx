@@ -16,8 +16,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Me | Crest Code Creative',
-  description: 'Learn about Eric Swanson and Crest Code Creative - bringing world-class tech expertise to the Gunnison Valley.',
+  title: 'About Me | Crest Code',
+  description: 'Learn about Eric Swanson and Crest Code - bringing tech expertise to the Gunnison Valley.',
 };
 
 export default function AboutPage() {
@@ -107,13 +107,13 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-2xl font-bold mb-4">Mission</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Crest Code Creative empowers businesses with innovative and thoughtful technology, breaking down barriers to unlock their highest potential and create a deeper impact.
+                  Crest Code empowers businesses with innovative and thoughtful technology, breaking down barriers to unlock their highest potential and create a deeper impact.
                 </p>
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4">Vision</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Crest Code Creative envisions a thriving community of inspired business owners, empowered by innovative technology to transform their ideas into impactful, creative solutions that elevate their goals.
+                  Crest Code envisions a thriving community of inspired business owners, empowered by innovative technology to transform their ideas into impactful, creative solutions that elevate their goals.
                 </p>
               </div>
             </div>
