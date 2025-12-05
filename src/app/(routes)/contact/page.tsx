@@ -37,7 +37,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-foreground">Email Us</h3>
                       <p className="text-muted-foreground mb-1">For general inquiries and project discussions</p>
-                      <a href="mailto:erics1337@gmail.com" className="text-primary hover:underline font-medium">erics1337@gmail.com</a>
+                      <a href="mailto:eric@crestcodecreative.com" className="text-primary hover:underline font-medium">eric@crestcodecreative.com</a>
                     </div>
                   </div>
 

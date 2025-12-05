@@ -25,7 +25,7 @@ export function Footer() {
               Crafting websites that inspire and perform in The Gunnison Valley, Colorado.
             </p>
             <div className="space-y-2">
-              <p className="text-sm text-gray-600">erics1337@gmail.com</p>
+              <p className="text-sm text-gray-600">eric@crestcodecreative.com</p>
               <p className="text-sm text-gray-600">Crested Butte, CO</p>
             </div>
           </div>
