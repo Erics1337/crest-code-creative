@@ -80,6 +80,17 @@ export default function AboutPage() {
                     <p>
                       After honing my skills with big tech companies and remote roles, I&apos;ve returned to my roots. Now, I bring enterprise-level expertise to local businesses, helping them thrive in the digital age without losing their authentic character.
                     </p>
+                    <p>
+                      Check out my developer portfolio at{' '}
+                      <a
+                        href="https://www.ericsdevportfolio.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary font-medium hover:underline"
+                      >
+                        www.ericsdevportfolio.com
+                      </a>
+                    </p>
                   </div>
                 </div>
 
