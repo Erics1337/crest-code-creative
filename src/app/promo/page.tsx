@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
-
+import Link from 'next/link';
 import Image from 'next/image';
 
 export default function PromoPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [submittedBusinessName, setSubmittedBusinessName] = useState('');
     const [error, setError] = useState<string | null>(null);
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -33,7 +34,8 @@ export default function PromoPage() {
             }
 
             setIsSuccess(true);
-        } catch (err) {
+            setSubmittedBusinessName(data.businessName as string);
+        } catch {
             setError('Something went wrong. Please try again later.');
         } finally {
             setIsSubmitting(false);
@@ -53,14 +55,14 @@ export default function PromoPage() {
                     </div>
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Application Received!</h2>
                     <p className="text-slate-600 dark:text-slate-300 mb-8">
-                        Thanks for applying for the automation promo. We've received your details and will be in touch shortly to discuss how we can help streamline your business.
+                        Thanks for applying for the automation promo. We&apos;ve received your details for <strong>{submittedBusinessName}</strong> and will be in touch shortly to discuss how we can help streamline your business.
                     </p>
-                    <a
+                    <Link
                         href="/"
                         className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
                     >
                         Back to Home
-                    </a>
+                    </Link>
                 </motion.div>
             </div>
         );

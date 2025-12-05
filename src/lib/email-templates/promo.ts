@@ -82,7 +82,7 @@ export const getPromoApplicantEmail = (name: string, businessName: string) => `
     </div>
     <h1 style="color: #2563eb;">Thanks for applying!</h1>
     <p>Hi ${name},</p>
-    <p>We've received your application for the Gunnison Valley Automation Promo.</p>
+    <p>We've received your application for <strong>${businessName}</strong> to participate in the Gunnison Valley Automation Promo.</p>
     <p>Please note that due to limited availability, we will only be able to get back to you if your business is chosen for this opportunity, but please feel free to use the contact form on the website to get in touch with me for any questions or to schedule a paid consultation.</p>
     <p>If selected, you will receive a free automation implementation which includes a consultation and assistance setting up an automation of your idea that solves a need of yours. Applications are chosen based on our availability and the specific needs of the applicant.</p>
     <p>I will review your details and reach out if we can move forward.</p>
