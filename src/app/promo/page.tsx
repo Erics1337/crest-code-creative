@@ -83,6 +83,7 @@ export default function PromoPage() {
                             fill
                             className="object-cover"
                             priority
+                            sizes="(max-width: 768px) 100vw, 768px"
                         />
                     </div>
                     <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl mb-4">
