@@ -77,10 +77,10 @@ export default function WebDesignPage() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
-            Web Design for Gunnison Valley Businesses
+            Web Design That Puts You in Control
           </h1>
           <p className="text-xl md:text-2xl mb-8">
-            Beautiful, effective websites that help your business thrive in the heart of Colorado
+            Beautiful, effective websites built on platforms you can manage yourself.
           </p>
           <Button size="lg" asChild className="bg-white text-primary hover:bg-gray-100">
             <Link href="/contact">Get Started Today</Link>
@@ -101,43 +101,51 @@ export default function WebDesignPage() {
         </div>
       </section>
 
-      {/* DIY Website Builder Section */}
+      {/* Empowerment Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-display font-bold mb-6">Build Your Own Website</h2>
+            <h2 className="text-4xl font-display font-bold mb-6">Your Website, Your Control</h2>
             <p className="text-xl text-gray-600">
-              Want to take control of your online presence? We&apos;ll help you get started with modern, easy-to-use website builders.
+              I don&apos;t just build a site for you; I empower you to own it. By using user-friendly platforms like Wix and Squarespace, I put the power in your hands to edit, update, and evolve your site as your business grows. I offer coaching and guidance to learn how to use the site builders to make you independent, while I take care of all the rest.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">Guided Setup</h3>
+              <h3 className="text-2xl font-bold mb-4">Empowerment & Training</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">✓</span>
-                  Platform selection (Wix, Squarespace, or Shopify)
+                  Full training on how to edit your site
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">✓</span>
-                  Template customization
+                  User-friendly platforms (Wix, Squarespace)
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  No coding knowledge required
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  You own and control your content
+                </li>
+              </ul>
+            </div>
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-bold mb-4">Professional Setup & Support</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  Expert design and initial setup
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">✓</span>
                   Content organization strategy
                 </li>
-              </ul>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">Ongoing Support</h3>
-              <ul className="space-y-4">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">✓</span>
-                  One-on-one training sessions
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">✓</span>
-                  Technical support when needed
+                  Ongoing technical support when needed
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">✓</span>
