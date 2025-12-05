@@ -7,8 +7,6 @@ import {
   Zap,
   Layers,
   MapPin,
-  CreditCard,
-  Wifi,
   CheckCircle2,
   Rocket,
   Search,
