@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { getPromoAdminEmail, getPromoApplicantEmail } from '@/lib/email-templates/promo';
+import { enforceRateLimit, enforceSameOrigin, isFilled } from '@/lib/request-guards';
 
 export const runtime = 'edge';
 
@@ -8,6 +9,16 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
     try {
+        const sameOriginError = enforceSameOrigin(request);
+        if (sameOriginError) {
+            return sameOriginError;
+        }
+
+        const rateLimitError = enforceRateLimit(request, 'promo', 5, 60_000);
+        if (rateLimitError) {
+            return rateLimitError;
+        }
+
         const body = await request.json();
         const {
             name,
@@ -20,8 +31,14 @@ export async function POST(request: Request) {
             aiUsage,
             currentAutomations,
             painPoints,
-            businessImpact
+            businessImpact,
+            companyWebsite
         } = body;
+
+        // Honeypot field for simple bot filtering.
+        if (isFilled(companyWebsite)) {
+            return NextResponse.json({ success: true });
+        }
 
         // Validate required fields
         if (!name || !businessName || !email || !phone || !employees || !yearsInBusiness || !painPoints || !businessImpact) {

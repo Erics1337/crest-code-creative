@@ -1,9 +1,13 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { ArrowLeft } from 'lucide-react'
 import { getPostBySlug, getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import { MDXContent } from '@/components/mdx-content'
+
+export const revalidate = 3600
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   const posts = await getPosts()
@@ -14,6 +18,23 @@ export async function generateStaticParams() {
 
 type PageProps = {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params
+  const post = await getPostBySlug(resolvedParams.slug)
+
+  if (!post) {
+    return {}
+  }
+
+  return {
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+  }
 }
 
 export default async function BlogPostPage({ params }: PageProps) {

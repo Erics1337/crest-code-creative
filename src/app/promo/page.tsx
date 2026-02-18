@@ -143,6 +143,15 @@ export default function PromoPage() {
                     className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-6 sm:p-10"
                 >
                     <form onSubmit={handleSubmit} className="space-y-8">
+                        <input
+                            type="text"
+                            name="companyWebsite"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            className="hidden"
+                            aria-hidden="true"
+                        />
+
                         {/* Contact Details */}
                         <div className="space-y-6">
                             <h3 className="text-xl font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">

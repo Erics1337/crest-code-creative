@@ -125,6 +125,15 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      <input
+        type="text"
+        name="companyWebsite"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
+
       <div className="space-y-4">
         <label className="text-sm font-medium text-foreground">
           I&apos;m interested in...

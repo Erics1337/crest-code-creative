@@ -16,6 +16,9 @@ export type PostMetadata = {
 export async function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.mdx$/, '')
   const fullPath = path.join(postsDirectory, `${realSlug}.mdx`)
+  if (!fs.existsSync(fullPath)) {
+    return null
+  }
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
@@ -50,7 +53,12 @@ export async function getPosts(): Promise<PostMetadata[]> {
 
 export async function getPostMetadata(slug: string): Promise<PostMetadata | null> {
   try {
-    const { frontmatter, slug: postSlug } = await getPostBySlug(slug)
+    const post = await getPostBySlug(slug)
+    if (!post) {
+      return null
+    }
+
+    const { frontmatter, slug: postSlug } = post
     return {
       ...frontmatter,
       slug: postSlug,

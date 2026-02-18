@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { getContactAdminEmail, getContactAdminText } from '@/lib/email-templates/contact';
+import { enforceRateLimit, enforceSameOrigin, isFilled } from '@/lib/request-guards';
 
 export const runtime = 'edge';
 
@@ -8,7 +9,30 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, message, package: selectedPackage } = await request.json();
+    const sameOriginError = enforceSameOrigin(request);
+    if (sameOriginError) {
+      return sameOriginError;
+    }
+
+    const rateLimitError = enforceRateLimit(request, 'contact', 10, 60_000);
+    if (rateLimitError) {
+      return rateLimitError;
+    }
+
+    const body = await request.json();
+    const {
+      name,
+      email,
+      phone,
+      message,
+      package: selectedPackage,
+      companyWebsite,
+    } = body;
+
+    // Honeypot field for simple bot filtering.
+    if (isFilled(companyWebsite)) {
+      return NextResponse.json({ success: true });
+    }
 
     // Validate required fields
     if (!name || !email || !message) {

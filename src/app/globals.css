@@ -10,6 +10,8 @@
 
 @layer base {
   :root {
+    --font-jakarta: "Inter", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --font-outfit: "Avenir Next", "Inter", "Segoe UI", system-ui, sans-serif;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
