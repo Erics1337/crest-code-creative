@@ -11,18 +11,6 @@ const testimonials = [
         company: 'Earthy Soul Living',
         image: '/images/testimonials/chelsey-wilson.jpg',
     },
-    {
-        quote: 'Working with Crest Code was a game-changer for our business. Our online bookings have increased significantly.',
-        author: 'Mike Thompson',
-        role: 'Founder',
-        company: 'Mountain Bike Adventures',
-    },
-    {
-        quote: "The website exceeded our expectations. It's not just beautiful, but also incredibly functional and easy to manage.",
-        author: 'Lisa Martinez',
-        role: 'Manager',
-        company: 'Local Food Market',
-    },
 ];
 
 export function TestimonialsSection() {
@@ -48,7 +36,7 @@ export function TestimonialsSection() {
                 </FadeIn>
 
                 <FadeInStagger>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="max-w-lg mx-auto">
                         {testimonials.map((testimonial) => (
                             <FadeInStaggerItem key={testimonial.author}>
                                 <TestimonialCard {...testimonial} />
