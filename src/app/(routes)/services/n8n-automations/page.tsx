@@ -234,8 +234,29 @@ export default function N8nAutomationsPage() {
         </div>
       </section >
 
+      {/* Blog Callout */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto bg-gray-50 border border-gray-100 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1">
+              <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-2 block">From the Blog</span>
+              <h3 className="text-2xl font-bold mb-3">n8n Automations for Gunnison Valley Businesses</h3>
+              <p className="text-gray-600 mb-4">
+                Learn how local businesses in the Gunnison Valley are saving time and cutting costs with custom n8n automation workflows.
+              </p>
+              <Link
+                href="/blog/n8n-automations-gunnison-valley"
+                className="inline-flex items-center text-primary font-semibold hover:underline"
+              >
+                Read the article →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      < section className="py-20 bg-primary text-white" >
+      <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-display font-bold mb-8">Ready to Save Time & Money?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -245,7 +266,7 @@ export default function N8nAutomationsPage() {
             <Link href="/contact">Start Automating Today</Link>
           </Button>
         </div>
-      </section >
-    </div >
+      </section>
+    </div>
   );
 }
