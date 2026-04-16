@@ -1,0 +1,58 @@
+# Crest Code Creative
+
+> Custom web design, software development, SEO, branding, and business automation services for businesses in Crested Butte and the Gunnison Valley, Colorado.
+
+Crest Code Creative is a boutique digital agency run by Eric Swanson, based in Gunnison Valley, Colorado. We specialize in building beautiful, high-performance websites and custom software solutions — backed by SEO, branding, and digital marketing strategies — tailored to the unique needs of mountain town businesses and beyond.
+
+## Services
+
+- [Web Design](/services/web-design): Custom, responsive websites built on platforms clients can manage themselves (Wix, Squarespace, Shopify, WordPress). Empowerment-first approach — full training so clients own and control their content.
+- [SEO — Search Engine Optimization](/services/web-design): Local SEO optimization for Gunnison Valley and Crested Butte businesses. Includes keyword research, content strategy, technical SEO implementation, Google rankings improvement, and regular performance monitoring.
+- [Digital Marketing](/services/web-design): Comprehensive digital marketing including email campaign management, Google Business Profile optimization, social media integration, review collection and management, and targeted Facebook & Instagram ad campaigns.
+- [Branding & Visual Identity](/services/web-design): Visual brand design aligned with your business identity — color systems, typography, logo integration, and cohesive design language across your website and marketing materials.
+- [CRM & Customer Relationship Management](/services/web-design): Customer database management, lead tracking and nurturing, email marketing integration, and customer support tools using industry-leading platforms.
+- [Social Media Marketing](/services/web-design): Targeted advertising on Facebook, Instagram, and other platforms. Content creation and scheduling, audience targeting, and performance tracking.
+- [E-commerce](/services/web-design): Online store setup on Shopify, Squarespace, or WooCommerce. Custom theme development, product catalog, payment gateways, shipping configuration, and email marketing.
+- [Software Development](/services/software-development): Enterprise-grade custom software — full-stack web applications, API design and integration, legacy system modernization, cloud infrastructure (AWS), and technical strategy consulting.
+- [Mobile Apps](/services/mobile-apps): Cross-platform iOS and Android apps built with React Native. Booking systems, loyalty programs, push notifications, location-based services, biometric auth, and App Store/Google Play submission.
+- [n8n Business Automations](/services/n8n-automations): Workflow automation using n8n to connect 200+ apps — lead management, CRM sync, invoicing, social media scheduling, customer support ticketing, and data processing.
+- [AI Solutions](/services): Agentic AI chatbots and automation workflows that boost sales, support customers, and streamline operations. E-commerce assistants, RAG knowledge base bots, multi-channel (web, SMS, WhatsApp), and human handoff.
+- [Business Consulting](/services): Digital strategy planning for seasonal mountain town business cycles, UX optimization, market research, technical audits, and growth strategy for expanding businesses.
+
+## Portfolio
+
+- [Earthy Soul Living](/portfolio/earthy-soul-living): E-commerce website and digital brand presence for a wellness and lifestyle brand.
+- [TeamCrest](/portfolio/teamcrest): Custom web application for a Crested Butte community organization.
+
+## Blog
+
+Technical tutorials, web design insights, SEO tips, and digital marketing advice for Gunnison Valley businesses.
+
+- [n8n Automations in Gunnison Valley](/blog/n8n-automations-gunnison-valley)
+
+## Brand Identity
+
+- **Brand Name**: Crest Code Creative
+- **Tagline**: Crafting Websites that Inspire and Perform
+- **Tone**: Professional yet approachable — expert technical skills with genuine local community investment
+- **Values**: Empowerment, transparency, long-term client relationships, local community growth
+- **Location**: Gunnison Valley (Crested Butte area), Colorado — serving local mountain businesses and clients nationwide
+- **Specialization**: Businesses that need both technical excellence and honest, human-first service
+
+## Target Audience
+
+- Small and medium businesses in Crested Butte, Gunnison, and the surrounding mountain valley
+- Tourism, hospitality, retail, outdoor recreation, and service businesses
+- Entrepreneurs who want to understand and own their digital presence
+- Businesses looking to automate operations and reduce manual work
+
+## Contact
+
+- Email: eric@crestcodecreative.com
+- Location: Gunnison Valley, Colorado
+- Website: https://www.crestcodecreative.com
+- [Contact Form](/contact)
+
+## About
+
+Crest Code Creative combines world-class technical skills with deep local knowledge of the Crested Butte and Gunnison Valley community. Eric Swanson provides end-to-end digital services — from initial strategy and design through development, SEO, and ongoing optimization — prioritizing client empowerment and long-term partnerships over one-and-done projects.
