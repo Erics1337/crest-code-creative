@@ -300,6 +300,33 @@ export default function MobileAppsPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Services */}
+      <section className="py-16 bg-gray-50 border-t border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <h2 className="text-2xl font-bold mb-3">Need More Than an App?</h2>
+            <p className="text-muted-foreground">
+              Many mobile projects need a custom backend, API, or web platform to go with them. Our software development team builds the full stack.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <Link
+              href="/services/software-development"
+              className="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-2xl px-8 py-5 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 group"
+            >
+              <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                <Code2 className="w-6 h-6 text-primary" />
+              </div>
+              <div className="text-left">
+                <div className="font-bold text-gray-900 group-hover:text-primary transition-colors">Custom Software Development</div>
+                <div className="text-sm text-muted-foreground">APIs, web apps, cloud infrastructure & more</div>
+              </div>
+              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
