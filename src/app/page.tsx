@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import ReactDOM from 'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -24,6 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  ReactDOM.preload('/images/crested-butte-landscape.webp', {
+    as: 'image',
+    fetchPriority: 'high',
+  });
   const featuredProjects = getFeaturedProjects();
 
   return (
