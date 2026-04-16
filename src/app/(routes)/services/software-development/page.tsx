@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -15,6 +16,14 @@ import {
   ArrowRight,
   Terminal
 } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Custom Software Development | Enterprise Solutions | Crest Code Creative',
+  description: 'Bespoke software development in Colorado — full-stack web applications, API integrations, cloud infrastructure, and technical consulting for growing businesses.',
+  alternates: {
+    canonical: '/services/software-development',
+  },
+};
 
 export default function SoftwareDevelopmentPage() {
   const technologies = [

@@ -9,6 +9,8 @@ import { ArrowUpRight } from 'lucide-react';
 
 export const revalidate = 3600;
 export const metadata: Metadata = {
+  title: 'Blog | Web Design & Tech Insights | Crest Code Creative',
+  description: 'Expert advice, technical tutorials, and digital marketing insights for Gunnison Valley businesses from the Crest Code Creative team.',
   alternates: {
     canonical: '/blog',
   },

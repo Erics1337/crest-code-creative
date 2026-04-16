@@ -1,8 +1,17 @@
+import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { CaseStudyCard } from '@/components/portfolio/case-study-card';
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
 import Image from 'next/image';
 import { getProjects } from '@/lib/projects';
+
+export const metadata: Metadata = {
+  title: 'Portfolio | Web Design & Development Work | Crest Code Creative',
+  description: 'Explore our portfolio of custom websites, web applications, and digital solutions built for businesses in Crested Butte, Gunnison Valley, and beyond.',
+  alternates: {
+    canonical: '/portfolio',
+  },
+};
 
 export default async function PortfolioPage() {
   const projects = await getProjects();

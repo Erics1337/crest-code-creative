@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
@@ -16,6 +17,23 @@ export async function generateStaticParams() {
 
 type PageProps = {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params
+  const project = await getProjectBySlug(resolvedParams.slug)
+
+  if (!project) {
+    return {}
+  }
+
+  return {
+    title: `${project.frontmatter.title} | Portfolio | Crest Code Creative`,
+    description: project.frontmatter.description,
+    alternates: {
+      canonical: `/portfolio/${resolvedParams.slug}`,
+    },
+  }
 }
 
 export default async function ProjectPage({ params }: PageProps) {

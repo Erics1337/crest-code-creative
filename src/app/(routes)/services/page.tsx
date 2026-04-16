@@ -1,6 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
+
+export const metadata: Metadata = {
+  title: 'Services | Web Design, Software & Automation | Crest Code Creative',
+  description: 'Comprehensive digital services for Gunnison Valley businesses — custom web design, software development, mobile apps, and n8n business automations.',
+  alternates: {
+    canonical: '/services',
+  },
+};
 
 export default function ServicesPage() {
   return (

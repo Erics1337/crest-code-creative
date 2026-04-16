@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,14 @@ import {
   LockClosedIcon,
   SparklesIcon
 } from '@heroicons/react/24/solid';
+
+export const metadata: Metadata = {
+  title: 'Web Design Services | Crested Butte & Gunnison Valley | Crest Code Creative',
+  description: 'Professional web design in Crested Butte and Gunnison Valley, Colorado. Beautiful, responsive websites on platforms you can manage — Wix, Squarespace, Shopify, and custom builds.',
+  alternates: {
+    canonical: '/services/web-design',
+  },
+};
 
 export default function WebDesignPage() {
   const marketingServices = [

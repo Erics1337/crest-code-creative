@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,14 @@ import { BusinessIntroSection } from '@/components/sections/BusinessIntroSection
 import { N8nAutomationSection } from '@/components/sections/N8nAutomationSection';
 
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+
+export const metadata: Metadata = {
+  title: 'Crest Code | Web Design & Development in Crested Butte & Gunnison Valley Colorado',
+  description: 'Custom web design and development services in Crested Butte & Gunnison Valley, Colorado. Beautiful, functional websites and applications tailored to your business needs.',
+  alternates: {
+    canonical: '/',
+  },
+};
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects();

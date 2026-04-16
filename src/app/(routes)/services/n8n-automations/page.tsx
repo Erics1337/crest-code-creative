@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -15,6 +16,14 @@ import {
   MagnifyingGlassIcon,
   TableCellsIcon
 } from '@heroicons/react/24/solid';
+
+export const metadata: Metadata = {
+  title: 'n8n Business Automations | Gunnison Valley | Crest Code Creative',
+  description: 'Automate your business workflows with n8n in Gunnison Valley, Colorado. Save hours every week by connecting your apps — CRM, invoicing, social media, and more.',
+  alternates: {
+    canonical: '/services/n8n-automations',
+  },
+};
 
 export default function N8nAutomationsPage() {
   const automationWorkflows = [

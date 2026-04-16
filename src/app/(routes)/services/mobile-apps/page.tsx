@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -16,6 +17,14 @@ import {
   ArrowRight,
   Download
 } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Mobile App Development | iOS & Android | Crest Code Creative',
+  description: 'Custom React Native mobile apps for iOS and Android. We build cross-platform solutions for Gunnison Valley businesses — from booking systems to loyalty apps.',
+  alternates: {
+    canonical: '/services/mobile-apps',
+  },
+};
 
 export default function MobileAppsPage() {
   const benefits = [
