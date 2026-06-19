@@ -54,13 +54,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 items-center min-h-[60vh]">
             <FadeIn delay={0.2}>
               <div className="max-w-3xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm text-white/90 mb-6">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-                  </span>
-                  Accepting New Projects for 2025
-                </div>
+
                 <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight drop-shadow-lg">
                   Crafting Websites that <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Inspire</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Perform</span>
                 </h1>
