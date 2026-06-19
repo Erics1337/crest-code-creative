@@ -56,7 +56,7 @@ export default function Home() {
               <div className="max-w-3xl">
 
                 <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight drop-shadow-lg">
-                  Crafting Websites that <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Inspire</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Perform</span>
+                  Building Digital Experiences that <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Inspire</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Perform</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed max-w-2xl drop-shadow-md">
                   Crest Code helps businesses thrive online with beautiful, functional websites
