@@ -86,6 +86,16 @@ export function Footer() {
                   Privacy Policy
                 </Link>
               </li>
+              <li>
+                <Link href="/yoga-flow/privacy" className="text-sm text-gray-600 hover:text-primary">
+                  Yoga Flow Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/yoga-flow/terms" className="text-sm text-gray-600 hover:text-primary">
+                  Yoga Flow Terms of Service
+                </Link>
+              </li>
             </ul>
           </div>
 

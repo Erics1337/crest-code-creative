@@ -18,6 +18,8 @@ const staticRoutes = [
   { path: '/about', priority: 0.6, changeFrequency: 'yearly' as const },
   { path: '/packages', priority: 0.6, changeFrequency: 'monthly' as const },
   { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
+  { path: '/yoga-flow/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
+  { path: '/yoga-flow/terms', priority: 0.3, changeFrequency: 'yearly' as const },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
