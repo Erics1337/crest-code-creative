@@ -1,0 +1,46 @@
+---
+title: "Link Loom – AI Organization for Browser Bookmarks"
+date: "2026-07-23"
+description: "A Chrome extension and semantic search workspace that turns years of saved links into a useful, reviewable knowledge map."
+clientName: "Link Loom"
+industry: "Productivity Software"
+challenge: "Traditional bookmark folders become difficult to maintain and nearly impossible to search once a collection grows across years of projects, research, and saved ideas."
+solution: "A human-in-the-loop AI workflow that imports Chrome bookmarks, clusters links by meaning, proposes clear names and folders, and lets users review the structure before applying it."
+impact: "Users can retrieve saved context by concept, clean duplicate and stale links, and reorganize a large bookmark library without surrendering control to automation."
+imageUrl: "/images/projects/link-loom/link-loom-homepage.png"
+externalUrl: "https://linkloom.org"
+technologies: ["Chrome Extension", "Next.js", "Fastify", "Supabase", "OpenAI", "pgvector", "AWS Lambda", "SQS"]
+---
+
+## Project Overview
+
+Link Loom is an AI bookmark workspace built for the messy reality of saved links. Crest Code designed and developed the Chrome extension, web dashboard, marketing experience, and production processing pipeline that turn a browser archive into searchable, organized context.
+
+## Key Features
+
+### Semantic Organization
+
+- OpenAI embeddings analyze page meaning beyond titles and URLs
+- Recursive clustering proposes a practical folder hierarchy
+- AI and heuristic naming produce understandable group labels
+
+### Review Before Apply
+
+- Visual preview shows the proposed bookmark tree
+- Users keep the final decision before Chrome is changed
+- Journaled operations support resume, guarded cleanup, and rollback
+
+### Search and Maintenance
+
+- Meaning-based search powered by PostgreSQL and pgvector
+- Smart link renaming for vague or unhelpful titles
+- Duplicate and dead-link review for accumulated clutter
+
+## Technical Implementation
+
+The product uses a React and Vite Chrome extension, a Next.js application, and a Fastify backend. Supabase provides authentication and data storage; AWS Lambda and SQS run the production processing pipeline. Shared URL embeddings are cached by hash to control AI costs while private user metadata remains isolated by account.
+
+## Result
+
+Link Loom demonstrates a practical form of human-centered AI: the system performs the expensive first pass, explains the proposed structure, and leaves the consequential browser change in the user's hands.
+
