@@ -6,8 +6,8 @@ import Image from 'next/image';
 import { getProjects } from '@/lib/projects';
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Web Design & Development Work | Crest Code Creative',
-  description: 'Explore our portfolio of custom websites, web applications, and digital solutions built for businesses in Crested Butte, Gunnison Valley, and beyond.',
+  title: 'Portfolio | Web, Mobile & AI Product Work | Crest Code Creative',
+  description: 'Explore custom websites, mobile apps, SaaS platforms, and AI-powered products built by Crest Code Creative in the Gunnison Valley and beyond.',
   alternates: {
     canonical: '/portfolio',
   },
@@ -24,7 +24,7 @@ export default async function PortfolioPage() {
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">Work</span>
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Discover how we&apos;ve helped Gunnison Valley businesses thrive in the digital landscape through custom solutions and local expertise.
+            Explore the mobile apps, SaaS platforms, AI products, and digital experiences we&apos;ve designed and built from the Gunnison Valley.
           </p>
         </div>
       </FadeIn>
@@ -32,7 +32,7 @@ export default async function PortfolioPage() {
       {/* Filter Tabs */}
       <FadeIn className="mb-16">
         <div className="flex flex-wrap justify-center gap-3">
-          {['All Projects', 'Web Development', 'E-commerce', 'Booking Systems', 'Digital Marketing'].map((category, index) => (
+          {['All Projects', 'Mobile Apps', 'AI Products', 'SaaS Platforms', 'Web Development'].map((category, index) => (
             <Button
               key={category}
               variant={index === 0 ? 'default' : 'outline'}
@@ -101,7 +101,7 @@ export default async function PortfolioPage() {
 
           <h2 className="text-3xl md:text-4xl font-bold mb-6 relative z-10">Ready to Transform Your Business?</h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-lg relative z-10">
-            Join the growing list of successful Crested Butte businesses that have elevated their digital presence with our solutions.
+            Bring us the product idea, workflow, or digital experience your team is ready to make real.
           </p>
           <Button asChild size="lg" className="bg-white text-slate-900 hover:bg-gray-100 relative z-10">
             <a href="/contact">Start Your Project</a>

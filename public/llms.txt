@@ -21,8 +21,11 @@ Crest Code Creative is a boutique digital agency run by Eric Swanson, based in G
 
 ## Portfolio
 
+- [ThirdTone](/portfolio/thirdtone): Personalized sound-medicine platform spanning mobile, web, content operations, AI recommendations, and secure media delivery.
+- [Link Loom](/portfolio/link-loom): Chrome extension and semantic search workspace that organizes browser bookmarks with human-reviewed AI.
+- [Yoga Flow](/portfolio/yoga-flow): Cross-platform yoga sequence builder with AI-assisted creation, editing, cloud sync, and guided practice.
 - [Earthy Soul Living](/portfolio/earthy-soul-living): E-commerce website and digital brand presence for a wellness and lifestyle brand.
-- [TeamCrest](/portfolio/teamcrest): Custom web application for a Crested Butte community organization.
+- [TeamCrest](/portfolio/teamcrest): Multi-tenant workforce platform for scheduling, time tracking, compliance, communication, and AI-assisted operations.
 
 ## Blog
 
