@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main>
+    <div>
       <section className="bg-[#f6f8f6] py-20 sm:py-28">
         <div className="site-container grid gap-14 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
@@ -59,6 +59,6 @@ export default function AboutPage() {
       <section className="bg-[#dce7e8] py-20 sm:py-24">
         <div className="site-container flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p className="field-label mb-4">Work together</p><h2 className="max-w-3xl text-4xl font-semibold leading-[0.96] tracking-[-0.035em] sm:text-5xl">A local conversation can lead to a very capable product.</h2></div><Link href="/contact" className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-foreground px-6 font-semibold text-background">Start a conversation <ArrowUpRight className="h-5 w-5" /></Link></div>
       </section>
-    </main>
+    </div>
   );
 }

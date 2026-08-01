@@ -4,12 +4,12 @@ import Link from 'next/link'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    h1: ({ children }) => <h1 className="mb-6 mt-16 text-5xl font-semibold">{children}</h1>,
-    h2: ({ children }) => <h2 className="mb-5 mt-16 text-4xl font-semibold">{children}</h2>,
-    h3: ({ children }) => <h3 className="mb-4 mt-10 text-2xl font-semibold">{children}</h3>,
-    h4: ({ children }) => <h4 className="text-xl font-bold mt-6 mb-3">{children}</h4>,
-    h5: ({ children }) => <h5 className="text-lg font-bold mt-4 mb-2">{children}</h5>,
-    h6: ({ children }) => <h6 className="text-base font-bold mt-4 mb-2">{children}</h6>,
+    h1: ({ children, ...props }) => <h1 {...props} className="mb-6 mt-16 text-5xl font-semibold">{children}</h1>,
+    h2: ({ children, ...props }) => <h2 {...props} className="mb-5 mt-16 text-4xl font-semibold">{children}</h2>,
+    h3: ({ children, ...props }) => <h3 {...props} className="mb-4 mt-10 text-2xl font-semibold">{children}</h3>,
+    h4: ({ children, ...props }) => <h4 {...props} className="mb-3 mt-6 text-xl font-bold">{children}</h4>,
+    h5: ({ children, ...props }) => <h5 {...props} className="mb-2 mt-4 text-lg font-bold">{children}</h5>,
+    h6: ({ children, ...props }) => <h6 {...props} className="mb-2 mt-4 text-base font-bold">{children}</h6>,
     p: ({ children }) => <p className="mb-6 leading-8">{children}</p>,
     a: ({ href, children }) => {
       if (href?.startsWith('#')) {

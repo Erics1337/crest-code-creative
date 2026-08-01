@@ -3,7 +3,7 @@ import { ContactForm } from '@/components/forms/contact-form';
 
 export default function ContactPage() {
   return (
-    <main className="bg-[#f6f8f6] py-20 sm:py-28">
+    <div className="bg-[#f6f8f6] py-20 sm:py-28">
       <div className="site-container grid gap-14 lg:grid-cols-12">
         <section className="lg:col-span-5">
           <p className="field-label mb-6">Start a project</p>
@@ -23,6 +23,6 @@ export default function ContactPage() {
           <ContactForm />
         </section>
       </div>
-    </main>
+    </div>
   );
 }

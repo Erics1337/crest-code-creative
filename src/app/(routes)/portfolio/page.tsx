@@ -17,7 +17,7 @@ export default async function PortfolioPage() {
   const testimonials = projects.filter((project) => project.testimonial);
 
   return (
-    <main>
+    <div>
       {/*
         THESIS: Let real product work establish credibility immediately; refuse the equal-card portfolio grid.
         OWN-WORLD: Alpine-white fields, graphite type, steel-blue media stages, thin structural rules, and scarce cobalt wayfinding.
@@ -25,9 +25,9 @@ export default async function PortfolioPage() {
         FIRST VIEWPORT: A compact thesis and capability index lead into one oversized live project image crossing the fold.
         FORM: High Country Field Office, cinematic project dispatch followed by an asymmetric editorial gallery; seed ef92848b.
       */}
-      <section className="bg-[#f6f8f6] pb-16 pt-20 sm:pb-24 sm:pt-28">
+      <section className="bg-[#f6f8f6] pb-12 pt-16 sm:pb-16 sm:pt-20">
         <div className="site-container">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p className="field-label mb-6">Selected work · 2024–2026</p>
               <h1 className="display-title">Products made useful, clear, and ready for the real world.</h1>
@@ -40,7 +40,7 @@ export default async function PortfolioPage() {
             </div>
           </div>
 
-          <div className="mt-16 flex items-center justify-between border-t border-foreground/20 pt-5 text-sm text-foreground/55">
+          <div className="mt-10 flex items-center justify-between border-t border-foreground/20 pt-4 text-sm text-foreground/55">
             <span>{projects.length} detailed case studies</span>
             <span className="flex items-center gap-2">Explore the work <ArrowDown className="h-4 w-4" /></span>
           </div>
@@ -48,7 +48,7 @@ export default async function PortfolioPage() {
       </section>
 
       {featured && (
-        <section className="bg-white py-16 sm:py-24">
+        <section className="bg-white py-12 sm:py-16">
           <div className="site-container">
             <CaseStudyCard {...featured} href={`/portfolio/${featured.slug}`} index={0} featured />
           </div>
@@ -105,6 +105,6 @@ export default async function PortfolioPage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

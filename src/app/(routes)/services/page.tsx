@@ -17,7 +17,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main>
+    <div>
       <section className="bg-[#21443e] py-24 text-white sm:py-32">
         <div className="site-container grid gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
@@ -63,6 +63,6 @@ export default function ServicesPage() {
           <Link href="/contact" className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-white px-6 font-semibold text-foreground">Start with the problem <ArrowRight className="h-5 w-5" /></Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -20,7 +20,7 @@ export default async function BlogPage() {
   const featuredPost = posts[0];
 
   return (
-    <main className="bg-[#f6f8f6]">
+    <div className="bg-[#f6f8f6]">
       <section className="py-20 sm:py-28">
         <div className="site-container grid gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8"><p className="field-label mb-6">Field notes</p><h1 className="display-title">Useful thinking from inside the work.</h1></div>
@@ -47,6 +47,6 @@ export default async function BlogPage() {
       <section className="bg-white pb-24 sm:pb-32">
         <div className="site-container"><div className="mb-8 border-b border-foreground/20 pb-5"><h2 className="text-3xl font-semibold tracking-[-0.03em]">All notes</h2></div><BlogList posts={posts} categories={blogCategories} /></div>
       </section>
-    </main>
+    </div>
   );
 }

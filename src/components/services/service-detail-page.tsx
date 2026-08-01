@@ -18,7 +18,7 @@ interface ServiceDetailPageProps {
 
 export function ServiceDetailPage({ eyebrow, title, introduction, image, imageAlt, premise, services, process, fit }: ServiceDetailPageProps) {
   return (
-    <main>
+    <div>
       <section className="bg-[#f6f8f6] py-20 sm:py-28">
         <div className="site-container grid gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8"><p className="field-label mb-6">{eyebrow}</p><h1 className="display-title">{title}</h1></div>
@@ -64,6 +64,6 @@ export function ServiceDetailPage({ eyebrow, title, introduction, image, imageAl
           <div className="lg:col-span-6 lg:col-start-7"><ul className="divide-y divide-foreground/20 border-y border-foreground/20">{fit.map((item) => <li key={item} className="flex gap-3 py-4 text-foreground/70"><ArrowRight className="mt-1 h-4 w-4 shrink-0 text-accent" />{item}</li>)}</ul><Link href="/contact" className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-foreground px-6 font-semibold text-background">Start with your problem <ArrowUpRight className="h-5 w-5" /></Link></div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
