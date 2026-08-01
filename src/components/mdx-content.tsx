@@ -14,7 +14,7 @@ interface MDXContentProps {
 export function MDXContent({ source }: MDXContentProps) {
   const components = useMDXComponents({})
   return (
-    <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold">
+    <div className="case-study-prose">
       <MDXRemote
         source={source}
         options={{

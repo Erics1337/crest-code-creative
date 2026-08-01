@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-31T23:09:06Z",
+  "title": "Design System: Crest Code Creative",
+  "extensions": {
+    "colorMeta": {
+      "alpine-white": { "role": "neutral", "displayName": "Alpine White", "canonical": "#F6F8F6", "tonalRamp": ["#FFFFFF", "#F6F8F6", "#D8DBD6"] },
+      "graphite": { "role": "primary", "displayName": "Graphite", "canonical": "#151A19", "tonalRamp": ["#39413F", "#151A19", "#090C0B"] },
+      "evergreen": { "role": "secondary", "displayName": "Evergreen", "canonical": "#21443E", "tonalRamp": ["#93AAA5", "#21443E", "#102722"] },
+      "steel-blue": { "role": "tertiary", "displayName": "Steel Blue", "canonical": "#477681", "tonalRamp": ["#B9CFD2", "#477681", "#28464D"] },
+      "cobalt-marker": { "role": "tertiary", "displayName": "Cobalt Marker", "canonical": "#315CF5", "tonalRamp": ["#A9BAFF", "#315CF5", "#18329B"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Editorial Display", "purpose": "One authored statement per major surface." },
+      "body": { "displayName": "Plainspoken Body", "purpose": "Business context, outcomes, and narrative." },
+      "label": { "displayName": "Field Annotation", "purpose": "Indices, dates, categories, and coordinates." }
+    },
+    "shadows": [
+      { "name": "plate-hover", "value": "8px 10px 0 rgba(21,26,25,0.14)", "purpose": "Crisp lift for interactive project imagery only." }
+    ],
+    "motion": [
+      { "name": "reveal", "value": "700ms cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Image and editorial section arrival." },
+      { "name": "state", "value": "180ms ease-out", "purpose": "Controls, links, and focus-adjacent state changes." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The decisive action used sparingly at conversion moments.",
+      "html": "<button class=\"ds-btn-primary\">START A PROJECT <span aria-hidden=\"true\">↗</span></button>",
+      "css": ".ds-btn-primary { background:#151A19;color:#FFFFFF;border:0;border-radius:999px;padding:14px 22px;font:600 12px/1 Archivo,Arial,sans-serif;letter-spacing:.08em;transition:background .18s ease-out,transform .18s ease-out}.ds-btn-primary:hover{background:#21443E;transform:translateY(-2px)}.ds-btn-primary:focus-visible{outline:2px solid #315CF5;outline-offset:3px}"
+    },
+    {
+      "name": "Project Label",
+      "kind": "chip",
+      "description": "Compact evidence metadata rather than a decorative tag.",
+      "html": "<span class=\"ds-project-label\">01 / MOBILE PRODUCT</span>",
+      "css": ".ds-project-label{display:inline-block;color:#151A19;border-top:1px solid #B8BFBA;padding-top:8px;font:600 11px/1.2 ui-monospace,monospace;letter-spacing:.11em}"
+    },
+    {
+      "name": "Project Plate",
+      "kind": "card",
+      "description": "Image-led case-study entry with concise business outcome.",
+      "html": "<article class=\"ds-project-plate\"><div class=\"ds-project-image\"></div><small>01 / PRODUCT</small><h3>ThirdTone</h3><p>A connected foundation for personalized listening and scalable content operations.</p></article>",
+      "css": ".ds-project-plate{max-width:560px;color:#151A19}.ds-project-image{aspect-ratio:4/3;background:#B9CFD2;border-radius:2px;transition:transform .18s ease-out,box-shadow .18s ease-out}.ds-project-plate:hover .ds-project-image{transform:translateY(-3px);box-shadow:8px 10px 0 rgba(21,26,25,.14)}.ds-project-plate small{display:block;margin-top:16px;font:600 11px Archivo,Arial,sans-serif;letter-spacing:.11em}.ds-project-plate h3{margin:12px 0 8px;font:600 30px/1 Archivo,Arial,sans-serif}.ds-project-plate p{margin:0;font:400 16px/1.55 Archivo,Arial,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "High Country Field Office",
+    "overview": "Bay Area editorial precision meets the warmth, resourcefulness, and landscape rhythm of a small Colorado product studio.",
+    "keyCharacteristics": ["cinematic project plates", "asymmetric editorial grid", "clean alpine fields", "graphite and steel-blue structure", "plainspoken outcomes"],
+    "rules": [
+      { "name": "Cobalt Marker Rule", "body": "Cobalt marks consequential action or one focal fact and stays scarce.", "section": "colors" },
+      { "name": "Two Voices Rule", "body": "Serif carries authored perspective; sans-serif carries facts and action.", "section": "typography" },
+      { "name": "Field Table Rule", "body": "Arrange evidence on a working surface instead of floating generic cards.", "section": "elevation" }
+    ],
+    "dos": ["Lead with real project imagery.", "Make outcomes legible before implementation details.", "Use annotation only to orient real information."],
+    "donts": ["Do not use generic gradient blobs or repeated SaaS cards.", "Do not turn Colorado references into resort branding.", "Do not let one project's palette become the studio identity."]
+  }
+}

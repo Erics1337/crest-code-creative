@@ -1,161 +1,97 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-// import { ChevronDown } from 'lucide-react';
-import { Dropdown, DropdownItem } from '@/components/ui/dropdown';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const navigation = [
+  { name: 'Work', href: '/portfolio' },
+  { name: 'Services', href: '/services' },
+  { name: 'About', href: '/about' },
+  { name: 'Field Notes', href: '/blog' },
+];
 
 export function Header() {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    {
-      name: 'Services',
-      href: '/services',
-      items: [
-        { name: 'Web Design', href: '/services/web-design' },
-        { name: 'Software Development', href: '/services/software-development' },
-        { name: 'Mobile Apps', href: '/services/mobile-apps' },
-        { name: 'n8n Business Automations', href: '/services/n8n-automations' },
-      ]
-    },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
   return (
-    <header className="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b">
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/crest-logo.png"
-                alt="Crest Code Logo"
-                width={40}
-                height={40}
-                className="h-10 w-auto"
-                priority
-              />
-              <span className="text-xl font-bold text-primary font-display">
-                Crest Code
-              </span>
-            </Link>
-          </div>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-foreground/15 bg-background/95">
+      <nav className="site-container flex h-[72px] items-center justify-between" aria-label="Primary navigation">
+        <Link href="/" className="group flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
+          <Image src="/crest-logo.png" alt="" width={40} height={40} className="h-9 w-auto" priority />
+          <span className="leading-none">
+            <span className="block text-sm font-bold tracking-[-0.02em] sm:text-base">Crest Code Creative</span>
+            <span className="mt-1 hidden text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-foreground/50 sm:block">
+              Gunnison Valley · Colorado
+            </span>
+          </span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            {navigation.map((item) => (
-              item.items ? (
-                <Dropdown
-                  key={item.name}
-                  trigger={item.name}
-                  href={item.href}
-                >
-                  {item.items.map((subItem) => (
-                    <DropdownItem
-                      key={subItem.name}
-                      href={subItem.href}
-                    >
-                      {subItem.name}
-                    </DropdownItem>
-                  ))}
-                </Dropdown>
-              ) : (
+        <div className="hidden items-center gap-1 md:flex">
+          {navigation.map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  'relative px-4 py-3 text-sm font-semibold text-foreground/65 transition-colors hover:text-foreground',
+                  isActive && 'text-foreground after:absolute after:inset-x-4 after:bottom-1 after:h-px after:bg-accent'
+                )}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+          <Link
+            href="/contact"
+            className="ml-3 inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 hover:bg-secondary"
+          >
+            Start a project <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-foreground/25 md:hidden"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </nav>
+
+      {isMenuOpen && (
+        <div id="mobile-navigation" className="border-t border-foreground/15 bg-background md:hidden">
+          <div className="site-container py-8">
+            <div className="grid gap-1">
+              {navigation.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
-                  className="text-gray-600 hover:text-primary hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="border-b border-foreground/15 py-4 text-3xl font-semibold tracking-[-0.03em]"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
-              )
-            ))}
-            <Button asChild>
-              <Link href="/contact">Schedule Consultation</Link>
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+              ))}
+            </div>
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex min-h-12 w-full items-center justify-between rounded-full bg-foreground px-6 font-semibold text-background"
+              onClick={() => setIsMenuOpen(false)}
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </Button>
+              Start a project <ArrowUpRight className="h-5 w-5" />
+            </Link>
           </div>
         </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navigation.map((item) => (
-                item.items ? (
-                  <div key={item.name} className="space-y-2">
-                    <div className="text-gray-600 px-3 py-2 text-base font-medium">
-                      {item.name}
-                    </div>
-                    <div className="ml-4 space-y-1">
-                      {item.items.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="text-gray-600 hover:text-primary hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-600 hover:text-primary hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                )
-              ))}
-              <Button className="w-full mt-4" asChild>
-                <Link href="/contact">Schedule Consultation</Link>
-              </Button>
-            </div>
-          </div>
-        )}
-      </nav>
+      )}
     </header>
   );
 }

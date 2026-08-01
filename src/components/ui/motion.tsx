@@ -15,7 +15,7 @@ export const FadeIn = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration, delay }}
       className={className}
@@ -36,7 +36,7 @@ export const FadeInStagger = ({
 }) => {
   return (
     <motion.div
-      initial="hidden"
+      initial={false}
       animate="visible"
       variants={{
         hidden: { opacity: 0 },

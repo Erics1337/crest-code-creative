@@ -1,92 +1,63 @@
 'use client';
 
 import { useState } from 'react';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { PostMetadata } from '@/lib/posts';
 import { BlogCard } from './blog-card';
-import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 interface BlogListProps {
-    posts: PostMetadata[];
-    categories: string[];
+  posts: PostMetadata[];
+  categories: string[];
 }
 
 export function BlogList({ posts, categories }: BlogListProps) {
-    const [selectedCategory, setSelectedCategory] = useState('All');
-    const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const filteredPosts = posts.filter((post) => {
+    const matchesCategory = selectedCategory === 'All' || post.tags?.includes(selectedCategory);
+    const matchesSearch = `${post.title} ${post.description}`.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
-    const filteredPosts = posts.filter((post) => {
-        const matchesCategory =
-            selectedCategory === 'All' || post.tags?.includes(selectedCategory);
-        const matchesSearch =
-            post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            post.description.toLowerCase().includes(searchQuery.toLowerCase());
-
-        return matchesCategory && matchesSearch;
-    });
-
-    return (
-        <div className="space-y-12">
-            {/* Controls */}
-            <FadeIn>
-                <div className="flex flex-col md:flex-row gap-6 justify-between items-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    {/* Categories */}
-                    <div className="flex flex-wrap gap-2">
-                        {categories.map((category) => (
-                            <button
-                                key={category}
-                                onClick={() => setSelectedCategory(category)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === category
-                                        ? 'bg-primary text-white shadow-md'
-                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                    }`}
-                            >
-                                {category}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Search */}
-                    <div className="relative w-full md:w-64">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
-                        </div>
-                        <input
-                            type="text"
-                            placeholder="Search articles..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition-colors"
-                        />
-                    </div>
-                </div>
-            </FadeIn>
-
-            {/* Results */}
-            {filteredPosts.length > 0 ? (
-                <FadeInStagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredPosts.map((post) => (
-                        <FadeInStaggerItem key={post.slug}>
-                            <BlogCard {...post} author="Team" />
-                        </FadeInStaggerItem>
-                    ))}
-                </FadeInStagger>
-            ) : (
-                <FadeIn>
-                    <div className="text-center py-20">
-                        <p className="text-xl text-gray-500">No articles found matching your criteria.</p>
-                        <button
-                            onClick={() => {
-                                setSelectedCategory('All');
-                                setSearchQuery('');
-                            }}
-                            className="mt-4 text-primary font-medium hover:underline"
-                        >
-                            Clear filters
-                        </button>
-                    </div>
-                </FadeIn>
-            )}
+  return (
+    <div className="space-y-12">
+      <div className="flex flex-col justify-between gap-6 border-b border-foreground/20 pb-8 md:flex-row md:items-center">
+        <div className="flex flex-wrap gap-2" aria-label="Filter field notes by category">
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setSelectedCategory(category)}
+              aria-pressed={selectedCategory === category}
+              className={`min-h-10 rounded-full px-4 text-sm font-semibold transition-colors ${selectedCategory === category ? 'bg-foreground text-background' : 'border border-foreground/20 bg-white text-foreground/60 hover:border-foreground hover:text-foreground'}`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
-    );
+        <label className="relative block w-full md:w-72">
+          <span className="sr-only">Search field notes</span>
+          <MagnifyingGlassIcon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-foreground/40" />
+          <input
+            type="search"
+            placeholder="Search field notes"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            className="block min-h-11 w-full rounded-full border border-foreground/25 bg-white py-2 pl-11 pr-4 text-sm placeholder:text-foreground/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+          />
+        </label>
+      </div>
+
+      {filteredPosts.length > 0 ? (
+        <div className="grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+          {filteredPosts.map((post) => <BlogCard key={post.slug} {...post} author="Crest Code" />)}
+        </div>
+      ) : (
+        <div className="border-y border-foreground/20 py-20 text-center">
+          <p className="text-xl text-foreground/55">No notes match those filters.</p>
+          <button type="button" onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }} className="mt-4 font-semibold text-accent underline underline-offset-4">Clear filters</button>
+        </div>
+      )}
+    </div>
+  );
 }

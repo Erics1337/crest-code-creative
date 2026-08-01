@@ -14,69 +14,20 @@ interface BlogCardProps {
   tags?: string[];
 }
 
-export function BlogCard({
-  title,
-  description,
-  date,
-  author,
-  slug,
-  coverImage = '/images/blog/default-cover.jpg',
-  readingTime,
-  tags = [],
-}: BlogCardProps) {
+export function BlogCard({ title, description, date, slug, coverImage = '/images/blog/n8n-automation-hub.png', readingTime, tags = [] }: BlogCardProps) {
   return (
-    <Link
-      href={`/blog/${slug}`}
-      className="group block bg-white rounded-xl overflow-hidden shadow-sm transition-all hover:shadow-md"
-    >
-      <div className="relative h-48 w-full overflow-hidden">
-        <Image
-          src={coverImage}
-          alt={title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="text-white font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-            Read Article <ArrowUpRight className="w-4 h-4" />
-          </span>
+    <article className="group border-t border-foreground/20 pt-4">
+      <Link href={`/blog/${slug}`} className="block">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-[#dce7e8]">
+          <Image src={coverImage} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
         </div>
-      </div>
-      <div className="p-6">
-        <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
-          <time dateTime={date}>{formatDate(date)}</time>
-          {readingTime && (
-            <>
-              <span>•</span>
-              <span>{readingTime}</span>
-            </>
-          )}
+        <div className="mt-5 flex items-center justify-between gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-foreground/50">
+          <time dateTime={date}>{formatDate(date)}</time><span>{readingTime || tags[0] || 'Field note'}</span>
         </div>
-        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-          {title}
-        </h3>
-        <p className="text-gray-600 mb-4 line-clamp-2">{description}</p>
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-600">{author}</span>
-          {tags.length > 0 && (
-            <div className="flex gap-2">
-              {tags.slice(0, 2).map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-1 bg-primary/5 text-primary rounded-full text-xs"
-                >
-                  {tag}
-                </span>
-              ))}
-              {tags.length > 2 && (
-                <span className="px-2 py-1 bg-primary/5 text-primary rounded-full text-xs">
-                  +{tags.length - 2}
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </Link>
+        <h3 className="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] transition-colors group-hover:text-accent">{title}</h3>
+        <p className="mt-3 line-clamp-3 leading-7 text-foreground/62">{description}</p>
+        <span className="link-arrow mt-4 text-sm">Read note <ArrowUpRight className="h-4 w-4" /></span>
+      </Link>
+    </article>
   );
 }

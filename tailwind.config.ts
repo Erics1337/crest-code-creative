@@ -19,8 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-archivo)', 'Arial', 'sans-serif'],
+        display: ['var(--font-archivo)', 'Arial', 'sans-serif'],
+        editorial: ['var(--font-source-serif)', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -29,7 +30,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0F172A", // Slate 900
+          DEFAULT: "#151A19",
           foreground: "hsl(var(--primary-foreground))",
           50: "#F8FAFC",
           100: "#F1F5F9",
@@ -43,7 +44,7 @@ const config = {
           900: "#0F172A",
         },
         secondary: {
-          DEFAULT: "#0D9488", // Teal 600
+          DEFAULT: "#21443E",
           foreground: "hsl(var(--secondary-foreground))",
           50: "#F0FDFA",
           100: "#CCFBF1",
@@ -57,7 +58,7 @@ const config = {
           900: "#134E4A",
         },
         accent: {
-          DEFAULT: "#F59E0B", // Amber 500
+          DEFAULT: "#315CF5",
           foreground: "hsl(var(--accent-foreground))",
           50: "#FFFBEB",
           100: "#FEF3C7",

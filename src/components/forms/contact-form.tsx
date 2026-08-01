@@ -38,6 +38,7 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
       phone: formData.get('phone'),
       message: formData.get('message'),
       package: selectedService, // Use state value
+      companyWebsite: formData.get('companyWebsite'),
     };
 
     try {
@@ -86,9 +87,9 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center text-center space-y-6 py-8"
+        className="flex flex-col items-center space-y-6 py-8 text-center"
       >
-        <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
+        <div className="relative mb-6 aspect-[4/3] w-full max-w-md overflow-hidden rounded-sm">
           <Image
             src="/images/snowboarder-thank-you.png"
             alt="Snowboarder carving"
@@ -101,13 +102,13 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold text-foreground">Message Received!</h2>
+          <h2 className="text-3xl font-semibold tracking-[-0.03em] text-foreground">Message received.</h2>
           <p className="text-muted-foreground text-lg max-w-md mx-auto">
             Thanks for reaching out. We&apos;re excited to explore how we can help you with {selectedService || 'your project'}.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-primary font-medium bg-primary/10 px-6 py-3 rounded-full">
+        <div className="flex items-center gap-2 rounded-full bg-[#dce7e8] px-6 py-3 font-medium text-foreground">
           <Clock className="w-5 h-5" />
           <span>Average response time: 1 business day</span>
         </div>
@@ -135,8 +136,8 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
       />
 
       <div className="space-y-4">
-        <label className="text-sm font-medium text-foreground">
-          I&apos;m interested in...
+        <label className="field-label block">
+          What are we talking about?
         </label>
         <div className="flex flex-wrap gap-3">
           {services.map((service) => (
@@ -145,16 +146,16 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
               type="button"
               onClick={() => setSelectedService(service)}
               className={`
-                relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border
+                relative min-h-11 rounded-full border px-4 py-2 text-sm font-semibold transition-colors duration-200
                 ${selectedService === service
-                  ? 'bg-primary text-primary-foreground border-primary shadow-md transform scale-105'
-                  : 'bg-background text-muted-foreground border-input hover:border-primary/50 hover:text-foreground'
+                  ? 'border-foreground bg-foreground text-background'
+                  : 'border-foreground/25 bg-white text-foreground/65 hover:border-foreground hover:text-foreground'
                 }
               `}
             >
               {service}
               {selectedService === service && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background" />
+                <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-white bg-accent" />
               )}
             </button>
           ))}
@@ -164,7 +165,7 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-medium text-foreground">
+          <label htmlFor="name" className="field-label">
             Name
           </label>
           <Input
@@ -172,11 +173,11 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
             name="name"
             required
             placeholder="Your name"
-            className="h-12 bg-background/50 backdrop-blur-sm focus:bg-background transition-colors"
+            className="h-12 rounded-lg border-foreground/25 bg-white focus:border-accent"
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-medium text-foreground">
+          <label htmlFor="email" className="field-label">
             Email
           </label>
           <Input
@@ -185,13 +186,13 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
             type="email"
             required
             placeholder="your@email.com"
-            className="h-12 bg-background/50 backdrop-blur-sm focus:bg-background transition-colors"
+            className="h-12 rounded-lg border-foreground/25 bg-white focus:border-accent"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="phone" className="text-sm font-medium text-foreground">
+        <label htmlFor="phone" className="field-label">
           Phone (optional)
         </label>
         <Input
@@ -199,12 +200,12 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
           name="phone"
           type="tel"
           placeholder="(970) 555-0123"
-          className="h-12 bg-background/50 backdrop-blur-sm focus:bg-background transition-colors"
+          className="h-12 rounded-lg border-foreground/25 bg-white focus:border-accent"
         />
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="message" className="text-sm font-medium text-foreground">
+        <label htmlFor="message" className="field-label">
           Message
         </label>
         <Textarea
@@ -213,20 +214,20 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
           required
           placeholder="Tell us about your project goals, timeline, and budget..."
           rows={6}
-          className="resize-none bg-background/50 backdrop-blur-sm focus:bg-background transition-colors p-4"
+          className="resize-none rounded-lg border-foreground/25 bg-white p-4 focus:border-accent"
         />
       </div>
 
       <Button
         type="submit"
-        className="w-full h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+        className="group h-14 w-full text-lg font-semibold"
         disabled={isLoading}
       >
         {isLoading ? (
           'Sending...'
         ) : (
           <span className="flex items-center gap-2">
-            Send Message
+            Send project note
             <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </span>
         )}

@@ -1,72 +1,48 @@
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import type { Metadata } from 'next'
-import { ArrowLeft } from 'lucide-react'
-import { getPostBySlug, getPosts } from '@/lib/posts'
-import { formatDate } from '@/lib/utils'
-import { MDXContent } from '@/components/mdx-content'
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import { ArrowLeft } from 'lucide-react';
+import { getPostBySlug, getPosts } from '@/lib/posts';
+import { formatDate } from '@/lib/utils';
+import { MDXContent } from '@/components/mdx-content';
 
-export const revalidate = 3600
-export const dynamicParams = false
+export const revalidate = 3600;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const posts = await getPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
+  const posts = await getPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
-type PageProps = {
-  params: Promise<{ slug: string }>
-}
+type PageProps = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params
-  const post = await getPostBySlug(resolvedParams.slug)
-
-  if (!post) {
-    return {}
-  }
-
-  return {
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    alternates: {
-      canonical: `/blog/${post.slug}`,
-    },
-  }
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) return {};
+  return { title: `${post.frontmatter.title} | Crest Code Field Notes`, description: post.frontmatter.description, alternates: { canonical: `/blog/${post.slug}` } };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const resolvedParams = await params
-  const post = await getPostBySlug(resolvedParams.slug)
-
-  if (!post) {
-    notFound()
-  }
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) notFound();
 
   return (
-    <article className="container max-w-3xl py-6 lg:py-12">
-      <Link 
-        href="/blog"
-        className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 group"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-        Back to Blogs
-      </Link>
-      
-      <div className="space-y-4 mb-8">
-        <h1 className="text-4xl font-bold">{post.frontmatter.title}</h1>
-        <div className="text-gray-500 dark:text-gray-400">
-          {formatDate(post.frontmatter.date)}
+    <article className="bg-[#f6f8f6]">
+      <header className="site-container py-16 sm:py-24">
+        <Link href="/blog" className="mb-12 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-foreground/60 hover:text-foreground"><ArrowLeft className="h-4 w-4" /> All field notes</Link>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8"><p className="field-label mb-6">Field note · {formatDate(post.frontmatter.date)}</p><h1 className="display-title">{post.frontmatter.title}</h1></div>
+          {post.frontmatter.description && <p className="text-lg leading-8 text-foreground/68 lg:col-span-4">{post.frontmatter.description}</p>}
         </div>
-        {post.frontmatter.description && (
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            {post.frontmatter.description}
-          </p>
-        )}
-      </div>
-      <MDXContent source={post.content} />
+      </header>
+      <section className="bg-white py-16 sm:py-24">
+        <div className="site-container grid gap-12 lg:grid-cols-12">
+          <aside className="lg:col-span-3"><div className="lg:sticky lg:top-28"><p className="field-label mb-4">From Crest Code</p><p className="text-sm leading-6 text-foreground/55">Practical observations from designing, building, and operating digital products.</p></div></aside>
+          <div className="lg:col-span-8 lg:col-start-5"><MDXContent source={post.content} /></div>
+        </div>
+      </section>
     </article>
-  )
+  );
 }
