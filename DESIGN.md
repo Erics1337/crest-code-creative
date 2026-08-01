@@ -14,7 +14,7 @@ colors:
 typography:
   display:
     fontFamily: "Archivo, Arial, sans-serif"
-    fontSize: "clamp(3.75rem, 9vw, 8.5rem)"
+    fontSize: "clamp(3.25rem, 8vw, 6rem)"
     fontWeight: 400
     lineHeight: 0.9
     letterSpacing: "-0.045em"
@@ -31,10 +31,16 @@ typography:
     lineHeight: 1.65
   label:
     fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
-    fontSize: "0.75rem"
+    fontSize: "0.68rem"
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "0.11em"
+  micro:
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "0.6rem"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "0.14em"
 rounded:
   control: "999px"
   image: "2px"
@@ -110,11 +116,11 @@ The palette combines clean alpine whites and graphite with evergreen, steel-blue
 **Character:** Archivo brings the crisp, assured scale of a contemporary product studio. Source Serif 4 appears only for human perspective, testimony, and reflective notes. Monospace is reserved for real code or measurement rather than used as a technical costume.
 
 ### Hierarchy
-- **Display** (400, `clamp(3.75rem, 9vw, 8.5rem)`, 0.9): One expressive statement per major surface.
+- **Display** (600, `clamp(3.25rem, 8vw, 6rem)`, 0.92): One decisive statement per major surface.
 - **Headline** (600, `clamp(2.25rem, 5vw, 5rem)`, 0.98): Section and case-study claims.
 - **Title** (600, 1.25–2rem, 1.1): Project and component titles.
 - **Body** (400, 1rem–1.25rem, 1.55–1.7): Plain-language narrative with a 68ch maximum.
-- **Label** (600, 0.75rem, 0.11em, uppercase): Sparse metadata and field annotations.
+- **Label** (600, 0.68rem, 0.11–0.14em, uppercase): Sparse metadata and field annotations; 0.6rem is reserved for the compact header location line.
 
 **The Two Voices Rule.** Archivo carries the offer, facts, and action; Source Serif carries human perspective. Do not use both to compete at the same scale.
 

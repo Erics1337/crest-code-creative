@@ -13,7 +13,8 @@
     "typographyMeta": {
       "display": { "displayName": "Editorial Display", "purpose": "One authored statement per major surface." },
       "body": { "displayName": "Plainspoken Body", "purpose": "Business context, outcomes, and narrative." },
-      "label": { "displayName": "Field Annotation", "purpose": "Indices, dates, categories, and coordinates." }
+      "label": { "displayName": "Field Annotation", "purpose": "Indices, dates, categories, and route labels." },
+      "micro": { "displayName": "Header Location", "purpose": "The compact Gunnison Valley location line only." }
     },
     "shadows": [
       { "name": "plate-hover", "value": "8px 10px 0 rgba(21,26,25,0.14)", "purpose": "Crisp lift for interactive project imagery only." }

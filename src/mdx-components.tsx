@@ -12,6 +12,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h6: ({ children }) => <h6 className="text-base font-bold mt-4 mb-2">{children}</h6>,
     p: ({ children }) => <p className="mb-6 leading-8">{children}</p>,
     a: ({ href, children }) => {
+      if (href?.startsWith('#')) {
+        return <a href={href} className="text-inherit no-underline">{children}</a>
+      }
       const isExternal = href?.startsWith('http')
       if (isExternal) {
         return (

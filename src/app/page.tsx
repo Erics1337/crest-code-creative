@@ -41,6 +41,7 @@ export default function Home() {
           sizes="100vw"
           quality={92}
           priority
+          unoptimized
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,15,14,0.82)_0%,rgba(10,15,14,0.5)_46%,rgba(10,15,14,0.08)_78%)]" />
