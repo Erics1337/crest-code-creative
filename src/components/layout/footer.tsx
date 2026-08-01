@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid gap-14 border-b border-white/20 pb-16 lg:grid-cols-[1.35fr_0.65fr]">
           <div>
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Have something useful to build?</p>
-            <h2 className="max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.035em] sm:text-6xl">
+            <h2 className="max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.035em] text-white sm:text-6xl">
               Bring the problem. We&apos;ll shape the product together.
             </h2>
             <Link href="/contact" className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-white px-6 font-semibold text-[#151a19] transition-transform hover:-translate-y-0.5">
