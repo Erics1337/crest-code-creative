@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { Send, Clock } from 'lucide-react';
+import { Check, CircleAlert, Clock, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ContactFormProps {
@@ -25,11 +25,14 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState(selectedPackage || '');
+  const [submittedService, setSubmittedService] = useState('');
+  const [formError, setFormError] = useState('');
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    setFormError('');
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -38,6 +41,7 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
       phone: formData.get('phone'),
       message: formData.get('message'),
       package: selectedService, // Use state value
+      companyWebsite: formData.get('companyWebsite'),
     };
 
     try {
@@ -55,6 +59,7 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
         throw new Error(result.details || 'Failed to send message');
       }
 
+      setSubmittedService(selectedService);
       setIsSubmitted(true);
       toast({
         title: 'Message sent!',
@@ -71,9 +76,11 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
         setSelectedService('');
       }
     } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Unable to send your note right now. Please try again or email Eric directly.';
+      setFormError(message);
       toast({
         title: 'Error',
-        description: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
+        description: message,
         variant: 'destructive',
       });
     } finally {
@@ -86,9 +93,9 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center text-center space-y-6 py-8"
+        className="flex flex-col items-center space-y-6 py-8 text-center"
       >
-        <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl mb-6">
+        <div className="relative mb-6 aspect-[4/3] w-full max-w-md overflow-hidden rounded-sm">
           <Image
             src="/images/snowboarder-thank-you.png"
             alt="Snowboarder carving"
@@ -101,13 +108,13 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold text-foreground">Message Received!</h2>
+          <h2 className="text-3xl font-semibold tracking-[-0.03em] text-foreground">Message received.</h2>
           <p className="text-muted-foreground text-lg max-w-md mx-auto">
-            Thanks for reaching out. We&apos;re excited to explore how we can help you with {selectedService || 'your project'}.
+            Eric will review your note personally and reply within one business day about the best next step for {submittedService || 'your project'}.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-primary font-medium bg-primary/10 px-6 py-3 rounded-full">
+        <div className="flex items-center gap-2 rounded-full bg-[#dce7e8] px-6 py-3 font-medium text-foreground">
           <Clock className="w-5 h-5" />
           <span>Average response time: 1 business day</span>
         </div>
@@ -135,36 +142,42 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
       />
 
       <div className="space-y-4">
-        <label className="text-sm font-medium text-foreground">
-          I&apos;m interested in...
-        </label>
-        <div className="flex flex-wrap gap-3">
-          {services.map((service) => (
-            <button
-              key={service}
-              type="button"
-              onClick={() => setSelectedService(service)}
-              className={`
-                relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border
-                ${selectedService === service
-                  ? 'bg-primary text-primary-foreground border-primary shadow-md transform scale-105'
-                  : 'bg-background text-muted-foreground border-input hover:border-primary/50 hover:text-foreground'
-                }
-              `}
-            >
-              {service}
-              {selectedService === service && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background" />
-              )}
-            </button>
-          ))}
+        <div className="flex items-baseline justify-between gap-4">
+          <label id="service-fit-label" className="field-label block">Closest fit</label>
+          <span className="text-xs text-foreground/50">Optional</span>
+        </div>
+        <p className="text-sm leading-6 text-foreground/60">Pick one if it helps. A rough description of the problem is more important.</p>
+        <div className="flex flex-wrap gap-3" role="radiogroup" aria-labelledby="service-fit-label">
+          {services.map((service) => {
+            const isSelected = selectedService === service;
+            return (
+              <button
+                key={service}
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                onClick={() => setSelectedService(isSelected ? '' : service)}
+                className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors duration-200 ${isSelected ? 'border-foreground bg-foreground text-background' : 'border-foreground/25 bg-white text-foreground/65 hover:border-foreground hover:text-foreground'}`}
+              >
+                {isSelected && <Check className="h-4 w-4" aria-hidden="true" />}
+                {service}
+              </button>
+            );
+          })}
         </div>
         <input type="hidden" name="package" value={selectedService} />
       </div>
 
+      {formError && (
+        <div role="alert" className="flex gap-3 border border-destructive/35 bg-destructive/5 p-4 text-sm leading-6 text-foreground">
+          <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-destructive" aria-hidden="true" />
+          <p>{formError} You can also email <a href="mailto:eric@crestcodecreative.com" className="font-semibold underline underline-offset-4">eric@crestcodecreative.com</a>.</p>
+        </div>
+      )}
+
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-medium text-foreground">
+          <label htmlFor="name" className="field-label">
             Name
           </label>
           <Input
@@ -172,11 +185,11 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
             name="name"
             required
             placeholder="Your name"
-            className="h-12 bg-background/50 backdrop-blur-sm focus:bg-background transition-colors"
+            className="h-12 rounded-lg border-foreground/25 bg-white focus:border-accent"
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-medium text-foreground">
+          <label htmlFor="email" className="field-label">
             Email
           </label>
           <Input
@@ -185,13 +198,13 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
             type="email"
             required
             placeholder="your@email.com"
-            className="h-12 bg-background/50 backdrop-blur-sm focus:bg-background transition-colors"
+            className="h-12 rounded-lg border-foreground/25 bg-white focus:border-accent"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="phone" className="text-sm font-medium text-foreground">
+        <label htmlFor="phone" className="field-label">
           Phone (optional)
         </label>
         <Input
@@ -199,38 +212,39 @@ export function ContactForm({ selectedPackage }: ContactFormProps) {
           name="phone"
           type="tel"
           placeholder="(970) 555-0123"
-          className="h-12 bg-background/50 backdrop-blur-sm focus:bg-background transition-colors"
+          className="h-12 rounded-lg border-foreground/25 bg-white focus:border-accent"
         />
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="message" className="text-sm font-medium text-foreground">
-          Message
+        <label htmlFor="message" className="field-label">
+          What needs to work better?
         </label>
         <Textarea
           id="message"
           name="message"
           required
-          placeholder="Tell us about your project goals, timeline, and budget..."
+          placeholder="A few details are plenty: what you do, who it serves, and what would feel like a win."
           rows={6}
-          className="resize-none bg-background/50 backdrop-blur-sm focus:bg-background transition-colors p-4"
+          className="resize-none rounded-lg border-foreground/25 bg-white p-4 focus:border-accent"
         />
       </div>
 
       <Button
         type="submit"
-        className="w-full h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+        className="group h-14 w-full text-lg font-semibold"
         disabled={isLoading}
       >
         {isLoading ? (
           'Sending...'
         ) : (
           <span className="flex items-center gap-2">
-            Send Message
+            Send project note
             <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </span>
         )}
       </Button>
+      <p className="text-center text-sm leading-6 text-foreground/55">Eric reads every note personally. No pressure, no sales sequence—just a clear next step.</p>
     </form>
   );
 }

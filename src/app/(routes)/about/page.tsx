@@ -1,303 +1,64 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
-import {
-  MapPin,
-  Code2,
-  ArrowRight,
-  Compass,
-  Shield,
-  Brain,
-  Zap,
-  TrendingUp,
-  Users
-} from 'lucide-react';
+import { ArrowUpRight, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Me | Crest Code',
-  description: 'Learn about Eric Swanson and Crest Code - bringing tech expertise to the Gunnison Valley.',
+  title: 'About Eric & Crest Code Creative',
+  description: 'A hands-on digital product partner bringing broad technical experience and local understanding to the Gunnison Valley and beyond.',
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 -z-10 opacity-30">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl" />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="max-w-4xl">
-              <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">About Me</span>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-foreground">
-                World-Class Technology with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Mountain Town Soul</span>
-              </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                I&apos;m Eric Swanson, a developer dedicated to bringing digital solutions to the Gunnison Valley community I call home.
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Story Section */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <FadeIn>
-              <div className="relative">
-                <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/linkedin-profile.jpeg"
-                    alt="Eric Swanson"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                {/* Decorative elements */}
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary rounded-full blur-2xl opacity-50" />
-                <div className="absolute -top-6 -left-6 w-32 h-32 bg-blue-500 rounded-full blur-2xl opacity-30" />
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-3xl font-bold mb-6">My Journey</h2>
-                  <div className="space-y-6 text-lg text-muted-foreground">
-                    <p>
-                      My connection to the Gunnison Valley began in 2015. Drawn by the stunning beauty and vibrant community, I immersed myself in local life—working at Crested Butte Mountain Resort, Gunnison Valley Health, and local small businesses.
-                    </p>
-                    <p>
-                      These experiences weren&apos;t just jobs; they were an education in the unique spirit and challenges of our valley. Inspired to make a difference, I pursued Computer Science at Western Colorado University, combining technical rigor with local insight.
-                    </p>
-                    <p>
-                      After honing my skills with big tech companies and remote roles, I&apos;ve returned to my roots. Now, I bring enterprise-level expertise to local businesses, helping them thrive in the digital age without losing their authentic character.
-                    </p>
-                    <p>
-                      Check out my developer portfolio at{' '}
-                      <a
-                        href="https://www.ericsdevportfolio.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary font-medium hover:underline"
-                      >
-                        www.ericsdevportfolio.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex items-center gap-2 text-sm font-medium text-primary">
-                    <MapPin className="w-5 h-5" />
-                    Based in Gunnison Valley
-                  </div>
-                  <div className="flex items-center gap-2 text-sm font-medium text-primary">
-                    <Code2 className="w-5 h-5" />
-                    Full-Stack Expert
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
+    <div>
+      <section className="bg-[#f6f8f6] py-20 sm:py-28">
+        <div className="site-container grid gap-14 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <p className="field-label mb-6">About the studio</p>
+            <h1 className="display-title">Product experience with mountain-town proximity.</h1>
+          </div>
+          <div className="lg:col-span-4 lg:col-start-9">
+            <p className="font-editorial text-2xl leading-relaxed text-foreground/80">Crest Code is Eric Swanson: one senior partner, a practical network, and direct accountability from first conversation to launch.</p>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-            <div className="grid md:grid-cols-2 gap-12 text-left">
-              <div>
-                <h2 className="text-2xl font-bold mb-4">Mission</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Crest Code empowers businesses with innovative and thoughtful technology, breaking down barriers to unlock their highest potential and create a deeper impact.
-                </p>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4">Vision</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Crest Code envisions a thriving community of inspired business owners, empowered by innovative technology to transform their ideas into impactful, creative solutions that elevate their goals.
-                </p>
-              </div>
+      <section className="bg-white py-16 sm:py-24">
+        <div className="site-container grid gap-12 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-[#dce7e8]">
+              <Image src="/linkedin-profile.jpeg" alt="Eric Swanson, founder of Crest Code Creative" fill priority className="object-cover" />
             </div>
-          </FadeIn>
-
-          <FadeInStagger>
-            <div className="text-center mb-12">
-              <h2 className="text-2xl font-bold">Values</h2>
+            <div className="mt-4 flex items-center justify-between border-t border-foreground/20 pt-4 text-sm text-foreground/55"><span>Eric Swanson · Founder & developer</span><span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> Gunnison Valley</span></div>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <p className="field-label mb-6">The path here</p>
+            <h2 className="section-title">Technology that stays connected to place and people.</h2>
+            <div className="mt-8 space-y-6 text-lg leading-8 text-foreground/68">
+              <p>My connection to the Gunnison Valley began in 2015 through work at Crested Butte Mountain Resort, Gunnison Valley Health, local businesses, and eventually Computer Science at Western Colorado University.</p>
+              <p>After building experience with larger technology companies and remote product teams, I brought that perspective back home. Crest Code exists to make sophisticated digital work more direct, understandable, and useful for the businesses and teams behind it.</p>
+              <p>The studio stays intentionally small. Clients work with the person making the product decisions and writing the code—without layers of account management or anonymous handoffs.</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {values.map((value, index) => (
-                <FadeInStaggerItem key={index} className="h-full">
-                  <div className="group h-full p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-primary">
-                      {value.icon}
-                    </div>
-                    <h3 className="text-xl font-bold mb-3">{value.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </FadeInStaggerItem>
-              ))}
-            </div>
-          </FadeInStagger>
+            <a href="https://www.ericsdevportfolio.com" target="_blank" rel="noopener noreferrer" className="link-arrow mt-7 text-sm">View Eric&apos;s developer portfolio <ArrowUpRight className="h-4 w-4" /></a>
+          </div>
         </div>
       </section>
 
-      {/* Stats/Impact Section */}
-      <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {impact.map((stat, index) => (
-              <FadeIn key={index} delay={index * 0.1}>
-                <div className="space-y-2">
-                  <div className="text-4xl md:text-5xl font-bold tracking-tight">
-                    {stat.value}
-                  </div>
-                  <div className="text-primary-foreground/80 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              </FadeIn>
+      <section className="bg-[#151a19] py-24 text-white sm:py-32">
+        <div className="site-container grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4"><p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/50">How Crest Code works</p><h2 className="mt-6 text-4xl font-semibold leading-none tracking-[-0.03em] text-white">Senior craft.<br />Small footprint.</h2></div>
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+            {[['Plainspoken', 'Complex technology should become easier to understand as the work progresses, not more mysterious.'], ['Accountable', 'The person in the room is the person making and standing behind the work.'], ['Resourceful', 'Use the right tool and the smallest dependable system—not novelty for its own sake.'], ['Long-view', 'Build foundations clients can operate, extend, and trust after launch.']].map(([title, body]) => (
+              <div key={title} className="border-t border-white/25 pt-5"><h3 className="text-xl font-semibold text-white">{title}</h3><p className="mt-3 leading-7 text-white/65">{body}</p></div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Community Commitment */}
-      <section className="py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 lg:p-16 overflow-hidden relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
-              <div className="space-y-8">
-                <FadeIn>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6">Community Commitment</h2>
-                  <p className="text-lg text-muted-foreground mb-8">
-                    My commitment goes beyond just providing services—it&apos;s about being a true partner in our community&apos;s growth. I understand the unique rhythm of our valley&apos;s economy.
-                  </p>
-
-                  <div className="space-y-4">
-                    {commitments.map((item, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <div className="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 text-primary">
-                          <ArrowRight className="w-3 h-3" />
-                        </div>
-                        <span className="text-foreground/80">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </FadeIn>
-              </div>
-
-              <FadeIn delay={0.2} className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl group">
-                <Image
-                  src="/images/coffee-shop.jpg"
-                  alt="Community Meeting"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-8 left-8 text-white">
-                  <p className="font-medium text-lg">Building relationships,</p>
-                  <p className="text-white/80">one cup at a time.</p>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="bg-gradient-to-br from-primary to-blue-600 rounded-3xl p-12 md:p-20 text-center text-white shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-              <div className="relative z-10 max-w-3xl mx-auto">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Transform Your Business?</h2>
-                <p className="text-xl text-white/90 mb-10">
-                  Let&apos;s discuss how we can create a digital solution that works for you and our community.
-                </p>
-                <Button asChild size="lg" variant="secondary" className="text-primary font-bold text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all">
-                  <Link href="/contact">Start a Conversation</Link>
-                </Button>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
+      <section className="bg-[#dce7e8] py-20 sm:py-24">
+        <div className="site-container flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p className="field-label mb-4">Work together</p><h2 className="max-w-3xl text-4xl font-semibold leading-[0.96] tracking-[-0.035em] sm:text-5xl">A local conversation can lead to a very capable product.</h2></div><Link href="/contact" className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-foreground px-6 font-semibold text-background">Start a conversation <ArrowUpRight className="h-5 w-5" /></Link></div>
       </section>
     </div>
   );
 }
-
-const values = [
-  {
-    title: 'Adventure',
-    description: 'Willing to take bold risks and explore new frontiers to find the best solutions.',
-    icon: <Compass className="w-6 h-6" />
-  },
-  {
-    title: 'Community',
-    description: 'Building deep connections and supporting the ecosystem that sustains us all.',
-    icon: <Users className="w-6 h-6" />
-  },
-  {
-    title: 'Strength',
-    description: 'Resilience and capability to endure through complex and difficult challenges.',
-    icon: <Shield className="w-6 h-6" />
-  },
-  {
-    title: 'Wisdom',
-    description: 'Blending technical knowledge with intuition for holistic decision making.',
-    icon: <Brain className="w-6 h-6" />
-  },
-  {
-    title: 'Passion',
-    description: 'Bringing energy and excitement to nurture the emotional connection with your dream.',
-    icon: <Zap className="w-6 h-6" />
-  },
-  {
-    title: 'Prosperity',
-    description: 'Creating abundance and growth that ripples out to the entire community.',
-    icon: <TrendingUp className="w-6 h-6" />
-  }
-];
-
-const commitments = [
-  "Deep understanding of local business needs through years of hands-on experience",
-  "Affordable, high-quality tech solutions tailored to our community",
-  "Active participation in local business networks and events",
-  "Flexible support schedules adapting to seasonal patterns",
-  "Preserving our valley's unique character while embracing innovation"
-];
-
-const impact = [
-  {
-    value: '5+',
-    label: 'Years Experience'
-  },
-  {
-    value: '3+',
-    label: 'Businesses Helped'
-  },
-  {
-    value: '100%',
-    label: 'Client Satisfaction'
-  },
-  {
-    value: '24/7',
-    label: 'Local Support'
-  }
-];

@@ -1,98 +1,52 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { ArrowUpRight } from 'lucide-react';
 import { getPosts } from '@/lib/posts';
-import { FadeIn } from '@/components/ui/motion';
 import { BlogList } from '@/components/blog/blog-list';
 import { formatDate } from '@/lib/utils';
-import { ArrowUpRight } from 'lucide-react';
 
 export const revalidate = 3600;
 export const metadata: Metadata = {
-  title: 'Blog | Web Design & Tech Insights | Crest Code Creative',
-  description: 'Expert advice, technical tutorials, and digital marketing insights for Gunnison Valley businesses from the Crest Code Creative team.',
-  alternates: {
-    canonical: '/blog',
-  },
+  title: 'Field Notes | Crest Code Creative',
+  description: 'Practical notes on digital products, web development, automation, and building technology for real businesses.',
+  alternates: { canonical: '/blog' },
 };
 
-const blogCategories = [
-  'All',
-  'Web Development',
-  'Design',
-  'Business',
-  'Technology',
-  'Tutorial',
-];
+const blogCategories = ['All', 'Web Development', 'Design', 'Business', 'Technology', 'Tutorial'];
 
 export default async function BlogPage() {
   const posts = await getPosts();
   const featuredPost = posts[0];
 
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-white pt-32 pb-16 border-b border-gray-100">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-                Insights & Updates
-              </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Expert advice, technical tutorials, and industry insights to help you navigate the digital landscape.
-              </p>
-            </div>
-          </FadeIn>
+    <div className="bg-[#f6f8f6]">
+      <section className="py-20 sm:py-28">
+        <div className="site-container grid gap-12 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8"><p className="field-label mb-6">Field notes</p><h1 className="display-title">Useful thinking from inside the work.</h1></div>
+          <p className="max-w-md text-lg leading-8 text-foreground/65 lg:col-span-4">Practical notes on product decisions, software, automation, and helping businesses use technology with more clarity.</p>
         </div>
       </section>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Featured Post */}
-        {featuredPost && (
-          <FadeIn className="mb-20">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Article</h2>
-            <Link
-              href={`/blog/${featuredPost.slug}`}
-              className="group grid md:grid-cols-2 gap-8 bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className="relative h-64 md:h-auto overflow-hidden">
-                <Image
-                  src={featuredPost.coverImage || '/images/blog/default-cover.jpg'}
-                  alt={featuredPost.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-white font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    Read Article <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </div>
+      {featuredPost && (
+        <section className="bg-white py-16 sm:py-24">
+          <div className="site-container">
+            <Link href={`/blog/${featuredPost.slug}`} className="group grid border-y border-foreground/20 py-5 lg:grid-cols-12 lg:gap-8">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-[#dce7e8] lg:col-span-7">
+                <Image src={featuredPost.coverImage || '/images/blog/n8n-automation-hub.png'} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
               </div>
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className="flex items-center gap-3 text-sm text-gray-500 mb-4">
-                  <time dateTime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
-                  <span>•</span>
-                  <span className="text-primary font-medium">Featured</span>
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors">
-                  {featuredPost.title}
-                </h3>
-                <p className="text-gray-600 text-lg leading-relaxed line-clamp-3">
-                  {featuredPost.description}
-                </p>
+              <div className="flex flex-col justify-between py-6 lg:col-span-5 lg:py-3">
+                <div><p className="field-label">Featured note · {formatDate(featuredPost.date)}</p><h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-5xl">{featuredPost.title}</h2><p className="mt-5 text-lg leading-8 text-foreground/65">{featuredPost.description}</p></div>
+                <span className="link-arrow mt-8">Read the note <ArrowUpRight className="h-4 w-4" /></span>
               </div>
             </Link>
-          </FadeIn>
-        )}
+          </div>
+        </section>
+      )}
 
-        {/* Blog List */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Latest Articles</h2>
-          <BlogList posts={posts} categories={blogCategories} />
-        </div>
-      </div>
+      <section className="bg-white pb-24 sm:pb-32">
+        <div className="site-container"><div className="mb-8 border-b border-foreground/20 pb-5"><h2 className="text-3xl font-semibold tracking-[-0.03em]">All notes</h2></div><BlogList posts={posts} categories={blogCategories} /></div>
+      </section>
     </div>
   );
 }

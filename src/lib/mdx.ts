@@ -25,6 +25,7 @@ export function getFeaturedProjects(): Project[] {
       challenge: data.challenge,
       solution: data.solution,
       impact: data.impact,
+      externalUrl: data.externalUrl,
       testimonial: data.testimonial,
     };
   });

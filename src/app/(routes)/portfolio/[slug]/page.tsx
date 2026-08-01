@@ -1,232 +1,159 @@
-import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-import { getProjectBySlug, getProjects } from '@/lib/projects'
-import { Button } from '@/components/ui/button'
-import { MDXContent } from '@/components/mdx-content'
-import { FadeIn } from '@/components/ui/motion'
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight, ExternalLink, Quote } from 'lucide-react';
+import { getProjectBySlug, getProjects } from '@/lib/projects';
+import { MDXContent } from '@/components/mdx-content';
 
 export async function generateStaticParams() {
-  const projects = await getProjects()
-  return projects.map((project) => ({
-    slug: project.slug,
-  }))
+  const projects = await getProjects();
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
-type PageProps = {
-  params: Promise<{ slug: string }>
-}
+type PageProps = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params
-  const project = await getProjectBySlug(resolvedParams.slug)
-
-  if (!project) {
-    return {}
-  }
-
-  return {
-    title: `${project.frontmatter.title} | Portfolio | Crest Code Creative`,
-    description: project.frontmatter.description,
-    alternates: {
-      canonical: `/portfolio/${resolvedParams.slug}`,
-    },
+  const { slug } = await params;
+  try {
+    const project = await getProjectBySlug(slug);
+    return {
+      title: `${project.frontmatter.title} | Crest Code Creative`,
+      description: project.frontmatter.description,
+      alternates: { canonical: `/portfolio/${slug}` },
+    };
+  } catch {
+    return {};
   }
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  const resolvedParams = await params
-  const project = await getProjectBySlug(resolvedParams.slug)
-
-  if (!project) {
-    notFound()
+  const { slug } = await params;
+  let project;
+  try {
+    project = await getProjectBySlug(slug);
+  } catch {
+    notFound();
   }
 
+  const projects = await getProjects();
+  const currentIndex = projects.findIndex((item) => item.slug === slug);
+  const nextProject = projects[(currentIndex + 1) % projects.length];
+  const title = project.frontmatter.title.split(' – ')[0].split(' — ')[0];
+
   return (
-    <article className="min-h-screen bg-slate-50">
-      {/* Hero Section */}
-      <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
-        <Image
-          src={project.frontmatter.imageUrl}
-          alt={project.frontmatter.title}
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-slate-50/90" />
+    <article className="bg-[#f6f8f6]">
+      <header className="site-container pb-14 pt-16 sm:pb-20 sm:pt-24">
+        <Link href="/portfolio" className="mb-12 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-foreground/65 hover:text-foreground">
+          <ArrowLeft className="h-4 w-4" /> All work
+        </Link>
 
-        {/* Back Navigation */}
-        <div className="absolute top-24 left-0 right-0 z-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <Link 
-              href="/portfolio"
-              className="inline-flex items-center text-white/80 hover:text-white transition-colors group"
-            >
-              <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Back to Portfolio
-            </Link>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="field-label mb-5">Case study · {project.frontmatter.industry}</p>
+            <h1 className="display-title">{title}</h1>
+          </div>
+          <div className="lg:col-span-4 lg:pb-2">
+            <p className="text-lg leading-8 text-foreground/68">{project.frontmatter.description}</p>
+            {project.frontmatter.externalUrl && (
+              <a href={project.frontmatter.externalUrl} target="_blank" rel="noopener noreferrer" className="link-arrow mt-6 text-sm">
+                Visit live product <ExternalLink className="h-4 w-4" />
+              </a>
+            )}
           </div>
         </div>
 
-        <div className="absolute inset-0 flex flex-col justify-end pb-40 items-center">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <FadeIn>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/90 text-sm backdrop-blur-md border border-white/20 mb-8 shadow-lg">
-                <span className="font-medium">{project.frontmatter.clientName}</span>
-                <span className="w-1 h-1 rounded-full bg-white/50" />
-                <span className="font-medium">{project.frontmatter.industry}</span>
-              </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
-                {project.frontmatter.title}
-              </h1>
-            </FadeIn>
+        <div className="mt-14 grid gap-5 border-y border-foreground/20 py-5 text-sm sm:grid-cols-3">
+          <div><span className="field-label block">Partner</span><span className="mt-2 block font-semibold">{project.frontmatter.clientName}</span></div>
+          <div><span className="field-label block">Discipline</span><span className="mt-2 block font-semibold">{project.frontmatter.industry}</span></div>
+          <div><span className="field-label block">Year</span><span className="mt-2 block font-semibold">{new Date(project.frontmatter.date).getFullYear()}</span></div>
+        </div>
+      </header>
+
+      <section className="site-container">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-[#dce7e8] sm:aspect-[16/9]">
+          <Image
+            src={project.frontmatter.imageUrl}
+            alt={`${title} product showcase`}
+            fill
+            priority
+            sizes="(min-width: 1440px) 1344px, 100vw"
+            className="object-contain p-4 sm:p-8 lg:p-12"
+          />
+        </div>
+      </section>
+
+      <section className="site-container py-20 sm:py-28">
+        <div className="grid border-y border-foreground/20 lg:grid-cols-3">
+          <div className="py-8 lg:pr-10">
+            <p className="field-label mb-5">The situation</p>
+            <p className="text-lg leading-8 text-foreground/72">{project.frontmatter.challenge}</p>
+          </div>
+          <div className="border-t border-foreground/20 py-8 lg:border-l lg:border-t-0 lg:px-10">
+            <p className="field-label mb-5">What we built</p>
+            <p className="text-lg leading-8 text-foreground/72">{project.frontmatter.solution}</p>
+          </div>
+          <div className="border-t border-foreground/20 bg-[#21443e] p-8 text-white lg:border-l lg:border-t-0 lg:p-10">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">The outcome</p>
+            <p className="font-editorial text-2xl leading-relaxed text-white">{project.frontmatter.impact}</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-32 relative z-10 pb-20">
-        <div className="max-w-4xl mx-auto space-y-8">
-          {/* Summary Card */}
-          <FadeIn>
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100">
-              <p className="text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
-                {project.frontmatter.description}
-              </p>
-
-              {project.frontmatter.externalUrl && (
-                <div className="mt-8 pt-8 border-t border-slate-100 flex justify-center">
-                  <Button asChild size="lg" className="rounded-full">
-                    <a
-                      href={project.frontmatter.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Visit Live Website
-                    </a>
-                  </Button>
-                </div>
-              )}
-            </div>
-          </FadeIn>
-
-          {/* Challenge & Solution Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <FadeIn delay={0.1}>
-              <div className="bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 h-full">
-                <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
-                  <svg className="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                </div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">The Challenge</h2>
-                <p className="text-slate-600 leading-relaxed">
-                  {project.frontmatter.challenge}
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 h-full">
-                <div className="w-12 h-12 bg-teal-50 rounded-2xl flex items-center justify-center mb-6">
-                  <svg className="w-6 h-6 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">Our Solution</h2>
-                <p className="text-slate-600 leading-relaxed">
-                  {project.frontmatter.solution}
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Impact Section */}
-          <FadeIn delay={0.3}>
-            <div className="bg-slate-800 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-xl shadow-slate-200/50">
-              <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl" />
-
-              <div className="relative z-10">
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <span className="text-teal-400">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                  </span>
-                  The Impact
-                </h2>
-                <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
-                  {project.frontmatter.impact}
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Deep Dive Content */}
-          <FadeIn delay={0.4}>
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg shadow-slate-200/50 border border-slate-100">
-              <div className="prose prose-lg max-w-none prose-slate prose-headings:font-bold prose-headings:text-slate-800 prose-p:text-slate-600 prose-a:text-teal-600 hover:prose-a:text-teal-700 prose-img:rounded-2xl">
-                <MDXContent source={project.content} />
-              </div>
-
-              {/* Technologies Used - Subtle Footer */}
-              <div className="mt-12 pt-8 border-t border-slate-100">
-                <p className="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wider">Technologies Used</p>
+      <section className="bg-white py-20 sm:py-28">
+        <div className="site-container grid gap-12 lg:grid-cols-12">
+          <aside className="lg:col-span-3">
+            <div className="lg:sticky lg:top-28">
+              <p className="field-label mb-5">Inside the work</p>
+              <p className="max-w-xs text-sm leading-6 text-foreground/55">The decisions, product capabilities, and implementation behind the finished experience.</p>
+              <div className="mt-8 border-t border-foreground/20 pt-5">
+                <p className="field-label mb-4">Built with</p>
                 <div className="flex flex-wrap gap-2">
                   {project.frontmatter.technologies.map((tech: string) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-slate-50 text-slate-600 text-sm rounded-full border border-slate-100"
-                    >
-                      {tech}
-                    </span>
+                    <span key={tech} className="rounded-full border border-foreground/20 px-3 py-1.5 text-xs font-medium">{tech}</span>
                   ))}
                 </div>
               </div>
             </div>
-          </FadeIn>
-
-          {/* Testimonial */}
-          {project.frontmatter.testimonial && (
-            <FadeIn delay={0.5}>
-              <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg shadow-slate-200/50 border border-slate-100 text-center">
-                <div className="relative w-20 h-20 mx-auto mb-6">
-                  <Image
-                    src={project.frontmatter.testimonial.avatar}
-                    alt={project.frontmatter.testimonial.name}
-                    fill
-                    className="rounded-full object-cover border-4 border-slate-50"
-                  />
-                </div>
-                <blockquote className="text-2xl font-medium text-slate-900 mb-6 leading-relaxed">
-                  &quot;{project.frontmatter.testimonial.quote}&quot;
-                </blockquote>
-                <div>
-                  <div className="font-bold text-slate-900 text-lg">
-                    {project.frontmatter.testimonial.name}
-                  </div>
-                  <div className="text-teal-600 font-medium">
-                    {project.frontmatter.testimonial.role}
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          )}
-
-          {/* Next Steps CTA */}
-          <FadeIn delay={0.6}>
-            <div className="text-center pt-12">
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Ready to start your success story?</h2>
-              <Button asChild size="lg" className="rounded-full px-8 h-12 text-base">
-                <a href="/contact">Schedule Your Consultation</a>
-              </Button>
-            </div>
-          </FadeIn>
+          </aside>
+          <div className="lg:col-span-8 lg:col-start-5">
+            <MDXContent source={project.content} />
+          </div>
         </div>
-      </div>
+      </section>
+
+      {project.frontmatter.testimonial && (
+        <section className="bg-[#dce7e8] py-20 sm:py-28">
+          <figure className="site-container grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-3">
+              <Quote className="h-9 w-9 text-accent" />
+              <p className="field-label mt-5">Partner perspective</p>
+            </div>
+            <div className="lg:col-span-8 lg:col-start-5">
+              <blockquote className="font-editorial text-3xl leading-[1.2] tracking-[-0.02em] sm:text-5xl">“{project.frontmatter.testimonial.quote}”</blockquote>
+              <figcaption className="mt-8 flex items-center gap-4 border-t border-foreground/20 pt-5">
+                <Image src={project.frontmatter.testimonial.avatar} alt="" width={56} height={56} className="h-14 w-14 rounded-full object-cover" />
+                <div><p className="font-semibold">{project.frontmatter.testimonial.name}</p><p className="text-sm text-foreground/55">{project.frontmatter.testimonial.role}</p></div>
+              </figcaption>
+            </div>
+          </figure>
+        </section>
+      )}
+
+      {nextProject && (
+        <section className="bg-[#151a19] py-20 text-white sm:py-28">
+          <div className="site-container">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/50">Next case study</p>
+            <Link href={`/portfolio/${nextProject.slug}`} className="group flex flex-col justify-between gap-8 border-t border-white/25 pt-7 sm:flex-row sm:items-end">
+              <div>
+                <h2 className="text-4xl font-semibold leading-none tracking-[-0.035em] text-white sm:text-6xl">{nextProject.title.split(' – ')[0].split(' — ')[0]}</h2>
+                <p className="mt-4 max-w-2xl text-lg leading-8 text-white/65">{nextProject.description}</p>
+              </div>
+              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white text-foreground transition-transform group-hover:translate-x-2"><ArrowRight className="h-6 w-6" /></span>
+            </Link>
+          </div>
+        </section>
+      )}
     </article>
-  )
+  );
 }

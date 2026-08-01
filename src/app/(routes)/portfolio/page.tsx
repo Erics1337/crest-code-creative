@@ -1,113 +1,110 @@
 import type { Metadata } from 'next';
-import { Button } from '@/components/ui/button';
-import { CaseStudyCard } from '@/components/portfolio/case-study-card';
-import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/ui/motion';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowDown, ArrowUpRight, Quote } from 'lucide-react';
+import { CaseStudyCard } from '@/components/portfolio/case-study-card';
 import { getProjects } from '@/lib/projects';
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Web, Mobile & AI Product Work | Crest Code Creative',
-  description: 'Explore custom websites, mobile apps, SaaS platforms, and AI-powered products built by Crest Code Creative in the Gunnison Valley and beyond.',
-  alternates: {
-    canonical: '/portfolio',
-  },
+  title: 'Selected Work | Crest Code Creative',
+  description: 'Websites, mobile apps, SaaS platforms, AI products, and digital systems designed and built by Crest Code Creative.',
+  alternates: { canonical: '/portfolio' },
 };
 
 export default async function PortfolioPage() {
   const projects = await getProjects();
+  const featured = projects[0];
+  const testimonials = projects.filter((project) => project.testimonial);
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <FadeIn>
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">Work</span>
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Explore the mobile apps, SaaS platforms, AI products, and digital experiences we&apos;ve designed and built from the Gunnison Valley.
-          </p>
-        </div>
-      </FadeIn>
+    <div>
+      {/*
+        THESIS: Let real product work establish credibility immediately; refuse the equal-card portfolio grid.
+        OWN-WORLD: Alpine-white fields, graphite type, steel-blue media stages, thin structural rules, and scarce cobalt wayfinding.
+        STORY: Visitors understand the studio's range, scan outcomes, enter a case study, and leave with a clear contact path.
+        FIRST VIEWPORT: A compact thesis and capability index lead into one oversized live project image crossing the fold.
+        FORM: High Country Field Office, cinematic project dispatch followed by an asymmetric editorial gallery; seed ef92848b.
+      */}
+      <section className="bg-[#f6f8f6] pb-12 pt-16 sm:pb-16 sm:pt-20">
+        <div className="site-container">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p className="field-label mb-6">Selected work · 2024–2026</p>
+              <h1 className="display-title">Products made useful, clear, and ready for the real world.</h1>
+            </div>
+            <div className="lg:col-span-4 lg:pb-2">
+              <p className="max-w-md text-lg leading-8 text-foreground/68">A working set of mobile products, SaaS platforms, AI tools, and local business experiences—each shaped around a different problem, not a house template.</p>
+              <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold uppercase tracking-[0.11em] text-foreground/50">
+                <span>Web</span><span>Mobile</span><span>SaaS</span><span>AI</span><span>Automation</span>
+              </div>
+            </div>
+          </div>
 
-      {/* Filter Tabs */}
-      <FadeIn className="mb-16">
-        <div className="flex flex-wrap justify-center gap-3">
-          {['All Projects', 'Mobile Apps', 'AI Products', 'SaaS Platforms', 'Web Development'].map((category, index) => (
-            <Button
-              key={category}
-              variant={index === 0 ? 'default' : 'outline'}
-              className={`rounded-full px-6 ${index === 0 ? 'bg-slate-900 hover:bg-slate-800' : 'hover:bg-slate-100'}`}
-              size="sm"
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-      </FadeIn>
-
-      {/* Case Studies Grid */}
-      <FadeInStagger className="grid lg:grid-cols-2 gap-8 mb-32">
-        {projects.map((project) => (
-          <FadeInStaggerItem key={project.slug}>
-            <CaseStudyCard {...project} href={`/portfolio/${project.slug}`} />
-          </FadeInStaggerItem>
-        ))}
-      </FadeInStagger>
-
-      {/* Client Testimonials */}
-      <FadeIn className="mb-32">
-        <div className="relative overflow-hidden bg-slate-50 rounded-3xl p-8 md:p-16 isolate border border-slate-100 shadow-sm">
-          {/* Background Gradients */}
-          <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl -z-10" />
-          <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -z-10" />
-
-          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">Client Success Stories</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects
-              .filter(project => project.testimonial)
-              .map((project) => (
-                <div key={project.slug} className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 h-full flex flex-col">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="relative w-14 h-14 flex-shrink-0">
-                      <Image
-                        src={project.testimonial!.avatar}
-                        alt={project.testimonial!.name}
-                        fill
-                        className="object-cover rounded-full border-2 border-slate-100"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900">{project.testimonial!.name}</h3>
-                      <p className="text-slate-500 text-sm">{project.testimonial!.role}</p>
-                    </div>
-                  </div>
-                  <blockquote className="text-slate-600 italic mb-6 flex-grow leading-relaxed">
-                    &quot;{project.testimonial!.quote}&quot;
-                  </blockquote>
-                  <div className="text-sm font-semibold text-teal-600 bg-teal-50 px-4 py-2 rounded-full w-fit">
-                    {project.impact}
-                  </div>
-                </div>
-              ))}
+          <div className="mt-10 flex items-center justify-between border-t border-foreground/20 pt-4 text-sm text-foreground/55">
+            <span>{projects.length} detailed case studies</span>
+            <span className="flex items-center gap-2">Explore the work <ArrowDown className="h-4 w-4" /></span>
           </div>
         </div>
-      </FadeIn>
+      </section>
 
-      {/* CTA Section */}
-      <FadeIn>
-        <div className="bg-slate-900 rounded-3xl p-12 text-center text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-teal-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl" />
+      {featured && (
+        <section className="bg-white py-12 sm:py-16">
+          <div className="site-container">
+            <CaseStudyCard {...featured} href={`/portfolio/${featured.slug}`} index={0} featured />
+          </div>
+        </section>
+      )}
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 relative z-10">Ready to Transform Your Business?</h2>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-lg relative z-10">
-            Bring us the product idea, workflow, or digital experience your team is ready to make real.
-          </p>
-          <Button asChild size="lg" className="bg-white text-slate-900 hover:bg-gray-100 relative z-10">
-            <a href="/contact">Start Your Project</a>
-          </Button>
+      <section className="bg-white pb-24 sm:pb-32">
+        <div className="site-container">
+          <div className="grid gap-x-9 gap-y-20 lg:grid-cols-2 lg:gap-y-28">
+            {projects.slice(1).map((project, index) => (
+              <div key={project.slug} className={index % 2 === 1 ? 'lg:mt-32' : ''}>
+                <CaseStudyCard {...project} href={`/portfolio/${project.slug}`} index={index + 1} />
+              </div>
+            ))}
+          </div>
         </div>
-      </FadeIn>
+      </section>
+
+      {testimonials.length > 0 && (
+        <section className="bg-[#dce7e8] py-24 sm:py-32">
+          <div className="site-container">
+            <div className="grid gap-10 lg:grid-cols-12">
+              <div className="lg:col-span-3">
+                <Quote className="h-9 w-9 text-accent" />
+                <p className="field-label mt-5">From a local partner</p>
+              </div>
+              <div className="lg:col-span-8 lg:col-start-5">
+                {testimonials.map((project) => (
+                  <figure key={project.slug}>
+                    <blockquote className="font-editorial text-3xl leading-[1.2] tracking-[-0.02em] sm:text-5xl">“{project.testimonial!.quote}”</blockquote>
+                    <figcaption className="mt-8 flex items-center gap-4 border-t border-foreground/20 pt-5">
+                      <Image src={project.testimonial!.avatar} alt="" width={48} height={48} className="h-12 w-12 rounded-full object-cover" />
+                      <div>
+                        <p className="font-semibold">{project.testimonial!.name}</p>
+                        <p className="text-sm text-foreground/55">{project.testimonial!.role}</p>
+                      </div>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="bg-[#315cf5] py-20 text-white sm:py-24">
+        <div className="site-container flex flex-col justify-between gap-10 sm:flex-row sm:items-end">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/65">Your project belongs here next</p>
+            <h2 className="max-w-3xl text-4xl font-semibold leading-[0.96] tracking-[-0.035em] text-white sm:text-6xl">Have a problem worth building around?</h2>
+          </div>
+          <Link href="/contact" className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-white px-6 font-semibold text-[#151a19] transition-transform hover:-translate-y-0.5">
+            Start a project <ArrowUpRight className="h-5 w-5" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
