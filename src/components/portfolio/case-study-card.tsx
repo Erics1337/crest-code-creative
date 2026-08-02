@@ -43,7 +43,7 @@ export function CaseStudyCard({
             alt={`${shortTitle} project`}
             fill
             sizes={featured ? '(min-width: 1024px) 66vw, 100vw' : '(min-width: 1024px) 45vw, 100vw'}
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+            className="object-contain p-3 transition-transform duration-700 ease-out group-hover:scale-[1.01] sm:p-5"
           />
         </div>
         <span className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-foreground opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
