@@ -10,6 +10,8 @@ import { MDXContent } from '@/components/mdx-content';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
+const aiPostSlug = 'ai-for-small-business-gunnison-valley';
+
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({ slug: post.slug }));
@@ -28,6 +30,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
+  const isAiPost = post.slug === aiPostSlug;
 
   return (
     <article className="bg-[#f6f8f6]">
@@ -42,14 +45,14 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div className="relative aspect-[3/2] overflow-hidden rounded-sm bg-[#dce7e8]">
               <Image
                 src={post.frontmatter.coverImage}
-                alt="Elk Avenue in Crested Butte with local storefronts, summer flowers, and Mount Crested Butte in the background"
+                alt={isAiPost ? 'Elk Avenue in Crested Butte with local storefronts, summer flowers, and Mount Crested Butte in the background' : ''}
                 fill
                 priority
                 sizes="(min-width: 1280px) 1200px, 100vw"
                 className="object-cover"
               />
             </div>
-            <figcaption className="mt-3 text-xs leading-5 text-foreground/45">Elk Avenue, Crested Butte.</figcaption>
+            {isAiPost && <figcaption className="mt-3 text-xs leading-5 text-foreground/45">Elk Avenue, Crested Butte.</figcaption>}
           </figure>
         )}
       </header>
