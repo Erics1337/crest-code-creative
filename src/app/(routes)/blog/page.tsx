@@ -14,13 +14,10 @@ export const metadata: Metadata = {
 };
 
 const blogCategories = ['All', 'Web Development', 'Design', 'Business', 'Technology', 'Tutorial'];
-const aiPostSlug = 'ai-for-small-business-gunnison-valley';
-const aiCoverImage = 'https://gunnisoncrestedbutte.com/wp-content/uploads/elk-avenue-crested-butte-colorado-summer-scaled.jpg';
 
 export default async function BlogPage() {
   const posts = await getPosts();
   const featuredPost = posts[0];
-  const isAiPost = featuredPost?.slug === aiPostSlug;
 
   return (
     <div className="bg-[#f6f8f6]">
@@ -36,11 +33,13 @@ export default async function BlogPage() {
           <div className="site-container">
             <Link href={`/blog/${featuredPost.slug}`} className="group grid border-y border-foreground/20 py-5 lg:grid-cols-12 lg:gap-8">
               <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-[#dce7e8] lg:col-span-7">
-                {isAiPost ? (
-                  <img src={aiCoverImage} alt="Elk Avenue in Crested Butte on a summer day" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
-                ) : (
-                  <Image src={featuredPost.coverImage || '/images/blog/n8n-automation-hub.png'} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
-                )}
+                <Image
+                  src={featuredPost.coverImage || '/images/blog/n8n-automation-hub.png'}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 58vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                />
               </div>
               <div className="flex flex-col justify-between py-6 lg:col-span-5 lg:py-3">
                 <div><p className="field-label">Featured note · {formatDate(featuredPost.date)}</p><h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-5xl">{featuredPost.title}</h2><p className="mt-5 text-lg leading-8 text-foreground/65">{featuredPost.description}</p></div>
