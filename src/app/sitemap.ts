@@ -20,6 +20,10 @@ const staticRoutes = [
   { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
   { path: '/yoga-flow/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
   { path: '/yoga-flow/terms', priority: 0.3, changeFrequency: 'yearly' as const },
+  { path: '/aventi/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
+  { path: '/aventi/terms', priority: 0.3, changeFrequency: 'yearly' as const },
+  { path: '/aventi/support', priority: 0.3, changeFrequency: 'yearly' as const },
+  { path: '/aventi/delete-account', priority: 0.3, changeFrequency: 'yearly' as const },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

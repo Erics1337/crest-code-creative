@@ -53,6 +53,10 @@ export function Footer() {
             <Link href="/privacy" className="hover:text-white">Privacy</Link>
             <Link href="/yoga-flow/privacy" className="hover:text-white">Yoga Flow privacy</Link>
             <Link href="/yoga-flow/terms" className="hover:text-white">Yoga Flow terms</Link>
+            <Link href="/aventi/privacy" className="hover:text-white">Aventi privacy</Link>
+            <Link href="/aventi/terms" className="hover:text-white">Aventi terms</Link>
+            <Link href="/aventi/support" className="hover:text-white">Aventi support</Link>
+            <Link href="/aventi/delete-account" className="hover:text-white">Aventi deletion</Link>
           </div>
         </div>
       </div>
